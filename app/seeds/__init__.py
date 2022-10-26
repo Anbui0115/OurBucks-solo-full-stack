@@ -5,7 +5,7 @@ from .reviews import seed_reviews,undo_reviews
 from .orders import seed_orders,undo_orders
 from .cards import seed_cards,undo_cards
 from .customized_items import seed_customized_items,undo_customized_items
-
+from .order_customized_items import seed_order_customized_items,undo_order_customized_items
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -21,6 +21,7 @@ def seed():
     seed_orders()
     seed_cards()
     seed_customized_items()
+    seed_order_customized_items()
 
     # Add other seed functions here
 
@@ -34,4 +35,5 @@ def undo():
     undo_orders()
     undo_cards()
     undo_customized_items()
+    undo_order_customized_items()
     # Add other undo functions here
