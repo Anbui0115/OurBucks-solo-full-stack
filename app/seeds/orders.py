@@ -3,16 +3,16 @@ from app.models import db, Order
 
 
 def seed_orders():
-    order1 = Order(user_id = 1,quantity = 1, status = "not placed")
-    order2 = Order(user_id = 2,quantity = 1, status = "not placed")
-    order3 = Order(user_id = 3,quantity = 1, status = "not placed")
-    order4 = Order(user_id = 4,quantity = 1, status = "not placed")
-    order5 = Order(user_id = 5,quantity = 1, status = "not placed")
-    order6 = Order(user_id = 1,quantity = 1, status = "not placed")
-    order7 = Order(user_id = 2,quantity = 1, status = "not placed")
-    order8 = Order(user_id = 3,quantity = 1, status = "not placed")
-    order9 = Order(user_id = 4,quantity = 1, status = "not placed")
-    order10 = Order(user_id = 5,quantity = 1, status = "not placed")
+    order1 = Order(user_id = 1, status = "not placed")
+    order2 = Order(user_id = 2, status = "not placed")
+    order3 = Order(user_id = 3, status = "not placed")
+    order4 = Order(user_id = 4, status = "not placed")
+    order5 = Order(user_id = 5, status = "not placed")
+    order6 = Order(user_id = 1, status = "not placed")
+    order7 = Order(user_id = 2, status = "not placed")
+    order8 = Order(user_id = 3, status = "not placed")
+    order9 = Order(user_id = 4, status = "not placed")
+    order10 = Order(user_id = 5, status = "not placed")
 
 
     db.session.add(order1)
