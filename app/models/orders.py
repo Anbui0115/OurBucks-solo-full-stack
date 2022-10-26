@@ -21,6 +21,7 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     status=db.Column(db.String(20),nullable=False)
+    order_items_id=db.Column(db.Integer, db.ForeignKey("order_items.id",ondelete="CASCADE"),nullable=False)
     # quantity = db.Column(db.Integer, nullable=False)
 
     #relationship
@@ -29,13 +30,13 @@ class Order(db.Model):
     user = db.relationship('User',back_populates='orders')
 
 
-    # def to_dict(self):
-    #     return {
-    #         'id': self.id,
-    #         'item': self.item.to_dict(),
-    #         'user': self.user.to_dict(),
-    #         'quantity': self.quantity
-    #     }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user': self.user.to_dict(),
+            'user_id': self.user.id,
+            'status': self.status,
+        }
 
 
 

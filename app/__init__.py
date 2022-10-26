@@ -8,7 +8,8 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-
+from .api.item_routes import item_routes
+from .api.order_routes import order_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -31,11 +32,18 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(item_routes, url_prefix='/api/items')
+app.register_blueprint(order_routes, url_prefix='/api/orders')
 db.init_app(app)
 Migrate(app, db)
 
 # Application Security
 CORS(app)
+@app.route("/api/help")
+def api_help():
+    route_list = { rule.rule: app.view_functions[rule.endpoint].__doc__
+                    for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
+    return route_list
 
 
 # Since we are deploying with Docker and Flask,
