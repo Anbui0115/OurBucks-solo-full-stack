@@ -21,7 +21,7 @@
 # Start the flask environment by setting our
 # closing command to gunicorn app:app
 FROM python:3.9
-ENV REACT_APP_BASE_URL=
+ENV REACT_APP_BASE_URL=https://ourbucks.herokuapp.com/login
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
