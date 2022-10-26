@@ -6,8 +6,12 @@ class CustomizedItem(db.Model):
     id = db.Column(db.Integer, primary_key=True,autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     item_id = db.Column(db.Integer, db.ForeignKey("items.id", ondelete="CASCADE"), nullable=False)
+    milk = db.Column(db.String(30))
+    syrup = db.Column(db.String(30))
+    topping= db.Column(db.String(20))
+    ice = db.Column(db.String(20))
     # customization_options = db.Column(db.ARRAY(db.Integer))
-    customization_options = db.Column(db.Integer, db.ForeignKey("customizations.id", ondelete="CASCADE"), nullable=False)
+    # customization_options = db.Column(db.Integer, db.ForeignKey("customizations.id", ondelete="CASCADE"), nullable=False)
 
     #relationship
     user = db.relationship('User',back_populates='customized_item')
