@@ -3,7 +3,10 @@ import { createCustomizedItem } from "../../store/customizedItem";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getAllItems } from "../../store/items";
+
 import "./CreateCustomizedItem.css";
+
+
 
 const CreateCustomizedItem = () => {
   const dispatch = useDispatch();
@@ -16,10 +19,12 @@ const CreateCustomizedItem = () => {
   }, [dispatch]);
 
   const allItems = useSelector((state) => state.items);
+  const sessionUser = useSelector((state) => state.session.user);
   const { itemId } = useParams();
   console.log("ITEMID-------------------", itemId);
 
   if (!itemId) return null;
+
   const item = allItems.filter((item) => item.id === +itemId);
 
   const onSubmit = async (e) => {
@@ -27,12 +32,13 @@ const CreateCustomizedItem = () => {
     // setIsSubmitted(true);
     //  if (errors.length) return;
 
-    let itemData = {
-      selection,
+    let customizedItemData = {
+      user_id : sessionUser.id,
+      item_id : itemId
     };
 
     //  setErrors([]);
-    const data = await dispatch(createCustomizedItem(itemData)).catch(
+    const data = await dispatch(createCustomizedItem(customizedItemData)).catch(
       async (res) => {
         const data = await res.json();
         //    if (data && data.errors) setErrors(data.errors);
