@@ -18,20 +18,39 @@ def get_reviews():
     reviews = Review.query.filter_by(user_id=user_id).all()
     return {'reviews': [i.to_dict() for i in reviews]}
 
+# @review_routes.route('', methods=["POST"])
+# @login_required
+# def add_review():
+#     """
+#     Add a review for current user base on item_id
+#     """
+#     user_id = current_user.id
+#     print('REQUEST~~~~~~~~~~~~~~~~~~~~',request.args.get(item_id))
+#     form = AddReview()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if form.validate_on_submit():
+#         review = Review()
+#         form.populate_obj(review)
+#         review.user_id = user_id
+#         db.session.add(review)
+#         db.session.commit()
+#         return {'review': review.to_dict()}
+#     else:
+#         return {'errors': form.errors}, 400
+
 @review_routes.route('', methods=["POST"])
 @login_required
-def add_review(item_id):
+def add_review():
     """
     Add a review for current user base on item_id
     """
-    user_id = current_user.id
     form = AddReview()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
         review = Review()
+        review.user_id = current_user.id
         form.populate_obj(review)
-        review.user_id = user_id
         db.session.add(review)
         db.session.commit()
         return {'review': review.to_dict()}
