@@ -3,11 +3,11 @@ from app.models import db, CustomizedItem
 
 
 def seed_customized_items():
-    customized_item1 = CustomizedItem(user_id = 1, item_id=1, milk = 'soy milk', syrup =' brown sugar',topping='boba',ice='regular')
-    customized_item2 = CustomizedItem(user_id = 2, item_id=2, milk = 'soy milk', syrup =' brown sugar',topping='boba',ice='regular')
-    customized_item3 = CustomizedItem(user_id = 3, item_id=3, milk = 'soy milk', syrup =' brown sugar',topping='boba',ice='regular')
-    customized_item4 = CustomizedItem(user_id = 4, item_id=4, milk = 'soy milk', syrup =' brown sugar',topping='boba',ice='regular')
-    customized_item5 = CustomizedItem(user_id = 5, item_id=5, milk = 'soy milk', syrup =' brown sugar',topping='boba',ice='regular')
+    customized_item1 = CustomizedItem(user_id = 1, item_id=1)
+    customized_item2 = CustomizedItem(user_id = 2, item_id=2)
+    customized_item3 = CustomizedItem(user_id = 3, item_id=3)
+    customized_item4 = CustomizedItem(user_id = 4, item_id=4)
+    customized_item5 = CustomizedItem(user_id = 5, item_id=5)
 
 
 
