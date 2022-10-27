@@ -1,10 +1,12 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, StringField
-from wtforms import validators
+from wtforms import StringField
+from wtforms.validators import DataRequired, ValidationError
+
+
 
 def valid_credit_number(form, field):
     credit_number = field.data
-    if not (len(card_number) == 16):
+    if not (len(credit_number) == 16):
         raise ValidationError('Credit card number is not 16 digits.')
 
 def valid_expiry_date(form, field):
@@ -24,6 +26,6 @@ def valid_security_number(form, field):
 
 
 class AddCard(FlaskForm):
-    credit_number = StringField('credit_number', validators=[DataRequired(), valid_card_number])
+    credit_number = StringField('credit_number', validators=[DataRequired(), valid_credit_number])
     expiry_date = StringField('expiry_date', validators=[DataRequired(), valid_expiry_date])
     security_number = StringField('security_number', validators=[DataRequired(), valid_security_number])

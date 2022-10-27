@@ -3,12 +3,12 @@ from flask import Blueprint, jsonify, request
 from app.models import User, db, Item
 from flask_login import login_required, current_user
 from app.models.cards import Card
-import re
+from app.forms.add_card import AddCard
 
 
-item_routes = Blueprint('cards', __name__)
+card_routes = Blueprint('cards', __name__)
 
-@item_routes.route('', methods=["GET"])
+@card_routes.route('', methods=["GET"])
 @login_required
 def get_cards():
     """
@@ -18,7 +18,7 @@ def get_cards():
     cards = Card.query.filter_by(user_id=user_id).all()
     return {'cards': [i.to_dict() for i in cards]}
 
-@order_routes.route('', methods=["POST"])
+@card_routes.route('', methods=["POST"])
 @login_required
 def add_card():
     """
@@ -38,7 +38,7 @@ def add_card():
     else:
         return {'errors': form.errors}, 400
 
-@order_routes.route('/<card_id>', methods=["PUT"])
+@card_routes.route('/<card_id>', methods=["PUT"])
 @login_required
 def update_card(card_id):
     """
@@ -50,7 +50,7 @@ def update_card(card_id):
 
     if form.validate_on_submit():
 
-        card = Card.query.get(card_id)        
+        card = Card.query.get(card_id)
         if not card:
             card = Card()
             card.user_id = user_id
@@ -61,7 +61,7 @@ def update_card(card_id):
     else:
         return {'errors': form.errors}, 400
 
-@order_routes.route('/<card_id>', methods=["DELETE"])
+@card_routes.route('/<card_id>', methods=["DELETE"])
 @login_required
 def delete_card(card_id):
     """
