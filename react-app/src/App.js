@@ -8,7 +8,9 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import GetAllItems from './components/GetAllItems';
+import GetAllItems from './components/GetAllItems/GetAllItems';
+import GetItemById from './components/GetItemById/GetItemById';
+import CreateCustomizedItem from "./components/CreateCustomizedItem/CreateCustomizedItem";
 
 
 
@@ -38,6 +40,15 @@ function App() {
         </Route>
         <Route path="/menu" exact={true}>
           <GetAllItems />
+        </Route>
+        <Route path="/items/:itemId">
+          <GetItemById />
+        </Route>
+        {/* <Route path="/items/:itemId/customize">
+          <CreateCustomizedItem />
+        </Route> */}
+        <Route path="/:itemId/customize">
+          <CreateCustomizedItem />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
