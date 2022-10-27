@@ -2,7 +2,7 @@ from app.models import db,OrderItem
 
 
 
-def seed_order_customized_items():
+def seed_order_items():
     orderItem1 = OrderItem(order_id = 1,customized_item_id=1 ,item_id=1,quantity=1)
     orderItem2 = OrderItem(order_id = 2,customized_item_id=2 ,item_id=1,quantity=1)
     orderItem3 = OrderItem(order_id = 3,customized_item_id=3 ,item_id=1,quantity=1)
@@ -35,6 +35,6 @@ def seed_order_customized_items():
 # TRUNCATE Removes all the data from the table, and RESET IDENTITY
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
-def undo_order_customized_items():
+def undo_order_items():
     db.session.execute('TRUNCATE order_customized_items RESTART IDENTITY CASCADE;')
     db.session.commit()

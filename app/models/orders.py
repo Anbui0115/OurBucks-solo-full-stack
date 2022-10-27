@@ -27,7 +27,7 @@ class Order(db.Model):
 
     #relationship
     user = db.relationship('User',back_populates='orders')
-    order__items = db.relationship("OrderItem",back_populates='order')
+    order_items = db.relationship("OrderItem",back_populates='order')
 
 
     # customized_items = db.relationship("CustomizedItem",back_populates='order_customized_items')

@@ -10,7 +10,7 @@ class OrderItem(db.Model):
     customized_item_id = db.Column(db.Integer, db.ForeignKey("customized_items.id", ondelete="CASCADE"), nullable=True)
     quantity = db.Column(db.Integer, nullable=False)
     #relationships
-    order = db.relationship("Order", back_populates="order_customized_items")
+    order = db.relationship("Order", back_populates="order_items")
     customized_items = db.relationship("CustomizedItem", back_populates="order_items")
     item = db.relationship("Item", back_populates="order_items")
 

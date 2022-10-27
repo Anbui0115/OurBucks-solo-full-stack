@@ -9,4 +9,4 @@ class Customization(db.Model):
     category = db.Column(db.String(50),nullable=False)
 
     #relationship
-    customized_selection = db.relationship('CustomizedSelection',back_populates='customization')
+    # customized_selection = db.relationship('CustomizedSelection',back_populates='customization')

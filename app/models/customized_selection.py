@@ -10,8 +10,8 @@ class CustomizedSelection(db.Model):
 
 
     #relationship
-    customized_items= db.relationship('CustomizedItem',back_populates='customized_selection')
+    customized_items= db.relationship('CustomizedItem',foreign_keys=[customized_items_id])
 
-    customization = db.relationship("Customization",back_populates='customized_selection')
+    customization = db.relationship("Customization",foreign_keys=[customization_id])
 
     # orders = db.relationship('Order', back_populates='customized_items')
