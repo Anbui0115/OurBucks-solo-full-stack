@@ -18,8 +18,7 @@ class OrderItem(db.Model):
         return {
             'id': self.id,
             'itemId': self.item_id,
-            'userId': self.user_id,
+            'orderId': self.order_id,
             'quantity': self.quantity,
-            'price' : self.price,
-            'review' : [i.to_dict() for i in self.reviews]
+            'customized_item_id': self.customized_item_id,
         }

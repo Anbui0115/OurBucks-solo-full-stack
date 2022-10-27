@@ -1,23 +1,17 @@
 from app.models import db, CustomizedSelection
-
+import random
 
 
 def seed_customized_selections():
-    customized_selection1 = CustomizedSelection(customization_id = 1, customized_items_id=1)
-    customized_selection2 = CustomizedSelection(customization_id = 2, customized_items_id=2)
-    customized_selection3 = CustomizedSelection(customization_id = 3, customized_items_id=3)
-    customized_selection4 = CustomizedSelection(customization_id = 4, customized_items_id=4)
-    customized_selection5 = CustomizedSelection(customization_id = 5, customized_items_id=5)
+    customized_selections = []
+    NUM_OF_CUSTOMIZATIONS = 22
+    NUM_OF_CUSTOMIZATED_ITEMS = 15
 
+    for i in range(NUM_OF_CUSTOMIZATED_ITEMS):
+        customized_selections.append(CustomizedSelection(customization_id = i + 1, customized_items_id=random.randrange(1,NUM_OF_CUSTOMIZATIONS)))
 
-
-    db.session.add(customized_selection1)
-    db.session.add(customized_selection2)
-    db.session.add(customized_selection3)
-    db.session.add(customized_selection4)
-    db.session.add(customized_selection5)
-
-
+    for customized_selection in customized_selections:
+        db.session.add(customized_selection)
 
     db.session.commit()
 

@@ -1,23 +1,19 @@
 from app.models import db, CustomizedItem
+import random
 
 
 
 def seed_customized_items():
-    customized_item1 = CustomizedItem(user_id = 1, item_id=1)
-    customized_item2 = CustomizedItem(user_id = 2, item_id=2)
-    customized_item3 = CustomizedItem(user_id = 3, item_id=3)
-    customized_item4 = CustomizedItem(user_id = 4, item_id=4)
-    customized_item5 = CustomizedItem(user_id = 5, item_id=5)
+    customized_items = []
+    NUM_OF_USERS = 5
+    NUM_OF_ITEMS = 60
 
 
+    for i in range(15):
+        customized_items.append(CustomizedItem(user_id = (i % NUM_OF_USERS) + 1, item_id=random.randrange(1,NUM_OF_ITEMS)))
 
-    db.session.add(customized_item1)
-    db.session.add(customized_item2)
-    db.session.add(customized_item3)
-    db.session.add(customized_item4)
-    db.session.add(customized_item5)
-
-
+    for customized_item in customized_items:
+        db.session.add(customized_item)
 
     db.session.commit()
 

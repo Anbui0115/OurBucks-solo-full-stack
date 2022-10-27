@@ -3,21 +3,38 @@ from app.models import db, Customization
 
 
 def seed_customizations():
-    customization1 = Customization(name ="soy milk", category="milk")
-    customization2 = Customization(name ="brown sugar", category="syrup")
-    customization3 = Customization(name ="almond milk", category="milk")
-    customization4 = Customization(name ="oat milk", category="milk")
-    customization5 = Customization(name ="less ice", category="ice")
+    customizations = []
+    # Milk
+    customizations.append(Customization(name ="Soy Milk", category="milk"))
+    customizations.append(Customization(name ="Almond Milk", category="milk"))
+    customizations.append(Customization(name ="Oat Milk", category="milk"))
+    customizations.append(Customization(name ="Heavy Cream", category="milk"))
+    customizations.append(Customization(name ="Vanilla Sweet Cream", category="milk"))
+    customizations.append(Customization(name ="2% Milk", category="milk"))
+    customizations.append(Customization(name ="Whole Milk", category="milk"))
+    customizations.append(Customization(name ="Half & Half", category="milk"))
+    customizations.append(Customization(name ="Coconut Milk", category="milk"))
+
+    # Flavor
+    customizations.append(Customization(name ="Brown Sugar Syrup", category="flavor"))
+    customizations.append(Customization(name ="Apple Brown Sugar", category="flavor"))
+    customizations.append(Customization(name ="Caramel Syrup", category="flavor"))
+    customizations.append(Customization(name ="Cinnamon Dolce Syrup", category="flavor"))
+    customizations.append(Customization(name ="Hazelnut Syrup", category="flavor"))
+    customizations.append(Customization(name ="Peppermint Syrup", category="flavor"))
+    customizations.append(Customization(name ="Raspberry Syrup", category="flavor"))
+    customizations.append(Customization(name ="Toasted Vanilla Syrup", category="flavor"))
+    customizations.append(Customization(name ="Toffee Nut Syrup", category="flavor"))
+    customizations.append(Customization(name ="Vanilla Syrup", category="flavor"))
+
+    # Ice
+    customizations.append(Customization(name ="No Ice", category="ice"))
+    customizations.append(Customization(name ="Light Ice", category="ice"))
+    customizations.append(Customization(name ="Extra Ice", category="ice"))
 
 
-
-    db.session.add(customization1)
-    db.session.add(customization2)
-    db.session.add(customization3)
-    db.session.add(customization4)
-    db.session.add(customization5)
-
-
+    for customization in customizations:
+        db.session.add(customization)
 
     db.session.commit()
 

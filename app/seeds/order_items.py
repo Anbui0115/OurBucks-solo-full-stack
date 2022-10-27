@@ -1,31 +1,23 @@
 from app.models import db,OrderItem
-
+import random
 
 
 def seed_order_items():
-    orderItem1 = OrderItem(order_id = 1,customized_item_id=1 ,item_id=1,quantity=1)
-    orderItem2 = OrderItem(order_id = 2,customized_item_id=2 ,item_id=1,quantity=1)
-    orderItem3 = OrderItem(order_id = 3,customized_item_id=3 ,item_id=1,quantity=1)
-    orderItem4 = OrderItem(order_id = 4,customized_item_id=4 ,item_id=1,quantity=1)
-    orderItem5 = OrderItem(order_id = 5,customized_item_id=5 ,item_id=1,quantity=1)
-    orderItem6 = OrderItem(order_id = 1,customized_item_id=1 ,item_id=1,quantity=1)
-    orderItem7 = OrderItem(order_id = 2,customized_item_id=2 ,item_id=1,quantity=1)
-    orderItem8 = OrderItem(order_id = 3,customized_item_id=3 ,item_id=1,quantity=1)
-    orderItem9 = OrderItem(order_id = 4,customized_item_id=4 ,item_id=1,quantity=1)
-    orderItem10 = OrderItem(order_id = 5,customized_item_id=5 ,item_id=1,quantity=1)
+    order_items = []
+    NUM_OF_ORDERS = 45
+    NUM_OF_CUSTOMIZED_ITEMS = 15
+    NUM_OF_ITEMS = 60
+
+    for i in range(100):
+        order_items.append(OrderItem(order_id = (i % NUM_OF_ORDERS) + 1, item_id=random.randrange(1,NUM_OF_ITEMS),quantity=random.randrange(1,4)))
+
+    # This won't work since both order and customized items belong to an user. We need to make sure that the customized item and the order belong to the same user, otherwise this will create issues.
+    # for i in range(10):
+    #    order_items.append(OrderItem(order_id = (i % NUM_OF_ORDERS) + 1, customized_item_id=random.randrange(1,NUM_OF_CUSTOMIZED_ITEMS),quantity=random.randrange(1,4)))
 
 
-    db.session.add(orderItem1)
-    db.session.add(orderItem2)
-    db.session.add(orderItem3)
-    db.session.add(orderItem4)
-    db.session.add(orderItem5)
-    db.session.add(orderItem6)
-    db.session.add(orderItem7)
-    db.session.add(orderItem8)
-    db.session.add(orderItem9)
-    db.session.add(orderItem10)
-
+    for order_item in order_items:
+        db.session.add(order_item)
 
     db.session.commit()
 

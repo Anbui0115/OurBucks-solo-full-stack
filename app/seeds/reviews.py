@@ -1,23 +1,35 @@
 from app.models import db,Review
+import random
 
 
 
 def seed_reviews():
-    review1 =Review(user_id = 1, item_id=1, star_rating=5,review_details='good')
-    review2 =Review(user_id = 2, item_id=2, star_rating=5,review_details='good')
-    review3 =Review(user_id = 3, item_id=3, star_rating=5,review_details='good')
-    review4 =Review(user_id = 4, item_id=4, star_rating=5,review_details='good')
-    review5 = Review(user_id = 5, item_id=5, star_rating=5,review_details='good')
+    sample_details = [
+        'I like the taste of this one',
+        'Wow! I can\'t believe how good this drink is!',
+        'A must try!',
+        'I don\'t usually like this type of drink!',
+        'Loving it.',
+        'The taste is unique.',
+        'Something new for me',
+        'Meh, not the best, not the worst.',
+        'Super interesting!',
+        'Good for the summer heat',
+        'A bit on the expensive side',
+        'Very sweet, but not overwhelming',
+        'Smooth!!',
+        'Caffeine in the morning makes everything better.',
+        'I order this every mornign for the past 3 years!'
+    ]
+    reviews = []
+    NUM_OF_USERS = 5
+    NUM_OF_ITEMS = 60
 
+    for i in range(200):
+        reviews.append(Review(user_id = (i % NUM_OF_USERS) + 1, item_id= (i % NUM_OF_ITEMS) + 1, star_rating=random.randrange(1,6),review_details=sample_details[random.randrange(0,len(sample_details))]))
 
-
-    db.session.add(review1)
-    db.session.add(review2)
-    db.session.add(review3)
-    db.session.add(review4)
-    db.session.add(review5)
-
-
+    for review in reviews:
+        db.session.add(review)
 
     db.session.commit()
 

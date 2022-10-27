@@ -2,7 +2,7 @@ from flask import Blueprint, request
 # from app.forms.update_cart_form import UpdateCart
 from app.models import User, db, user
 from flask_login import login_required, current_user
-from app.models import User, db, Order
+from app.models import User, db, Order,OrderItem
 # from app.models.purchases import Purchase
 from ..forms.create_order import CreateOrder
 
@@ -17,11 +17,11 @@ def get_orders():
     """
     Get all items in the order owned by this user
     """
-    print(current_user)
-    print(current_user.get_id())
+    # print(current_user)
+    # print(current_user.get_id())
     user_id = current_user.id
     order = Order.query.filter_by(user_id=user_id).all()
-    print(order,'------')
+    # print(list(order),'--------------------------------')
     return {'order': [i.to_dict() for i in order]}
 
 @order_routes.route('', methods=["POST"])
@@ -38,25 +38,33 @@ def add_to_order():
         order = Order()
         form.populate_obj(order)
         order.user_id = user_id
-        orderItem = Order.query.filter_by(item_id=order.item_id, user_id=user_id).first()
+        orderByUser = Order.query.filter_by(user_id=user_id).first()
+        orderByUserDict = orderByUser.to_dict()
+        orderId = orderByUserDict['id']
+        # print('ORDER ID ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',orderByUserDict,orderId)
+        orderItem = OrderItem.query.filter_by(order_id =orderId).all()
+        orderItemList = [item.to_dict() for item in orderItem]
+        print('ORDER ITEM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',orderItemList)
+        # [{'id': 1, 'itemId': 1, 'orderId': 1, 'quantity': 1, 'customized_item_id': 1}, {'id': 6, 'itemId': 1, 'orderId': 1, 'quantity': 1, 'customized_item_id': 1}]
+
         # if orderItem is not None:
         #     orderItem.quantity = orderItem.quantity + order.quantity
         #     db.session.commit()
         #     return {'order': orderItem.to_dict()}
         # else:
-        db.session.add(order)
+        db.session.add(orderByUser)
         db.session.commit()
-        return {'order': orderItem.to_dict()}
+        return {'order': orderByUser.to_dict()}
     else:
         return {'errors': form.errors}, 400
 
 # @order_routes.route('/<int:id>', methods=["PUT"])
 # @login_required
-# def edit_cart(id):
+# def edit_order(id):
 #     """
-#     Edit shopping cart
+#     Edit items in order
 #     """
-#     form = UpdateCart()
+#     form = UpdateOrder()
 #     form['csrf_token'].data = request.cookies['csrf_token']
 #     if form.validate_on_submit():
 #         cartItem = Shopping_cart.query.filter_by(id=id).first()
@@ -89,16 +97,16 @@ def add_to_order():
 #     db.session.commit()
 #     return {"message":"successfuly added to purchase table"}
 
-# @order_routes.route('/<int:id>', methods=["DELETE"])
-# @login_required
-# def delete_shopping_cart(id):
-#     """
-#     Delete item in shopping cart by id
-#     """
-#     cart = Shopping_cart.query.filter_by(id=id).first()
-#     if cart is not None:
-#         db.session.delete(cart)
-#         db.session.commit()
-#         return {"message": "Deleted successfuly"}
-#     else:
-#         return {'errors':["Item couldn't be found"]}, 400
+@order_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_shopping_cart(id):
+    """
+    Delete item in shopping cart by id
+    """
+    order = Order.query.filter_by(id=id).first()
+    if order is not None:
+        db.session.delete(order)
+        db.session.commit()
+        return {"message": "Deleted successfuly"}
+    else:
+        return {'errors':["Order couldn't be found"]}, 400

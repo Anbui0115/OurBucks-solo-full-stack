@@ -13,14 +13,14 @@ def get_item():
     """
     Get all items
     """
-    # searchTerm ='%'+request.args['q']+'%' if 'q' in request.args.keys() else '%'
-    # try:
-    #     searchTerms = request.args.to_dict()['q'].split(" ")
-    #     returnList = []
-    #     for searchTerm in searchTerms:
-    #         items = Item.query.filter(Item.title.ilike("%" + searchTerm + "%") | Item.description.ilike("%" + searchTerm + "%")).all()
-    #         returnList.extend([i.to_dict() for i in items])
-    #     return { 'items' : returnList}
-    # except:
     items = Item.query.all()
+    return {'items': [i.to_dict() for i in items]}
+
+
+@item_routes.route('/<int:id>', methods=["GET"])
+def get_item_by_id(id):
+    """
+    Get item by id
+    """
+    items = Item.query.filter_by(id=id).all()
     return {'items': [i.to_dict() for i in items]}

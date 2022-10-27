@@ -3,11 +3,11 @@ from app.models import db,Card
 
 
 def seed_cards():
-    card1 = Card(user_id = 1, credit_number='12345678abcdefgh',expiry_date='03/23',security_number='1234')
-    card2 = Card(user_id = 2, credit_number='12345678abcdefgh',expiry_date='03/23',security_number='1234')
-    card3 = Card(user_id = 3, credit_number='12345678abcdefgh',expiry_date='03/23',security_number='1234')
-    card4 = Card(user_id = 4, credit_number='12345678abcdefgh',expiry_date='03/23',security_number='1234')
-    card5 = Card(user_id = 5, credit_number='12345678abcdefgh',expiry_date='03/23',security_number='1234')
+    card1 = Card(user_id = 1, credit_number='1234567890123456',expiry_date='03/23',security_number='123')
+    card2 = Card(user_id = 2, credit_number='1234567890123457',expiry_date='03/23',security_number='123')
+    card3 = Card(user_id = 3, credit_number='1234567890123458',expiry_date='03/23',security_number='123')
+    card4 = Card(user_id = 4, credit_number='1234567890123459',expiry_date='03/23',security_number='123')
+    card5 = Card(user_id = 5, credit_number='1234567890123450',expiry_date='03/23',security_number='123')
 
 
 

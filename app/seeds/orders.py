@@ -3,29 +3,17 @@ from app.models import db, Order
 
 
 def seed_orders():
-    order1 = Order(user_id = 1, status = "not placed")
-    order2 = Order(user_id = 2, status = "not placed")
-    order3 = Order(user_id = 3, status = "not placed")
-    order4 = Order(user_id = 4, status = "not placed")
-    order5 = Order(user_id = 5, status = "not placed")
-    order6 = Order(user_id = 1, status = "not placed")
-    order7 = Order(user_id = 2, status = "not placed")
-    order8 = Order(user_id = 3, status = "not placed")
-    order9 = Order(user_id = 4, status = "not placed")
-    order10 = Order(user_id = 5, status = "not placed")
+    orders = []
+    NUM_OF_USERS = 5
 
+    for i in range(40):
+        orders.append(Order(user_id = (i % NUM_OF_USERS) + 1, status = "completed"))
 
-    db.session.add(order1)
-    db.session.add(order2)
-    db.session.add(order3)
-    db.session.add(order4)
-    db.session.add(order5)
-    db.session.add(order6)
-    db.session.add(order7)
-    db.session.add(order8)
-    db.session.add(order9)
-    db.session.add(order10)
+    for i in range(5):
+        orders.append(Order(user_id = (i % NUM_OF_USERS) + 1, status = "not placed"))
 
+    for order in orders:
+        db.session.add(order)
 
     db.session.commit()
 
