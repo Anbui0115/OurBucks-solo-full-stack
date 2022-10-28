@@ -25,10 +25,10 @@ def get_all_items_by_category(drink_category):
     items = Item.query.filter_by(drink_category=drink_category).all()
     return {'items': [i.to_dict() for i in items]}
 
-@item_routes.route('/<int:id>', methods=["GET"])
-def get_item_by_id(id):
+@item_routes.route('/<int:item_id>', methods=["GET"])
+def get_item_by_id(item_id):
     """
     Get item by id
     """
-    items = Item.query.filter_by(id=id).all()
-    return {'items': [i.to_dict() for i in items]}
+    item = Item.query.get(item_id)
+    return {'item': item.to_dict()}

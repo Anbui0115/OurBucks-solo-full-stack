@@ -8,7 +8,7 @@ def seed_customized_selections():
     NUM_OF_CUSTOMIZATED_ITEMS = 15
 
     for i in range(NUM_OF_CUSTOMIZATED_ITEMS):
-        customized_selections.append(CustomizedSelection(customization_id = i + 1, customized_items_id=random.randrange(1,NUM_OF_CUSTOMIZATIONS)))
+        customized_selections.append(CustomizedSelection(customization_id = i + 1, customized_item_id=random.randrange(1,NUM_OF_CUSTOMIZATIONS)))
 
     for customized_selection in customized_selections:
         db.session.add(customized_selection)
