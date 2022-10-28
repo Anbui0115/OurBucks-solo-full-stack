@@ -22,6 +22,7 @@ class Order(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    # Status options: not placed, placed, completed
     status=db.Column(db.String(20),nullable=False)
     # order_customized_items_id=db.Column(db.Integer, db.ForeignKey("order_customized_items.id",ondelete="CASCADE"),nullable=False)
 
