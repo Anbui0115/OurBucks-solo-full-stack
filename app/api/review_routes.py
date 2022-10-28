@@ -10,12 +10,20 @@ review_routes = Blueprint('review', __name__)
 
 @review_routes.route('', methods=["GET"])
 @login_required
-def get_reviews():
+def get_reviews(item_id):
     """
     Get all reviews of current user
     """
     user_id = current_user.id
     reviews = Review.query.filter_by(user_id=user_id).all()
+    return {'reviews': [i.to_dict() for i in reviews]}
+
+@review_routes.route('/item/<item_id>', methods=["GET"])
+def get_reviews(item_id):
+    """
+    Get all reviews of selected item
+    """
+    reviews = Review.query.filter_by(item_id=item_id).all()
     return {'reviews': [i.to_dict() for i in reviews]}
 
 # @review_routes.route('', methods=["POST"])
@@ -39,18 +47,21 @@ def get_reviews():
 #     else:
 #         return {'errors': form.errors}, 400
 
-@review_routes.route('', methods=["POST"])
+@review_routes.route('/item/<item_id>', methods=["POST"])
 @login_required
-def add_review():
+def add_review(item_id):
     """
     Add a review for current user base on item_id
     """
+    user_id = current_user.id
     form = AddReview()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         review = Review()
         review.user_id = current_user.id
         form.populate_obj(review)
+        review.item_id = item_id
+        review.user_id = user_id
         db.session.add(review)
         db.session.commit()
         return {'review': review.to_dict()}
@@ -71,9 +82,9 @@ def update_review(review_id):
 
         review = Review.query.get(review_id)
         if not review:
-            review = Review()
-            review.user_id = user_id
-            db.session.add(review)
+            return {'errors': 'Review does not exist.'}, 400
+        else if review.user_id != user_id:
+            return {'errors': 'Review does not belong to current user.'}, 400
         form.populate_obj(review)
         db.session.commit()
         return {'review': review.to_dict()}
@@ -89,6 +100,8 @@ def delete_review(review_id):
     user_id = current_user.id
     review = Review.query.get(review_id)
     if review:
+        if review.user_id != user_id:
+            return {'errors': 'Review does not belong to current user.'}, 400
         db.session.delete(review)
         db.session.commit()
         return {'review': review.to_dict()}, 201

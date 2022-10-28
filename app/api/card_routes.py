@@ -52,9 +52,9 @@ def update_card(card_id):
 
         card = Card.query.get(card_id)
         if not card:
-            card = Card()
-            card.user_id = user_id
-            db.session.add(card)
+            return {'errors': 'Card does not exist.'}, 400
+        else if card.user_id != user_id:
+            return {'errors': 'Card does not belong to current user.'}, 400
         form.populate_obj(card)
         db.session.commit()
         return {'card': card.to_dict()}
@@ -70,6 +70,8 @@ def delete_card(card_id):
     user_id = current_user.id
     card = Card.query.get(card_id)
     if card:
+        if card.user_id != user_id:
+            return {'errors': 'Review does not belong to current user.'}, 400
         db.session.delete(card)
         db.session.commit()
         return {'card': card.to_dict()}, 201
