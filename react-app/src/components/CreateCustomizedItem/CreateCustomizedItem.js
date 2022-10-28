@@ -11,7 +11,7 @@ import "./CreateCustomizedItem.css";
 const CreateCustomizedItem = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [selection, setSelection] = useState("");
+
   // const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const CreateCustomizedItem = () => {
     );
 
     if (data) {
-      history.push(`/my-customized-order`);
+      history.push(`/my-customized-items`);
     }
   };
 

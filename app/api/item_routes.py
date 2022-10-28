@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, request
 from app.models import User, db, Item
 from flask_login import login_required, current_user
 from app.models.reviews import Review
-import re
+
 
 
 item_routes = Blueprint('items', __name__)
