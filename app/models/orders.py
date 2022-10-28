@@ -24,7 +24,6 @@ class Order(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     # Status options: not placed, placed, completed
     status=db.Column(db.String(20),nullable=False)
-    # order_customized_items_id=db.Column(db.Integer, db.ForeignKey("order_customized_items.id",ondelete="CASCADE"),nullable=False)
 
     #relationship
     user = db.relationship('User',back_populates='orders')
