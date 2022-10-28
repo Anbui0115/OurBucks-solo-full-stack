@@ -38,7 +38,7 @@ export const deleteCustomizedItemAction = (cusItemId) => {
 export const getAllCustomizedItems =
   () =>
   async (dispatch) => {
-    const res = await fetch('/app/:userId/customized');
+    const res = await fetch('/api/my-customized-items');
 
     if (res.ok) {
       const customizedItems = await res.json();
@@ -93,11 +93,12 @@ export const deleteCustomizedItem = (customizedItemId) => async (dispatch) => {
 const initialState = {};
 
 // Reducer
-export default function itemsReducer(state = initialState, action) {
+export default function customizedItemsReducer(state = initialState, action) {
   let newState = { ...state };
   switch (action.type) {
     case GET_CUS_ITEMS:
       newState = {};
+      console.log('action!!!!!!!!',action)
       action.cusItems.forEach(
         (cusItem) => (newState[cusItem.id] = cusItem)
       );

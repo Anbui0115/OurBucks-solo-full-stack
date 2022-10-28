@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import GetAllItems from './components/GetAllItems/GetAllItems';
 import GetItemById from './components/GetItemById/GetItemById';
 import CreateCustomizedItem from "./components/CreateCustomizedItem/CreateCustomizedItem";
+import GetCustomizedItems from './components/GetCustomizedItems/GetCustomizedItems';
 
 
 
@@ -49,6 +50,9 @@ function App() {
         </Route> */}
         <Route path="/:itemId/customize">
           <CreateCustomizedItem />
+        </Route>
+        <Route path="/my-customized-items">
+          <GetCustomizedItems />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />

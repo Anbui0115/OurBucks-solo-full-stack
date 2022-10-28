@@ -29,7 +29,7 @@ export default function itemsReducer(state = initialState, action) {
     case GET_ITEMS:
       newState = [];
       action.items.forEach((item) => (newState[item.id] = item));
-      console.log("FIRST ~~~~~~~~~~~~~~~~~~~~~~~~~~~", newState);
+      // console.log("FIRST ~~~~~~~~~~~~~~~~~~~~~~~~~~~", newState);
 
       return newState;
     default:
