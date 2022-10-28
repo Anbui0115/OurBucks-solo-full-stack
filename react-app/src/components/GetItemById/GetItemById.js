@@ -8,7 +8,7 @@ import "./GetItemById.css";
 const GetItemById = (props) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  console.log("sessionUser !!!!!!!", sessionUser);
+  // console.log("sessionUser !!!!!!!", sessionUser);
 
   useEffect(() => {
     dispatch(getAllItems());
@@ -20,7 +20,7 @@ const GetItemById = (props) => {
   if (!itemId) return null;
 
   const item = allItems.filter((item) => item.id === +itemId);
-  console.log("ITEM BY ID---------------------------", item);
+  // console.log("ITEM BY ID---------------------------", item);
   //   console.log("ALL ITEMS ~~~~~~~~~~~~~~~~~~~~~~~~~~~", Object.keys(allItems));
   if (!allItems) return null;
   if (!item) return null;

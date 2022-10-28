@@ -41,7 +41,7 @@ export const getOrderItems = (orderId) => async (dispatch) => {
   if (res.ok) {
     const orderItems = await res.json();
     const data = await dispatch(getOrderItemAction(orderItems.order_items));
-    console.log("DATA INSIDE GET ORDER ITEM THUNK------------", data);
+    // console.log("DATA INSIDE GET ORDER ITEM THUNK------------", data);
     return data;
   }
 };
@@ -92,7 +92,7 @@ export default function order_itemsReducer(state = initialState, action) {
   let newState = { ...state };
   switch (action.type) {
     case GET_ORDER_ITEMS:
-        console.log('TEST~~~~~~~~~~',action)
+        // console.log('TEST~~~~~~~~~~',action)
       newState["order_items"] = action.order_items;
       // console.log("TEST NEW STATE~~~~~~~~~~~~~~~~~~~", newState);
       return newState;

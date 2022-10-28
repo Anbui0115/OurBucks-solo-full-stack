@@ -8,6 +8,7 @@ import styles from "./OrderItem.module.css";
 // } from "../../store/session";
 import { getOrderItems, deleteOrderItem } from "../../store/order_items";
 import { useHistory } from "react-router-dom";
+import EachOrderItem from "../EachOrderItemCard/EachOrderItemCard";
 
 export default function GetOrderItems({ currentOrder_id }) {
   const dispatch = useDispatch();
@@ -16,16 +17,11 @@ export default function GetOrderItems({ currentOrder_id }) {
   useEffect(() => {
     dispatch(getOrderItems(currentOrder_id));
   }, [dispatch]);
-  const orderItems = useSelector((state) => state.order_items)["order_items"];
-  // const [quantity, setQuantity] = useState(item.quantity);
 
-  console.log("ORDER ITEM INSIDE GET ORDER ITEM----------------", orderItems);
-  const formatting_options = {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  };
-  const dollarFormmatter = new Intl.NumberFormat("en-US", formatting_options);
+  const orderItems = useSelector((state) => state.order_items)["order_items"];
+//   console.log("ORDER ITEM INSIDE GET ORDER ITEM----------------", orderItems);
+
+  if (!orderItems) return null;
 
   function handleRemove(orderItemId) {
     dispatch(deleteOrderItem(orderItemId)).catch(async (res) => {});
@@ -35,30 +31,20 @@ export default function GetOrderItems({ currentOrder_id }) {
       count = 1;
       alert("Quantity should be greater than 0");
     }
-    // setQuantity(count)
-    // dispatch(editOrderThunk(item.id, count)).catch(async (res) => {});
   }
-  // if (!item) return null
+
   return (
-    // <div className={styles.itemCard}>
-    //     <div className={styles.shoppingImageContainer}><img src={item.item.images[0].image_url} className={styles.image} onClick={()=> history.push(`/items/${item.item.id}`)}></img></div>
-
-    //     <div className={styles.descDiv}>
-    //         <div className={styles.descText} onClick={()=> history.push(`/items/${item.item.id}`)}>{item.item.title}</div>
-    //         <div className={styles.remove} key={item.id} value={item.id} onClick={()=>{handleRemove(item.id)}}><b>Remove</b></div>
-
-    //     </div>
-
-    //     <form>
-    //         <input type="number" min="1" value={item.quantity} className={styles.itemCount} onChange={(e)=> handleItemCount(e.target.value)} />
-    //     </form>
-
-    //     <div className={styles.price}>
-    //         <div ><b> {dollarFormmatter.format(item.quantity * item.item.price)}</b></div>
-    //         <div>({dollarFormmatter.format(item.item.price)}&nbsp;each)</div>
-    //     </div>
-
-    // </div>
-    <div>TEST</div>
+    <div>
+      {orderItems.map((eachOrderItem) => (
+        // <div>
+        //   {console.log("each order item ``````````````````", eachOrderItem)}
+        //   <div>Order Id{eachOrderItem.orderId}</div>
+        //   <div>Customized item id{eachOrderItem.customized_item_id}</div>
+        //   <div>Item id{eachOrderItem.itemId}</div>
+        //   <div>Quantity{eachOrderItem.quantity}</div>
+        // </div>
+        <EachOrderItem eachOrderItem={(eachOrderItem)}/>
+      ))}
+    </div>
   );
 }

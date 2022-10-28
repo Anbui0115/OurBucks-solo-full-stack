@@ -4,8 +4,7 @@ import React, { useEffect } from "react";
 
 import { getCurrentOrders } from "../../store/orders";
 import GetOrderItems from "../GetOrderItem/GetOrderItem";
-// import EachItemCard from "../EachItemCard/EachItemCard";
-// import "./GetAllItem.css";
+
 
 const GetCurrentOrder = () => {
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ const GetCurrentOrder = () => {
 
   const currentOrder = useSelector((state) => state.order)["order"];
 
-  console.log("CURRENT ORDER---------------", currentOrder);
+  // console.log("CURRENT ORDER---------------", currentOrder);
   if (!currentOrder) return null;
   return (
     <>

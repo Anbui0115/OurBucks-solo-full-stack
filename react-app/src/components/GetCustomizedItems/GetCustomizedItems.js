@@ -12,7 +12,7 @@ const GetCustomizedItems = () => {
     dispatch(getAllCustomizedItems());
   }, [dispatch]);
   const customizedItems = useSelector((state) => state.customizedItem);
-  console.log("CUSTOMIZED ITEMs", customizedItems);
+  // console.log("CUSTOMIZED ITEMs", customizedItems);
   return <h1>this is a list of your customized items</h1>;
 };
 export default GetCustomizedItems;

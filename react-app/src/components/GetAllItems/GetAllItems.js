@@ -15,7 +15,7 @@ const GetAllItems = () => {
   }, [dispatch]);
 
   const allItems = useSelector((state) => state.items);
-  console.log("ALL ITEMS ~~~~~~~~~~~~~~~~~~~~~~~~~~~", Object.keys(allItems));
+  // console.log("ALL ITEMS ~~~~~~~~~~~~~~~~~~~~~~~~~~~", Object.keys(allItems));
   return (
     <>
 

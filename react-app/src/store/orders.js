@@ -41,7 +41,7 @@ export const getCurrentOrders = () => async (dispatch) => {
   if (res.ok) {
     const currentOrder = await res.json();
     const data = await dispatch(getCurrentOrderAction(currentOrder.order));
-    console.log("DATA INSIDE GET CUURENT ORDER THUNK------------", data);
+    // console.log("DATA INSIDE GET CUURENT ORDER THUNK------------", data);
     return data;
   }
 };
