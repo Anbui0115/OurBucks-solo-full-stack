@@ -12,7 +12,8 @@ import GetAllItems from './components/GetAllItems/GetAllItems';
 import GetItemById from './components/GetItemById/GetItemById';
 import CreateCustomizedItem from "./components/CreateCustomizedItem/CreateCustomizedItem";
 import GetCustomizedItems from './components/GetCustomizedItems/GetCustomizedItems';
-
+import GetCurrentOrder from './components/GetCurrentOrder/GetCurrentOrder';
+import GetOrderItems from './components/GetOrderItem/GetOrderItem';
 
 
 
@@ -36,6 +37,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
@@ -44,6 +46,12 @@ function App() {
         </Route>
         <Route path="/items/:itemId">
           <GetItemById />
+        </Route>
+        <Route path="/order">
+          <GetCurrentOrder />
+        </Route>
+        <Route path="/:orderId/order_items">
+          <GetOrderItems />
         </Route>
         {/* <Route path="/items/:itemId/customize">
           <CreateCustomizedItem />

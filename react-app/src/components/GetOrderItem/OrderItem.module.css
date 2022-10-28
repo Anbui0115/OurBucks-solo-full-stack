@@ -1,0 +1,94 @@
+.itemCard {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: row;
+  padding-top: 2%;
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+}
+
+.shoppingImageContainer {
+  /* border: 1px solid pink; */
+  width: 34%;
+}
+
+.descDiv {
+  display: flex;
+  flex-direction: column;
+  width: 26%;
+  padding: 0px 0px 6px;
+  /* border: 1px solid blue; */
+}
+
+.itemCard > form {
+  /* border: 1px solid green; */
+  width: 13%;
+}
+
+.price {
+  padding: 0% 2% 2% 2%;
+  width: 26%;
+  /* border: 1px solid black; */
+
+}
+
+.price > div {
+  /* border: 1px solid black; */
+  word-wrap: break-word;
+  font-size: .9em;
+
+}
+
+.descText {
+  display: flex;
+  font-size: 1em;
+  font-weight: 400px;
+  padding-left: 3%;
+  padding-right: 1%;
+  padding-top: 2%;
+  cursor: pointer;
+}
+
+.remove {
+  display: flex;
+  font-size: .9em;
+  width: 80px;
+  height: 36px;
+  margin-top: 5%;
+  padding: 0% 0% 0% 3%;
+}
+
+.remove:hover {
+  display: flex;
+  cursor: pointer;
+}
+
+.image {
+  /* border:1px dashed hotpink; */
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  aspect-ratio: 2/1.5;
+  object-fit: cover;
+}
+
+.itemCount {
+  font-size: 16px;
+  color: #222222;
+  width: 74%;
+  height: 48px;
+  line-height: 1.4;
+  box-shadow: 0 1px 6px 0 rgb(34 34 34 / 15%);
+  background: white;
+  border-color: rgba(34, 34, 34, 0.15);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 6px;
+  text-indent: 0.01px;
+  cursor: pointer;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: auto;
+  overflow: visible !important;
+}
