@@ -25,7 +25,7 @@ def get_current_order():
     Get existing order for current user or create new order
     """
     user_id = current_user.id
-    order = Order.query.filter_by(user_id=user_id, status='not placed').all()
+    order = Order.query.filter_by(user_id=user_id, status='not placed').first()
 
     if not order:
         order = Order()
@@ -41,14 +41,14 @@ def get_current_order():
 @login_required
 def submit_order(order_id):
     """
-    Submit order by order ID
+    Submit order by order ID - change status to "placed"
     """
     user_id = current_user.id
     order = Order.query.get(order_id)
 
     if not order or order.user_id != user_id:
         return {'error': 'Cannot submit order.'}, 400
-    else if order.status != 'not placed':
+    elif order.status != 'not placed':
         return {'error': 'Order has already been submitted.'}, 400
     else:
         order.status = 'placed'

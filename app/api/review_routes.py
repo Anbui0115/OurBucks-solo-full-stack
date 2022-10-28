@@ -10,7 +10,7 @@ review_routes = Blueprint('review', __name__)
 
 @review_routes.route('', methods=["GET"])
 @login_required
-def get_reviews(item_id):
+def get_reviews():
     """
     Get all reviews of current user
     """
@@ -19,7 +19,7 @@ def get_reviews(item_id):
     return {'reviews': [i.to_dict() for i in reviews]}
 
 @review_routes.route('/item/<item_id>', methods=["GET"])
-def get_reviews(item_id):
+def get_item_reviews(item_id):
     """
     Get all reviews of selected item
     """
@@ -83,7 +83,7 @@ def update_review(review_id):
         review = Review.query.get(review_id)
         if not review:
             return {'errors': 'Review does not exist.'}, 400
-        else if review.user_id != user_id:
+        elif review.user_id != user_id:
             return {'errors': 'Review does not belong to current user.'}, 400
         form.populate_obj(review)
         db.session.commit()

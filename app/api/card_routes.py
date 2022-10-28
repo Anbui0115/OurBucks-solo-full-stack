@@ -53,7 +53,7 @@ def update_card(card_id):
         card = Card.query.get(card_id)
         if not card:
             return {'errors': 'Card does not exist.'}, 400
-        else if card.user_id != user_id:
+        elif card.user_id != user_id:
             return {'errors': 'Card does not belong to current user.'}, 400
         form.populate_obj(card)
         db.session.commit()
