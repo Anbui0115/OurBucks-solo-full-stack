@@ -14,6 +14,7 @@ import CreateCustomizedItem from "./components/CreateCustomizedItem/CreateCustom
 import GetCustomizedItems from './components/GetCustomizedItems/GetCustomizedItems';
 import GetCurrentOrder from './components/GetCurrentOrder/GetCurrentOrder';
 import GetOrderItems from './components/GetOrderItem/GetOrderItem';
+import LandingPage from './components/LandingPage/LandingPage';
 
 
 
@@ -37,7 +38,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
@@ -53,9 +53,9 @@ function App() {
         <Route path="/:orderId/order_items">
           <GetOrderItems />
         </Route>
-        {/* <Route path="/items/:itemId/customize">
-          <CreateCustomizedItem />
-        </Route> */}
+        <Route path="/menu">
+          <GetAllItems />
+        </Route>
         <Route path="/:itemId/customize">
           <CreateCustomizedItem />
         </Route>
@@ -71,9 +71,9 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path="/" exact={true}>
+          <LandingPage/>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

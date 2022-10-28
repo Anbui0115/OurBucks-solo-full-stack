@@ -1,0 +1,67 @@
+dropdown-menu {
+  /* border: 1px solid green; */
+  position: relative;
+  color: black;
+  cursor: pointer;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+  border-radius: 50px;
+}
+#profile-avatar-dropdown {
+  /* border: 3px solid green; */
+  border-radius: 40px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.dropdown-menu:hover,
+.dropdown-menu:focus {
+  box-shadow: 2px 2px 2px 0px rgba(197, 189, 189, 0.618);
+  box-shadow: 2px 0px 2px 0 rgb(0, 0, 0, 0.2);
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.dropdown-content {
+  /* border: 1px solid salmon; */
+  position: absolute;
+  right: 55px;
+  color: black;
+  top: 3.2rem;
+  background-color: white;
+  padding: 0.6rem;
+  box-shadow: 0 2px 5px 0 rgb(0, 0, 0, 0.2);
+  border-radius: 0.2rem;
+  transition: transform 100ms ease-in-out;
+  transform: translateY(-10px);
+  cursor: pointer;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.your-listing,
+.your-review,
+.profile-log-out {
+  /* border: 1px solid firebrick; */
+  /* padding: 4px; */
+  margin: 4px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.dropdown-content > .your-listing:focus,
+.your-review:focus,
+.your-review:hover,
+.your-listing:hover,
+.profile-log-out:focus,
+.profile-log-out:hover {
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 1px 1px 1px rgba(197, 189, 189, 0.618);
+  box-sizing: border-box;
+  color: rgba(13, 11, 11, 0.7);
+  background-color: rgba(230, 218, 218, 0.5);
+  /* border-radius: 2px; */
+  /* font-weight: 500; */
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.dropdown-menu > img {
+  /* border: 1px hotpink solid; */
+  margin-left: 10px;
+}

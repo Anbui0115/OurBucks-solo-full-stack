@@ -24,18 +24,19 @@ const EachOrderItem = ({ eachOrderItem }) => {
     }
   }
   const allItems = useSelector((state) => state.items);
-
   const thisItem = allItems.filter((item) => item.id === +eachOrderItem.itemId);
-  console.log("THIS ITEM !!!!!!!!!!!!!!", thisItem);
+//   console.log("THIS ITEM !!!!!!!!!!!!!!", thisItem);
   let itemImg;
-  if (!thisItem) return null;
-//   if (thisItem) {
-//     itemImg = thisItem[0].image_url;
-//     console.log("---------------", itemImg);
-//   }
+  if (thisItem.length >0 ) {
+    itemImg = thisItem[0].image_url;
+    // console.log("---------------", itemImg);
+  }
 
   return (
     <div>
+      <div>
+        <img src={itemImg} width="100" height="100"></img>
+      </div>
       <div>Order Id{eachOrderItem.orderId}</div>
       {eachOrderItem.customized_item_id && (
         <div>Customized item id{eachOrderItem.customized_item_id}</div>
