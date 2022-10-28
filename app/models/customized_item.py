@@ -18,6 +18,11 @@ class CustomizedItem(db.Model):
 
     # customized_selection = db.relationship("CustomizedSelection",back_populates='customized_items')
     # orders = db.relationship('Order', back_populates='customized_items')
-    def __init__(self):
-        self.user_id = self.user_id,
-        self.item_id = self.item_id
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "item_id": self.item_id,
+            "name": self.name,
+        }
+        
