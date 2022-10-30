@@ -15,6 +15,9 @@ import GetCustomizedItems from "./components/GetCustomizedItems/GetCustomizedIte
 import GetCurrentOrder from "./components/GetCurrentOrder/GetCurrentOrder";
 import GetOrderItems from "./components/GetOrderItem/GetOrderItem";
 import LandingPage from "./components/LandingPage/LandingPage";
+import Footer from "./components/Footer/Footer";
+
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -69,6 +72,7 @@ function App() {
           <User />
         </ProtectedRoute>
       </Switch>
+      <Footer/>
     </BrowserRouter>
   );
 }

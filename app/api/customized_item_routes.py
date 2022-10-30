@@ -60,7 +60,7 @@ def create_customized_item():
         db.session.add(customized_item)
         db.session.commit()
         return {'customized_item': customized_item.to_dict()}
-   else:
+    else:
         return {'errors': form.errors}, 400
 
 @customized_item_routes.route('/<int:customized_item_id>', methods=["PUT"])
@@ -86,7 +86,7 @@ def edit_customized_item(customized_item_id):
             return {'customized_item': customized_item.to_dict()}
         else:
             return {'errors': 'Customized item does not exist.'}, 400
-   else:
+    else:
         return {'errors': form.errors}, 400
 
 @customized_item_routes.route('/<int:customized_item_id>', methods=["DELETE"])

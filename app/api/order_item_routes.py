@@ -31,11 +31,27 @@ def get_order_items(order_id):
     """
     user_id = current_user.id
     order_items = OrderItem.query.filter_by(order_id=order_id).all()
+    # frontend used fields: name (of item), image_url, quantity, price,
+    # additional fields: item_id, customized_item_id, id
+    result = []
+    for ele in order_items:
+        new_ele = ele.to_dict()
+        if ele.customized_item_id:
+            new_ele["image_url"] = ele.customized_item.item.image_url
+            new_ele["name"] = ele.customized_item.name
+            new_ele["price"] = ele.customized_item.item.price
+
+        elif ele.item_id:
+            new_ele["image_url"] = ele.item.image_url
+            new_ele["name"] = ele.item.name
+            new_ele["price"] = ele.item.price
+
+        result.append(new_ele)
 
     if not order_items:
         return {'order_items': []}
     else:
-        return {'order_items': [i.to_dict() for i in order_items]}
+        return {'order_items': result}
 
 @order_item_routes.route('/order/<order_id>', methods=["POST"])
 @login_required

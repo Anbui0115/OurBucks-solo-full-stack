@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: e13b6aa88d8f
+Revision ID: 64a23c3b168a
 Revises: 
-Create Date: 2022-10-27 17:16:50.754351
+Create Date: 2022-10-29 17:44:18.719179
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e13b6aa88d8f'
+revision = '64a23c3b168a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -56,7 +56,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('item_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=50), nullable=True),
+    sa.Column('name', sa.String(length=50), nullable=False),
     sa.ForeignKeyConstraint(['item_id'], ['items.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
@@ -81,9 +81,9 @@ def upgrade():
     op.create_table('customized_selections',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('customization_id', sa.Integer(), nullable=False),
-    sa.Column('customized_items_id', sa.Integer(), nullable=False),
+    sa.Column('customized_item_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['customization_id'], ['customizations.id'], ondelete='CASCADE'),
-    sa.ForeignKeyConstraint(['customized_items_id'], ['customized_items.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['customized_item_id'], ['customized_items.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('order_items',

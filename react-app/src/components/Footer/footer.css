@@ -1,0 +1,69 @@
+body {
+    position: relative;
+    display: block;
+    min-height: 100vh;
+}
+
+body::after {
+    content: "";
+    display: block;
+    height: 126px;
+}
+
+footer {
+    background-color: #2F466C;
+    position: absolute;
+    width: 100%;
+    /* margin-top: 20px; */
+    bottom: 0;
+    height: 106px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.Eatsy-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.Eatsy-project-repo {
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    width: 10%;
+    margin-right: 5%;
+}
+
+.Dev-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+    /* border: 1px solid red; */
+    width: 80%;
+}
+
+.dev-name {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    color: white;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.dev-link {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 10px;
+}

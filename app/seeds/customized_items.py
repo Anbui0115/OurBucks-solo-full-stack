@@ -5,12 +5,24 @@ import random
 
 def seed_customized_items():
     customized_items = []
+    sample_words = [
+        'Amazing',
+        'Fantastic',
+        'Pink',
+        'Black',
+        'Blast',
+        'Cool',
+        'Summer',
+        'Refreshing',
+        'Love',
+        'Sweet'
+    ]
     NUM_OF_USERS = 5
     NUM_OF_ITEMS = 60
 
 
     for i in range(15):
-        customized_items.append(CustomizedItem(user_id = (i % NUM_OF_USERS) + 1, item_id=random.randrange(1,NUM_OF_ITEMS)))
+        customized_items.append(CustomizedItem(user_id = (i % NUM_OF_USERS) + 1, item_id=random.randrange(1,NUM_OF_ITEMS), name=sample_words[random.randrange(0,len(sample_words))] + ' ' + sample_words[random.randrange(0,len(sample_words))]))
 
     for customized_item in customized_items:
         db.session.add(customized_item)

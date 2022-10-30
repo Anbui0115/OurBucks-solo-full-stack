@@ -8,7 +8,6 @@ import styles from "./OrderItem.module.css";
 // } from "../../store/session";
 import { getOrderItems, deleteOrderItem } from "../../store/order_items";
 import { useHistory } from "react-router-dom";
-import EachOrderItem from "../EachOrderItemCard/EachOrderItemCard";
 
 export default function GetOrderItems({ currentOrder_id }) {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ export default function GetOrderItems({ currentOrder_id }) {
   }, [dispatch]);
 
   const orderItems = useSelector((state) => state.order_items)["order_items"];
-//   console.log("ORDER ITEM INSIDE GET ORDER ITEM----------------", orderItems);
+  console.log("ORDER ITEM INSIDE GET ORDER ITEM----------------", orderItems);
 
   if (!orderItems) return null;
 
@@ -35,7 +34,7 @@ export default function GetOrderItems({ currentOrder_id }) {
 
   return (
     <div>
-      {orderItems.map((eachOrderItem) => (
+      {orderItems.map((el) => (
         // <div>
         //   {console.log("each order item ``````````````````", eachOrderItem)}
         //   <div>Order Id{eachOrderItem.orderId}</div>
@@ -43,7 +42,14 @@ export default function GetOrderItems({ currentOrder_id }) {
         //   <div>Item id{eachOrderItem.itemId}</div>
         //   <div>Quantity{eachOrderItem.quantity}</div>
         // </div>
-        <EachOrderItem eachOrderItem={(eachOrderItem)}/>
+        <div>
+          <div>
+            <img src={el.image_url} width="100" height="100"></img>
+          </div>
+          <div>Name: {el.name}</div>
+          <div>Quantity: {el.quantity}</div>
+          <div>Price: ${el.price}</div>
+        </div>
       ))}
     </div>
   );

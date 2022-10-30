@@ -11,7 +11,7 @@ class OrderItem(db.Model):
     quantity = db.Column(db.Integer, nullable=False)
     #relationships
     order = db.relationship("Order", back_populates="order_items")
-    customized_items = db.relationship("CustomizedItem", back_populates="order_items")
+    customized_item = db.relationship("CustomizedItem", back_populates="order_items")
     item = db.relationship("Item", back_populates="order_items")
 
     def to_dict(self):
