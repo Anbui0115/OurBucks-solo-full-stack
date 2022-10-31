@@ -8,7 +8,7 @@ class Item(db.Model):
     calories = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.String(2000), nullable=False)
-    drink_category = db.Column(db.String(100), nullable=False)
+    drink_category = db.Column(db.String(200), nullable=False)
     image_url = db.Column(db.String(500),nullable=False)
 
     #relationships
