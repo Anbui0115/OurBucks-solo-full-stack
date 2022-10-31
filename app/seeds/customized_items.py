@@ -21,7 +21,7 @@ def seed_customized_items():
     NUM_OF_ITEMS = 60
 
 
-    for i in range(15):
+    for i in range(20):
         customized_items.append(CustomizedItem(user_id = (i % NUM_OF_USERS) + 1, item_id=random.randrange(1,NUM_OF_ITEMS), name=sample_words[random.randrange(0,len(sample_words))] + ' ' + sample_words[random.randrange(0,len(sample_words))]))
 
     for customized_item in customized_items:

@@ -5,7 +5,7 @@ import random
 def seed_customized_selections():
     customized_selections = []
     NUM_OF_CUSTOMIZATIONS = 22
-    NUM_OF_CUSTOMIZATED_ITEMS = 15
+    NUM_OF_CUSTOMIZATED_ITEMS = 20
 
     for i in range(NUM_OF_CUSTOMIZATED_ITEMS):
         customized_selections.append(CustomizedSelection(customization_id = i + 1, customized_item_id=random.randrange(1,NUM_OF_CUSTOMIZATIONS)))
