@@ -4,11 +4,11 @@ from .db import db
 class Item(db.Model):
     __tablename__= 'items'
     id = db.Column(db.Integer, primary_key=True,autoincrement=True)
-    name = db.Column(db.String(20), nullable=False)
+    name = db.Column(db.String(500), nullable=False)
     calories = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.String(2000), nullable=False)
-    drink_category = db.Column(db.String(50), nullable=False)
+    drink_category = db.Column(db.String(100), nullable=False)
     image_url = db.Column(db.String(100),nullable=False)
 
     #relationships

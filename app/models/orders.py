@@ -9,7 +9,7 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     # Status options: not placed, placed, completed
-    status=db.Column(db.String(20),nullable=False)
+    status=db.Column(db.String(50),nullable=False)
 
     #relationship
     user = db.relationship('User',back_populates='orders')
