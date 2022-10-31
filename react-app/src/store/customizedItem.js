@@ -4,7 +4,7 @@ const GET_CUS_ITEMS = "customized-items/GET_ITEMS";
 const CREATE_CUS_ITEM = "customized-items/CREATE_ITEM";
 const EDIT_CUS_ITEM = "customized-items/EDIT_ITEM";
 const DELETE_CUS_ITEM = "customized-items/DELETE_ITEM";
-
+const CLEAR_ALL_CUS_ITEMS = "customized-items/CLEAR";
 // Action Creators
 const getCustomizedItemsAction = (cusItems) => {
   return {
@@ -27,14 +27,20 @@ const editCustomizedItemAction = (cusItem) => {
   };
 };
 
-export const deleteCustomizedItemAction = (cusItemId) => {
+const deleteCustomizedItemAction = (cusItemId) => {
   return {
     type: DELETE_CUS_ITEM,
     cusItemId,
   };
 };
 
+const clearAllCustomizedItems = () => {
+  return {
+    type:CLEAR_ALL_CUS_ITEMS
+  }
+}
 // Thunks
+
 export const getAllCustomizedItems = () => async (dispatch) => {
   const res = await fetch("/api/customized_items");
 
@@ -89,7 +95,10 @@ export const deleteCustomizedItem = (customizedItemId) => async (dispatch) => {
   }
   return false;
 };
+export const clearAllCustomizedItemsThunk =() => async (dispatch) => {
+  dispatch(clearAllCustomizedItems())
 
+}
 const initialState = {};
 
 // Reducer
@@ -110,6 +119,9 @@ export default function customizedItemsReducer(state = initialState, action) {
       return newState;
     case DELETE_CUS_ITEM:
       delete newState[action.cusItemId];
+      return newState;
+    case CLEAR_ALL_CUS_ITEMS:
+      newState = {};
       return newState;
     default:
       return state;

@@ -2,6 +2,7 @@
 
 const GET_CURRENT_ORDERS = "orders/GET_ITEMS";
 const CREATE_ORDER = "orders/CREATE_ITEM";
+const CLEAR_ALL_ORDERS = "orders/CLEAR_ALL";
 // const EDIT_ORDER = "orders/EDIT_ITEM";
 // const SUBMIT_ORDER = "orders/SUBMIT_ORDER";
 
@@ -20,6 +21,11 @@ const createOrderAction = (order) => {
   };
 };
 
+const clearAllOrdersAction = () => {
+  return {
+    type: CLEAR_ALL_ORDERS,
+  };
+};
 // const editOrderAction = (order) => {
 //   return {
 //     type: EDIT_ITEM,
@@ -46,19 +52,20 @@ export const getCurrentOrders = () => async (dispatch) => {
   }
 };
 
-export const createOrder = (orderData) => async (dispatch) => {
+export const createOrder = () => async (dispatch) => {
   const res = await fetch("/api/orders", {
-    method: "POST",
+    method: "GET",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(orderData),
   });
   if (res.ok) {
     const item = await res.json();
     const data = await dispatch(createOrderAction(item));
-    return data;
+    return item;
   }
 };
-
+export const clearAllOrdersThunk = () => async (dispatch) => {
+  dispatch(clearAllOrdersAction());
+};
 //we don't edit Order - we edit order items
 // export const editOrder = (orderId, editOrderData) => async (dispatch) => {
 //   const res = await fetch(`/api/items/${itemId}`, {
@@ -85,29 +92,32 @@ export const createOrder = (orderData) => async (dispatch) => {
 //   }
 // };
 
-// export const addToOrderThunk =
-//   (orderItemId, order_id, quantity, onHandleAddToOrderSuccess) =>
-//   async (dispatch) => {
-//     const response = await fetch(`/api/order_items/order/${order_id}`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({
-//         orderItemId,
-//         quantity,
-//       }),
-//     });
-//     if (response.ok) {
-//       const data = await response.json();
-//       if (data.errors) {
-//         return data.errors;
-//       }
-//       // await dispatch(updateCartItem(data));
-//       onHandleAddToOrderSuccess();
-//       return response;
-//     }
-//   };
+export const addToOrderThunk =
+  (item_id, order_id, quantity, onHandleAddToOrderSuccess) =>
+  async (dispatch) => {
+    const body = JSON.stringify({
+      item_id,
+      quantity,
+    });
+    const response = await fetch(`/api/order_items/order/${order_id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: body,
+    });
+    if (response.ok) {
+      const data = await response.json();
+      if (data.errors) {
+        return data.errors;
+      }
+      // await dispatch(updateCartItem(data));
+      onHandleAddToOrderSuccess();
+      return response;
+    } else {
+      console.log(response.text());
+    }
+  };
 
 const initialState = {};
 
@@ -121,7 +131,10 @@ export default function ordersReducer(state = initialState, action) {
       // console.log("TEST NEW STATE~~~~~~~~~~~~~~~~~~~", newState);
       return newState;
     case CREATE_ORDER:
-      newState[action.order.id] = action.order;
+      newState[action.order.order.id] = action.order.order;
+      return newState;
+    case CLEAR_ALL_ORDERS:
+      newState = {};
       return newState;
     // case EDIT_ITEM:
     //   newState[action.item.id] = action.item;

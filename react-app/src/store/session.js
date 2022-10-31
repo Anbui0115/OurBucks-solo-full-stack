@@ -57,28 +57,7 @@ export const submitOrderThunk = (orderId) => async (dispatch) => {
   }
 };
 
-export const addToOrderThunk =
-  (orderItemId, quantity, onHandleAddToCartSuccess) => async (dispatch) => {
-    const response = await fetch(`/api/orders`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        orderItemId,
-        quantity,
-      }),
-    });
-    if (response.ok) {
-      const data = await response.json();
-      if (data.errors) {
-        return data.errors;
-      }
-      // await dispatch(updateCartItem(data));
-      onHandleAddToCartSuccess();
-      return response;
-    }
-  };
+
 export const editOrderThunk = (orderItemId, quantity) => async (dispatch) => {
   const response = await fetch(`/api/order_items${orderItemId}`, {
     method: "PUT",

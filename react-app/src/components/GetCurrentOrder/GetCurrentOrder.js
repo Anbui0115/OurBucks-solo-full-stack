@@ -5,7 +5,6 @@ import React, { useEffect } from "react";
 import { getCurrentOrders } from "../../store/orders";
 import GetOrderItems from "../GetOrderItem/GetOrderItem";
 
-
 const GetCurrentOrder = () => {
   const dispatch = useDispatch();
 
@@ -13,7 +12,9 @@ const GetCurrentOrder = () => {
     dispatch(getCurrentOrders());
   }, [dispatch]);
 
-  const currentOrder = useSelector((state) => state.order)["order"];
+  const currentOrder = Object.values(useSelector((state) => state.order)).find(
+    (el) => el.status === "not placed"
+  );
 
   // console.log("CURRENT ORDER---------------", currentOrder);
   if (!currentOrder) return null;
@@ -24,7 +25,7 @@ const GetCurrentOrder = () => {
       <div>currentOrder.status: {currentOrder.status}</div>
       <div>currentOrder.userId: {currentOrder.user_id}</div>
       <div>order item inside your order:</div>
-      <GetOrderItems currentOrder_id={currentOrder.id}/>
+      <GetOrderItems currentOrder_id={currentOrder.id} />
     </>
   );
 };

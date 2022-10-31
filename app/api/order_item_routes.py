@@ -134,7 +134,19 @@ def edit_order_item(order_item_id):
             if form.data['quantity'] > 0:
                 order_item.quantity = form.data['quantity']
                 db.session.commit()
-                return {'order_item': order_item.to_dict()}
+
+                new_ele = order_item.to_dict()
+                if order_item.customized_item_id:
+                    new_ele["image_url"] = order_item.customized_item.item.image_url
+                    new_ele["name"] = order_item.customized_item.name
+                    new_ele["price"] = order_item.customized_item.item.price
+
+                elif order_item.item_id:
+                    new_ele["image_url"] = order_item.item.image_url
+                    new_ele["name"] = order_item.item.name
+                    new_ele["price"] = order_item.item.price
+
+                return {'order_item': new_ele}
             else:
                 db.session.delete(order_item)
                 db.session.commit()

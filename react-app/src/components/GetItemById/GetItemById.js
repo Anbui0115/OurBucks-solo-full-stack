@@ -3,6 +3,7 @@ import { getAllItems } from "../../store/items";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import AddToCart from "../AddToCart/AddToCart";
 import "./GetItemById.css";
 
 const GetItemById = (props) => {
@@ -48,6 +49,7 @@ const GetItemById = (props) => {
               <Link to={`/${item.id}/customize`} key={item.id} s>
                 Customize your drink
               </Link>
+              <AddToCart el={item.id} />
             </div>
           )}
         </div>
