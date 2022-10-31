@@ -35,38 +35,36 @@ export const deleteCustomizedItemAction = (cusItemId) => {
 };
 
 // Thunks
-export const getAllCustomizedItems =
-  () =>
-  async (dispatch) => {
-    const res = await fetch('/api/my-customized-items');
+export const getAllCustomizedItems = () => async (dispatch) => {
+  const res = await fetch("/api/customized_items");
 
-    if (res.ok) {
-      const customizedItems = await res.json();
-      const data = await dispatch(
-        getCustomizedItemsAction(customizedItems.items)
-      );
-      return data;
-
-    }
-  };
-
-export const createCustomizedItem = (customizedItemData) => async (dispatch) => {
-  // if (!itemData.imageUrl) itemData.imageUrl = "https://media.istockphoto.com/photos/scattered-crumbs-of-butter-cookies-on-white-background-picture-id1222390473?k=20&m=1222390473&s=612x612&w=0&h=6UXsl_v8Kp2aG6ykg3l4lSHjoB4biCndCx2OVIiHNSQ="
-  const res = await fetch(`/api/items/:itemId/customize`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(customizedItemData),
-  });
   if (res.ok) {
-    const customizedItem = await res.json();
-    const data = await dispatch(createCustomizedItemAction(customizedItem));
+    const customizedItems = await res.json();
+    const data = await dispatch(
+      getCustomizedItemsAction(customizedItems.customized_items)
+    );
     return data;
   }
 };
 
+export const createCustomizedItem =
+  (customizedItemData) => async (dispatch) => {
+    // if (!itemData.imageUrl) itemData.imageUrl = "https://media.istockphoto.com/photos/scattered-crumbs-of-butter-cookies-on-white-background-picture-id1222390473?k=20&m=1222390473&s=612x612&w=0&h=6UXsl_v8Kp2aG6ykg3l4lSHjoB4biCndCx2OVIiHNSQ="
+    const res = await fetch(`/api/customized_items`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(customizedItemData),
+    });
+    if (res.ok) {
+      const customizedItem = await res.json();
+      const data = await dispatch(createCustomizedItemAction(customizedItem));
+      return data;
+    }
+  };
+
 export const editCustomizedItem =
   (customizedItemId, editCustomizedItemData) => async (dispatch) => {
-    const res = await fetch(`/api/items/${customizedItemId}`, {
+    const res = await fetch(`/api/customized_items/${customizedItemId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editCustomizedItemData),
@@ -80,14 +78,16 @@ export const editCustomizedItem =
   };
 
 export const deleteCustomizedItem = (customizedItemId) => async (dispatch) => {
-  const res = await fetch(`/api/items/${customizedItemId}`, {
+  const res = await fetch(`/api/customized_items/${customizedItemId}`, {
     method: "DELETE",
   });
 
   if (res.ok) {
     const customizedItem = `${customizedItemId}`;
-    await dispatch(deleteCustomizedItemAction(customizedItem));
+    dispatch(deleteCustomizedItemAction(customizedItem));
+    return true;
   }
+  return false;
 };
 
 const initialState = {};
@@ -98,12 +98,11 @@ export default function customizedItemsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_CUS_ITEMS:
       newState = {};
-      console.log('action!!!!!!!!',action)
-      action.cusItems.forEach(
-        (cusItem) => (newState[cusItem.id] = cusItem)
-      );
+      action.cusItems.forEach((cusItem) => (newState[cusItem.id] = cusItem));
+      //array of all customized items (including the newly create one)
       return newState;
     case CREATE_CUS_ITEM:
+      //object of 1 newly created customized item
       newState[action.cusItem.id] = action.cusItem;
       return newState;
     case EDIT_CUS_ITEM:

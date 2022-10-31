@@ -18,7 +18,7 @@ def get_all_orders():
 
     return {'orders': [i.to_dict() for i in order]}
 
-@order_routes.route('', methods=["GET"])
+@order_routes.route('', methods=["GET","POST"])
 @login_required
 def get_current_order():
     """

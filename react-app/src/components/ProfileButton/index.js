@@ -36,7 +36,7 @@ function ProfileButton({ user }) {
         <div className="dropdown-content">
           <div
             className="your-listing"
-            onClick={() => history.push("/spots/current")}
+            onClick={() => history.push("/my-customized-items")}
           >
             Your Customized Drinks
           </div>
@@ -45,6 +45,12 @@ function ProfileButton({ user }) {
             onClick={() => history.push("/reviews/current")}
           >
             Your Reviews
+          </div>
+          <div
+            className="your-review"
+            onClick={() => history.push("/order")}
+          >
+            Your current order
           </div>
           <div>
             <LogoutButton />

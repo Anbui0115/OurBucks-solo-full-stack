@@ -19,7 +19,7 @@ const GetItemById = (props) => {
 
   if (!itemId) return null;
 
-  const item = allItems.filter((item) => item.id === +itemId);
+  const item = allItems[itemId];
   // console.log("ITEM BY ID---------------------------", item);
   //   console.log("ALL ITEMS ~~~~~~~~~~~~~~~~~~~~~~~~~~~", Object.keys(allItems));
   if (!allItems) return null;
@@ -28,7 +28,7 @@ const GetItemById = (props) => {
   return (
     <>
       <h1>ITEM BY ID</h1>
-      {item.map((item) => (
+      {
         <div key={item.id}>
           <img src={item.image_url} width="300" height="300"></img>
           <br></br>
@@ -51,7 +51,7 @@ const GetItemById = (props) => {
             </div>
           )}
         </div>
-      ))}
+      }
     </>
   );
 };

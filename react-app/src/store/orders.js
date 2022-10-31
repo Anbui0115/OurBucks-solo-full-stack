@@ -3,7 +3,7 @@
 const GET_CURRENT_ORDERS = "orders/GET_ITEMS";
 const CREATE_ORDER = "orders/CREATE_ITEM";
 // const EDIT_ORDER = "orders/EDIT_ITEM";
-const DELETE_ORDER = "orders/DELETE_ITEM";
+// const SUBMIT_ORDER = "orders/SUBMIT_ORDER";
 
 // Action Creators
 const getCurrentOrderAction = (order) => {
@@ -27,12 +27,12 @@ const createOrderAction = (order) => {
 //   };
 // };
 
-export const deleteOrderAction = (orderId) => {
-  return {
-    type: DELETE_ORDER,
-    orderId,
-  };
-};
+// export const submitOrderAction = (orderId) => {
+//   return {
+//     type: SUBMIT_ORDER,
+//     orderId,
+//   };
+// };
 
 // Thunks
 export const getCurrentOrders = () => async (dispatch) => {
@@ -74,16 +74,40 @@ export const createOrder = (orderData) => async (dispatch) => {
 //   }
 // };
 
-export const deleteOrder = (orderId) => async (dispatch) => {
-  const res = await fetch(`/api/orders/${orderId}`, {
-    method: "DELETE",
-  });
+// export const submitOrder = (orderId) => async (dispatch) => {
+//   const res = await fetch(`/api/orders/${orderId}`, {
+//     method: "DELETE",
+//   });
 
-  if (res.ok) {
-    const order = `${orderId}`;
-    await dispatch(deleteOrderAction(order));
-  }
-};
+//   if (res.ok) {
+//     const order = `${orderId}`;
+//     await dispatch(deleteOrderAction(order));
+//   }
+// };
+
+// export const addToOrderThunk =
+//   (orderItemId, order_id, quantity, onHandleAddToOrderSuccess) =>
+//   async (dispatch) => {
+//     const response = await fetch(`/api/order_items/order/${order_id}`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         orderItemId,
+//         quantity,
+//       }),
+//     });
+//     if (response.ok) {
+//       const data = await response.json();
+//       if (data.errors) {
+//         return data.errors;
+//       }
+//       // await dispatch(updateCartItem(data));
+//       onHandleAddToOrderSuccess();
+//       return response;
+//     }
+//   };
 
 const initialState = {};
 
@@ -93,7 +117,7 @@ export default function ordersReducer(state = initialState, action) {
   switch (action.type) {
     case GET_CURRENT_ORDERS:
       //   console.log('TEST~~~~~~~~~~',action)
-      newState["order"] = action.order;
+      newState[action.order.id] = action.order;
       // console.log("TEST NEW STATE~~~~~~~~~~~~~~~~~~~", newState);
       return newState;
     case CREATE_ORDER:
@@ -102,9 +126,9 @@ export default function ordersReducer(state = initialState, action) {
     // case EDIT_ITEM:
     //   newState[action.item.id] = action.item;
     //   return newState;
-    case DELETE_ORDER:
-      delete newState[action.orderId];
-      return newState;
+    // case SUBMIT_ORDER:
+    //   delete newState[action.orderId];
+    //   return newState;
     default:
       return state;
   }

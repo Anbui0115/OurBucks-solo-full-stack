@@ -16,7 +16,7 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div>
-          <NavLink to="menu" exact={true} activeClassName="active">
+          <NavLink to="/menu" exact={true} activeClassName="active">
             Menu
           </NavLink>
           {/* <div className="profile_button">{sessionLinks}</div> */}

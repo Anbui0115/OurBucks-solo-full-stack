@@ -92,9 +92,10 @@ export default function order_itemsReducer(state = initialState, action) {
   let newState = { ...state };
   switch (action.type) {
     case GET_ORDER_ITEMS:
-        // console.log('TEST~~~~~~~~~~',action)
-      newState["order_items"] = action.order_items;
-      // console.log("TEST NEW STATE~~~~~~~~~~~~~~~~~~~", newState);
+      newState = {};
+      action.order_items.forEach(
+        (order_item) => (newState[order_item.id] = order_item)
+      );
       return newState;
     case CREATE_ORDER_ITEM:
       newState[action.order_item.id] = action.order_item;

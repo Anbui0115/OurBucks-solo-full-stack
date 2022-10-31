@@ -27,7 +27,7 @@ export default function itemsReducer(state = initialState, action) {
   let newState = { ...state };
   switch (action.type) {
     case GET_ITEMS:
-      newState = [];
+      newState = {};
       action.items.forEach((item) => (newState[item.id] = item));
       // console.log("FIRST ~~~~~~~~~~~~~~~~~~~~~~~~~~~", newState);
 

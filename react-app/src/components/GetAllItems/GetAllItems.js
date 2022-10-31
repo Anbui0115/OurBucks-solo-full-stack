@@ -18,9 +18,8 @@ const GetAllItems = () => {
   // console.log("ALL ITEMS ~~~~~~~~~~~~~~~~~~~~~~~~~~~", Object.keys(allItems));
   return (
     <>
-
       <h1>here's all the items</h1>
-      {allItems.map((item) => (
+      {Object.keys(allItems).map((item_id) => (
         // <div key={item.id}>
         //   <img src={item.image_url} width="300" height="300"></img>
         //   <br></br>
@@ -33,8 +32,8 @@ const GetAllItems = () => {
         //   <br></br>
         // </div>
 
-        <Link to={`/items/${item.id}`} key={item.id}>
-          <EachItemCard item={item} />
+        <Link to={`/items/${allItems[item_id].id}`} key={allItems[item_id].id}>
+          <EachItemCard item={allItems[item_id]} />
         </Link>
       ))}
     </>

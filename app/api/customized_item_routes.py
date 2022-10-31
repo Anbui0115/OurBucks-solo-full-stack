@@ -12,15 +12,23 @@ customized_item_routes = Blueprint('customized_items', __name__)
 
 @customized_item_routes.route('', methods=["GET"])
 @login_required
-def get_customized_item():
+def get_customized_items():
     """
     Get all customized items belong to this current user
     """
     user_id = current_user.id
     customized_items = CustomizedItem.query.filter_by(user_id=user_id).all()
-    result = [el.to_dict() for el in customized_items]
 
-    return {'customized_items': [i.to_dict() for i in result]}
+    result = []
+    for ele in customized_items:
+        new_ele = ele.to_dict()
+        new_ele["image_url"] = ele.item.image_url
+        new_ele["name"] = ele.name
+        new_ele["price"] = ele.item.price
+
+        result.append(new_ele)
+
+    return {'customized_items': result}
 
 
 @customized_item_routes.route('/<int:customized_item_id>', methods=["GET"])
@@ -34,7 +42,13 @@ def get_customized_item_by_id(customized_item_id):
     if customized_item:
         if customized_item['user_id'] != user_id:
             return {'error': 'Customized item does not belong to current user.'}, 400
-        return {'customized_item': customized_item.to_dict()}
+
+        new_ele = customized_item.to_dict()
+        new_ele["image_url"] = customized_item.item.image_url
+        new_ele["name"] = customized_item.name
+        new_ele["price"] = customized_item.item.price
+
+        return {'customized_item': new_ele}
     else:
         return {'error': 'Customized item does not exist.'}, 400
 
@@ -43,7 +57,7 @@ def get_customized_item_by_id(customized_item_id):
 @login_required
 def create_customized_item():
     """
-    Get customized item by id belong to this current user
+    Create a customized item
     """
     user_id = current_user.id
 

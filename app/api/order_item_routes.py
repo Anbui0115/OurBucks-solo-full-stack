@@ -15,13 +15,25 @@ def get_order_items_by_id(order_item_id):
     """
     Get order item from order item ID
     """
-    user_id = current_user.id
+    # user_id = current_user.id
     order_item = OrderItem.query.get(order_item_id)
+
+
+    new_ele = order_item.to_dict()
+    if order_item.customized_item_id:
+        new_ele["image_url"] = order_item.customized_item.item.image_url
+        new_ele["name"] = order_item.customized_item.name
+        new_ele["price"] = order_item.customized_item.item.price
+
+    elif order_item.item_id:
+        new_ele["image_url"] = order_item.item.image_url
+        new_ele["name"] = order_item.item.name
+        new_ele["price"] = order_item.item.price
 
     if not order_item:
         return {'error': 'Order item does not exist.'}, 400
     else:
-        return {'order_item': order_item.to_dict()}
+        return {'order_item': new_ele}
 
 @order_item_routes.route('/order/<order_id>', methods=["GET"])
 @login_required
