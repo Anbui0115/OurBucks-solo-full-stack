@@ -50,7 +50,7 @@ app.register_blueprint(review_routes, url_prefix='/api/reviews')
 
 app.register_blueprint(customized_item_routes, url_prefix='/api/customized_items')
 app.register_blueprint(customization_routes, url_prefix='/api/customizations')
-app.register_blueprint(customized_selection_routes, url_prefix='/api/customization_selections')
+app.register_blueprint(customized_selection_routes, url_prefix='/api/customized_selections')
 
 db.init_app(app)
 Migrate(app, db)

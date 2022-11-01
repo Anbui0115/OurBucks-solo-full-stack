@@ -10,3 +10,10 @@ class Customization(db.Model):
 
     #relationship
     # customized_selection = db.relationship('CustomizedSelection',back_populates='customization')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "category": self.category,
+            "name": self.name
+        }

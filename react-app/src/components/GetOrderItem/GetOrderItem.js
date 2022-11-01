@@ -44,7 +44,9 @@ export default function GetOrderItems({ currentOrder_id }) {
   function handleEdit(e, order_item) {
     e.preventDefault();
     setEditMode(false);
-    dispatch(editOrderItem(order_item.id, order_item.itemId, quantity)).catch(async (res) => {});
+    dispatch(editOrderItem(order_item.id, order_item.itemId, quantity)).catch(
+      async (res) => {}
+    );
   }
 
   function handleItemCount(count) {

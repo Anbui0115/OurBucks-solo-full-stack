@@ -12,7 +12,7 @@ const GetCurrentOrder = () => {
     dispatch(getCurrentOrders());
   }, [dispatch]);
 
-  const currentOrder = Object.values(useSelector((state) => state.order)).find(
+  const currentOrder = Object.values(useSelector((state) => state.orders)).find(
     (el) => el.status === "not placed"
   );
 

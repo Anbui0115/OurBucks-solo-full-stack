@@ -15,8 +15,7 @@ class CustomizedItem(db.Model):
     order_items = db.relationship("OrderItem",back_populates='customized_item')
     user = db.relationship('User',back_populates='customized_items')
     item = db.relationship('Item',back_populates='customized_items')
-
-    # customized_selection = db.relationship("CustomizedSelection",foreign_keys=[customized_selection_id])
+    customized_selections = db.relationship("CustomizedSelection", cascade="all, delete")
     def to_dict(self):
         return {
             "id": self.id,

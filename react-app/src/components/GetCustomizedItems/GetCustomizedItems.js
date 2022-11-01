@@ -9,6 +9,7 @@ import {
 } from "../../store/customizedItem";
 import AddToCart from "../AddToCart/AddToCart";
 import { getAllItems } from "../../store/items";
+import GetCustomizedSelections from "../GetCustomizedSelections/GetCustomizedSelections";
 
 // import "./GetCustomizedItems.css";
 
@@ -16,6 +17,8 @@ const GetCustomizedItems = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [requestData, setRequestData] = useState(new Date());
+  const [editMode, setEditMode] = useState(false);
+
   const sessionUser = useSelector((state) => state.session.user);
   const customizedItems = useSelector((state) => state.customized_items);
   console.log("CUSTOMIZED ITEMS----------------", customizedItems);
@@ -33,11 +36,20 @@ const GetCustomizedItems = () => {
 
     setRequestData(new Date());
   };
-  const onClickEdit = async (e, customizedItemId) => {
+  function enableEdit(e) {
     e.preventDefault();
 
-    setRequestData(new Date());
-  };
+    setEditMode(true);
+    // dispatch(editOrderItem(order_item_id)).catch(async (res) => {});
+  }
+
+  function handleEdit(e) {
+    e.preventDefault();
+    setEditMode(false);
+    // dispatch(editOrderItem(order_item.id, order_item.itemId, quantity)).catch(
+    //   async (res) => {}
+    // );
+  }
 
   return (
     <div>
@@ -52,12 +64,14 @@ const GetCustomizedItems = () => {
               ></img>
             </div>
             <div>Name: {customizedItems[el].name}</div>
+            <GetCustomizedSelections customized_item_id={el} editMode={editMode} />
             <button onClick={(e) => onClickDelete(e, customizedItems[el].id)}>
               Delete this drink
             </button>
-            <button onClick={(e) => onClickEdit(e, customizedItems[el].id)}>
-              Edit this drink
-            </button>
+            {!editMode && <button onClick={(e) => enableEdit(e)}>Edit</button>}
+            {editMode && (
+              <button onClick={(e) => handleEdit(e)}>Confirm Edit</button>
+            )}
             <AddToCart el={customizedItems[el]} />
           </div>
         ))}

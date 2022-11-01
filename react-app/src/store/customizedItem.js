@@ -36,9 +36,9 @@ const deleteCustomizedItemAction = (cusItemId) => {
 
 const clearAllCustomizedItems = () => {
   return {
-    type:CLEAR_ALL_CUS_ITEMS
-  }
-}
+    type: CLEAR_ALL_CUS_ITEMS,
+  };
+};
 // Thunks
 
 export const getAllCustomizedItems = () => async (dispatch) => {
@@ -64,7 +64,7 @@ export const createCustomizedItem =
     if (res.ok) {
       const customizedItem = await res.json();
       const data = await dispatch(createCustomizedItemAction(customizedItem));
-      return data;
+      return customizedItem["customized_item"];
     }
   };
 
@@ -95,10 +95,9 @@ export const deleteCustomizedItem = (customizedItemId) => async (dispatch) => {
   }
   return false;
 };
-export const clearAllCustomizedItemsThunk =() => async (dispatch) => {
-  dispatch(clearAllCustomizedItems())
-
-}
+export const clearAllCustomizedItemsThunk = () => async (dispatch) => {
+  dispatch(clearAllCustomizedItems());
+};
 const initialState = {};
 
 // Reducer

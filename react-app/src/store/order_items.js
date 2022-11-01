@@ -1,10 +1,10 @@
 // Types
 
-const GET_ORDER_ITEMS = "orders/GET_ORDER_ITEMS";
-const CREATE_ORDER_ITEM = "orders/CREATE_ORDER_ITEM";
-const EDIT_ORDER_ITEM = "orders/EDIT_ORDER_ITEM";
-const DELETE_ORDER_ITEM = "orders/DELETE_ORDER_ITEM";
-const CLEAR_ALL_ORDER_ITEMS = "orders_items/CLEAR_ALL";
+const GET_ORDER_ITEMS = "order_items/GET_ORDER_ITEMS";
+const CREATE_ORDER_ITEM = "order_items/CREATE_ORDER_ITEM";
+const EDIT_ORDER_ITEM = "order_items/EDIT_ORDER_ITEM";
+const DELETE_ORDER_ITEM = "order_items/DELETE_ORDER_ITEM";
+const CLEAR_ALL_ORDER_ITEMS = "order_items/CLEAR_ALL";
 // Action Creators
 const getOrderItemAction = (order_items) => {
   return {

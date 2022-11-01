@@ -13,3 +13,10 @@ class CustomizedSelection(db.Model):
     # customized_item = db.relationship('CustomizedItem',foreign_keys=[customized_item_id])
 
     customization = db.relationship("Customization",foreign_keys=[customization_id])
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "customization_id": self.customization_id,
+            "customized_item_id": self.customized_item_id,
+        }

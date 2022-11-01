@@ -32,3 +32,4 @@ def get_customization_by_id(customization_id):
     """
     customization = Customization.query.get(customization_id)
     return {'customization': customization.to_dict()}
+

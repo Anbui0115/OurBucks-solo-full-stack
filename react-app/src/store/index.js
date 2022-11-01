@@ -5,13 +5,17 @@ import itemsReducer from "./items";
 import customizedItemsReducer from "./customizedItem";
 import ordersReducer from "./orders";
 import order_itemsReducer from "./order_items";
+import customizationsReducer from "./customization";
+import customized_selectionsReducer from "./customized_selections";
 
 const rootReducer = combineReducers({
   session,
   items: itemsReducer,
   customized_items: customizedItemsReducer,
-  order: ordersReducer,
+  orders: ordersReducer,
   order_items: order_itemsReducer,
+  customizations: customizationsReducer,
+  customized_selections: customized_selectionsReducer,
 });
 
 let enhancer;

@@ -8,6 +8,12 @@ from app.forms.add_customized_selection import AddCustomizedSelection
 
 customized_selection_routes = Blueprint('customized_selection', __name__)
 
+def augment_result(customized_selection):
+    new_ele = customized_selection.to_dict()
+
+    new_ele["name"] = customized_selection.customization.name
+    new_ele["category"] = customized_selection.customization.category
+    return new_ele
 
 @customized_selection_routes.route('/<customized_selection_id>', methods=["GET"])
 @login_required
@@ -18,10 +24,11 @@ def get_customized_selection_by_id(customized_selection_id):
     user_id = current_user.id
     customized_selection = CustomizedSelection.query.get(customized_selection_id)
 
+
     if not customized_selection:
         return {'error': 'Order item does not exist.'}, 400
     else:
-        return {'customized_selection': customized_selection.to_dict()}
+        return {'customized_selection': augment_result(customized_selection)}
 
 @customized_selection_routes.route('/customized_item/<customized_item_id>', methods=["GET"])
 @login_required
@@ -32,10 +39,15 @@ def get_customized_selections(customized_item_id):
     user_id = current_user.id
     customized_selections = CustomizedSelection.query.filter_by(customized_item_id=customized_item_id).all()
 
+    result = []
+    for customized_selection in customized_selections:
+        new_ele = augment_result(customized_selection)
+        result.append(new_ele)
+
     if not customized_selections:
         return {'customized_selections': []}
     else:
-        return {'customized_selections': [i.to_dict() for i in customized_selections]}
+        return {'customized_selections': result}
 
 @customized_selection_routes.route('/customized_item/<customized_item_id>', methods=["POST"])
 @login_required
@@ -57,8 +69,11 @@ def add_customized_selection(customized_item_id):
             customized_selection.customized_item_id = customized_item_id
             db.session.add(customized_selection)
             db.session.commit()
-            return {'customized_selection': customized_selection.to_dict()}
+
+            return {'customized_selection': augment_result(customized_selection)}
         else:
+            print('\n\n\n\n\n\n\n',customized_selection.to_dict(),'\n\n\n\n\n\n')
+            print('customized_item_id=',customized_item_id, ' || customization_id=',form.data['customization_id'], '\n\n\n\n\n\n')
             return {'errors': 'Customized selection already exists.'}, 400
     else:
         return {'errors': form.errors}, 400
@@ -96,6 +111,6 @@ def edit_customized_selection(customized_selection_id):
         else:
             form.populate_obj(customized_selection)
             db.session.commit()
-            return {'customized_selection': customized_selection.to_dict()}
+            return {'customized_selection': augment_result(customized_selection)}
     else:
         return {'errors': form.errors}, 400

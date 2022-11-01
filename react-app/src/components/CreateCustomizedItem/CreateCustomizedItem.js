@@ -5,9 +5,8 @@ import {
 } from "../../store/customizedItem";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getAllItems } from "../../store/items";
-
-import "./CreateCustomizedItem.css";
+import { addCustomizedSelectionToCustomizedItem } from "../../store/customized_selections";
+import Customization from "../Customization/Customization";
 
 const CreateCustomizedItem = () => {
   const dispatch = useDispatch();
@@ -15,6 +14,7 @@ const CreateCustomizedItem = () => {
 
   const [name, setName] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [customizationSelected, setCustomizationSelected] = useState({});
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -32,7 +32,6 @@ const CreateCustomizedItem = () => {
   const allItems = useSelector((state) => state.items);
   const sessionUser = useSelector((state) => state.session.user);
   const { itemId } = useParams();
-  console.log("ITEMID-------------------", itemId);
 
   if (!itemId) return null;
 
@@ -55,9 +54,24 @@ const CreateCustomizedItem = () => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       }
-    );
+    ); // data should contain newly created customized item's ID
+
+    // create new customized selection object using customized item ID from above
+    // and customization ID from customizationSelected
 
     if (data) {
+      console.log("customized_item_id:", data.id);
+      for (let i in customizationSelected) {
+        if (customizationSelected[i] != 0) {
+          console.log("customization_id:", customizationSelected[i]);
+          const new_customized_selection = await dispatch(
+            addCustomizedSelectionToCustomizedItem(
+              customizationSelected[i],
+              data.id
+            )
+          );
+        }
+      }
       history.push(`/my-customized-items`);
     }
   };
@@ -87,6 +101,10 @@ const CreateCustomizedItem = () => {
             />
           </label>
         </div>
+        <Customization
+          customizationSelected={customizationSelected}
+          setCustomizationSelected={setCustomizationSelected}
+        />
         <button
           className="create-item-submit-button"
           type="submit"
