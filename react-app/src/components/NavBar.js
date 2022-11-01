@@ -8,7 +8,7 @@ import ProfileButton from "./ProfileButton";
 const NavBar = () => {
   const sessionUser = useSelector((state) => state.session.user);
   return (
-    <div>
+    <div className="outer-nav">
       <div>
         <div>
           <NavLink to="/" exact={true} activeClassName="active">
