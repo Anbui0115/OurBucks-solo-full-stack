@@ -56,6 +56,7 @@ const GetCustomizedItems = () => {
       {customizedItems &&
         Object.keys(customizedItems).map((el) => (
           <div key={`el.${customizedItems[el].id}`}>
+            {console.log("TEST!!!!!!!!!!!!",[el])}
             <div>
               <img
                 src={customizedItems[el].image_url}
@@ -64,7 +65,10 @@ const GetCustomizedItems = () => {
               ></img>
             </div>
             <div>Name: {customizedItems[el].name}</div>
-            <GetCustomizedSelections customized_item_id={el} editMode={editMode} />
+            <GetCustomizedSelections
+              customized_item_id={el}
+              editMode={editMode}
+            />
             <button onClick={(e) => onClickDelete(e, customizedItems[el].id)}>
               Delete this drink
             </button>
@@ -72,6 +76,7 @@ const GetCustomizedItems = () => {
             {editMode && (
               <button onClick={(e) => handleEdit(e)}>Confirm Edit</button>
             )}
+            {/* <Link to={`/:itemId/customize`}>Edit this drink</Link> */}
             <AddToCart el={customizedItems[el]} />
           </div>
         ))}

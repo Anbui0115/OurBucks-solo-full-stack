@@ -102,6 +102,7 @@ const CreateCustomizedItem = () => {
           </label>
         </div>
         <Customization
+        
           customizationSelected={customizationSelected}
           setCustomizationSelected={setCustomizationSelected}
         />

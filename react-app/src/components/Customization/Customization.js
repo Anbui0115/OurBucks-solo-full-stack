@@ -26,10 +26,11 @@ const Customization = ({ customizationSelected, setCustomizationSelected }) => {
       allCustomizations
     ).filter((el) => el.category === customizationCategories[i]);
   }
-
+  // if (!sortedCustomizations) return null;
   return (
     <>
       <h1>here's all the Customizations</h1>
+
       {Object.keys(sortedCustomizations).map((category) => (
         <div>
           <h2>{category}</h2>

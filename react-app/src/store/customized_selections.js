@@ -132,7 +132,6 @@ export default function customized_selectionsReducer(
   let newState = { ...state };
   switch (action.type) {
     case GET_CUSTOMIZED_SELECTIONS:
-      newState = {};
       action.customized_selections.forEach(
         (customized_selection) =>
           (newState[customized_selection.id] = customized_selection)
