@@ -16,15 +16,17 @@
   text-size-adjust: 100%;
   margin-bottom: 30px;
   align-items: center;
+  text-decoration: none;
 }
 
 .outer_nav {
-  /* border: 1px solid pink; */
+  /* border: 1px solid blue; */
   display: flex;
   flex-direction: row;
   position: relative;
   max-width: 1440px;
-  width: 92%;
+  width: 95%;
+  width: 99%;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
@@ -34,17 +36,14 @@
   line-height: 24px;
   margin: auto;
   padding-bottom: 12px;
-  /* padding-left: 36px;
-  padding-right: 36px; */
   padding-top: 12px;
   text-size-adjust: 100%;
 }
 
 .nav_bar {
-  border: 1px solid hotpink;
+  /* border: 1px dashed salmon; */
   display: flex;
   flex-direction: row;
-  margin: none;
   width: 100%;
   min-height: 70px;
   align-items: center;
@@ -56,23 +55,22 @@
   line-height: 24px;
   text-size-adjust: 100%;
 }
-.left-nav {
-  border: 1px solid blue;
-  /* display: flex;
+.left_nav {
+  /* border: 1px solid blue; */
+  display: flex;
   flex-direction: row;
-  margin: none;
   min-height: 70px;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   color: rgb(34, 34, 34);
   font-size: 16px;
+  height: 100px;
+  width: 180px;
   line-height: 24px;
-  text-size-adjust: 100%; */
+  text-size-adjust: 100%;
 }
-.right-nav {
-  border: 1px solid green;
-}
+
 .home_logo {
   box-sizing: border-box;
   cursor: pointer;
@@ -80,10 +78,101 @@
   line-height: 24px;
   text-size-adjust: 100%;
   width: 100px;
+  display: inline-block;
   /* border: 2px solid black; */
-  align-self: center;
+}
+.menu_text {
+  /* border: 1px green dashed; */
+  box-sizing: border-box;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.87);
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  height: 100px;
+  width: 48px;
+  letter-spacing: 1.4px;
+  line-height: 21px;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  text-align: left;
+  text-decoration: none;
+  text-size-adjust: 100%;
+  text-transform: uppercase;
 }
 
+.right_bar {
+  /* border: 1px solid rgb(140, 36, 125); */
+  display: flex;
+  flex-direction: row;
+  min-height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  color: rgb(34, 34, 34);
+  font-size: 16px;
+  height: 100px;
+  width: 150px;
+  line-height: 24px;
+  text-size-adjust: 100%;
+}
+.styles.login_signup {
+  /* border: 1px solid green; */
+  box-sizing: border-box;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  font-size: 14px;
+  font-weight: 700;
+  height: 100px;
+  width: 200px;
+  letter-spacing: 1.4px;
+  line-height: 21px;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  text-align: left;
+  text-decoration: none;
+  text-size-adjust: 100%;
+  text-transform: uppercase;
+}
+.login {
+  /* border: 1px green dashed; */
+  box-sizing: border-box;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.87);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  height: 100px;
+  width: 68px;
+  letter-spacing: 1.4px;
+  line-height: 21px;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  text-align: left;
+  text-decoration: none;
+  text-size-adjust: 100%;
+  text-transform: uppercase;
+}
+.signup {
+  /* border: 1px red dashed; */
+  box-sizing: border-box;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.87);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  height: 100px;
+  width: 78px;
+  letter-spacing: 1.4px;
+  line-height: 21px;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  text-align: left;
+  text-decoration: none;
+  text-size-adjust: 100%;
+  text-transform: uppercase;
+}
 .profile_dropdown {
   border-radius: 50 px;
   cursor: pointer;

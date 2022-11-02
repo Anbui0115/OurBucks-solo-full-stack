@@ -20,22 +20,26 @@ const LandingPage = () => {
     <div className={styles.landing_body}>
       <div className={styles.body_div}>
         <div className={styles.each_div}>
-          <Link to={`/items/${item1.id}`}>
-            <div className={styles.div_img}>
-              <img
-                src={
-                  "https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-81152.jpg"
-                }
-                width="300px"
-                height="300px"
-                alt="drink"
-              ></img>
+          <div className={styles.div_img}>
+            <img
+              src={
+                "https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-81152.jpg"
+              }
+              className={styles.landing_img}
+              alt="drink"
+            ></img>
+          </div>
+          <div className={styles.name_description}>
+            <div className={styles.inner_des}>
+              <div className={styles.item_name}>{item1.name}</div>
+              <div className={styles.item_des}> {item1.description}</div>
+              <div className={styles.order_now_wrapper}>
+                <Link to={`/items/${item1.id}`}>
+                  <div className={styles.order_now}>Order Now</div>
+                </Link>
+              </div>
             </div>
-            <div>
-              <div>{item1.name}</div>
-              <div>{item1.description}</div>
-            </div>
-          </Link>
+          </div>
         </div>
         <div className={styles.each_div}>
           <Link to={`/items/${item2.id}`}>
@@ -44,8 +48,7 @@ const LandingPage = () => {
                 src={
                   "https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-81198.jpg"
                 }
-                width="300px"
-                height="300px"
+                className={styles.landing_img}
                 alt="drink"
               ></img>
             </div>
@@ -62,8 +65,7 @@ const LandingPage = () => {
                 src={
                   "https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-81199.jpg"
                 }
-                width="300px"
-                height="300px"
+                className={styles.landing_img}
                 alt="drink"
               ></img>
             </div>

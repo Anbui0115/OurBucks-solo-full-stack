@@ -11,7 +11,7 @@ const NavBar = () => {
     <div className={styles.outer_most}>
       <div className={styles.outer_nav}>
         <nav className={styles.nav_bar}>
-          <div className={styles.left_bar}>
+          <div className={styles.left_nav}>
             <div className={styles.nav_logo}>
               <NavLink to="/" exact={true} activeClassName="active">
                 <img
@@ -23,33 +23,35 @@ const NavBar = () => {
                 ></img>
               </NavLink>
             </div>
-            <div>
+            <div className={styles.menu_text}>
               <NavLink to="/menu" exact={true} activeClassName="active">
                 Menu
               </NavLink>
             </div>
           </div>
+
           <div className={styles.right_bar}>
             {!sessionUser && (
-              <div>
-                <div>
+              <div className={styles.login_signup}>
+                <div className={styles.login}>
                   <NavLink to="/login" exact={true} activeClassName="active">
                     Login
                   </NavLink>
                 </div>
-                <div>
+                <div className={styles.signup}>
                   <NavLink to="/sign-up" exact={true} activeClassName="active">
                     Sign Up
                   </NavLink>
                 </div>
               </div>
             )}
-
-            {sessionUser && (
-              <div>
-                <ProfileButton />
-              </div>
-            )}
+            <div className={styles.login_signup}>
+              {sessionUser && (
+                <div className={styles.login}>
+                  <ProfileButton />
+                </div>
+              )}
+            </div>
           </div>
         </nav>
       </div>
