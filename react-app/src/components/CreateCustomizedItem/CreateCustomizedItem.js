@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { addCustomizedSelectionToCustomizedItem } from "../../store/customized_selections";
 import Customization from "../Customization/Customization";
+import { getAllItems } from "../../store/items";
+
 
 const CreateCustomizedItem = () => {
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const CreateCustomizedItem = () => {
 
   useEffect(() => {
     dispatch(getAllCustomizedItems());
+    dispatch(getAllItems());
   }, [dispatch]);
 
   useEffect(() => {
@@ -32,7 +35,10 @@ const CreateCustomizedItem = () => {
   const allItems = useSelector((state) => state.items);
   const sessionUser = useSelector((state) => state.session.user);
   const { itemId } = useParams();
-
+ console.log(
+   "customizationSelected-----------------------",
+   customizationSelected
+ );
   if (!itemId) return null;
 
   const item = allItems[itemId];
@@ -60,10 +66,14 @@ const CreateCustomizedItem = () => {
     // and customization ID from customizationSelected
 
     if (data) {
-      console.log("customized_item_id:", data.id);
+      console.log("---------------------------newly created customized item: ", data);
+      console.log(
+        "customizationSelected-----------------------",
+        customizationSelected
+      );
       for (let i in customizationSelected) {
         if (customizationSelected[i] != 0) {
-          console.log("customization_id:", customizationSelected[i]);
+          console.log("=======customization_id:", customizationSelected[i]);
           const new_customized_selection = await dispatch(
             addCustomizedSelectionToCustomizedItem(
               customizationSelected[i],
@@ -80,6 +90,12 @@ const CreateCustomizedItem = () => {
     <div>
       <form onSubmit={(e) => onSubmit(e)}>
         <h1>customize your drink here</h1>
+        <img
+          src={item?.image_url}
+          width="300px"
+          height="300px"
+          alt="drink"
+        ></img>
         {isSubmitted && (
           <div>
             {errors.map((error) => (
@@ -102,7 +118,6 @@ const CreateCustomizedItem = () => {
           </label>
         </div>
         <Customization
-        
           customizationSelected={customizationSelected}
           setCustomizationSelected={setCustomizationSelected}
         />
@@ -118,3 +133,15 @@ const CreateCustomizedItem = () => {
   );
 };
 export default CreateCustomizedItem;
+/*
+customizationSelected is a reference in memory that is an object containing {category: customization_id}
+for example: {milk:1} or {milk: '7', flavor: '16'} depending on the selected field in CreateCustomizedItem
+CreateCustomizedItem(parent componentt) pass down customizationSelected as props to Customization(child component)
+Within child Customization, any changes being made to customizationSelected is reflected in the parent component as well
+For that reason, even though the selection for customization(changes) is being made inside the Customization(child component),
+the parent component CreateCustomizedItem still have reference to the same object customizationSelected
+
+--------JS pass props as reference, not value.
+This means as long as parent pass down a props via the same reference in memory,
+any changes being to that reference in memory will be reflected in the parent component-----------
+*/

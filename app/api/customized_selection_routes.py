@@ -10,6 +10,7 @@ customized_selection_routes = Blueprint('customized_selection', __name__)
 
 def augment_result(customized_selection):
     new_ele = customized_selection.to_dict()
+    print('\n\n\n\n\n',new_ele,'\n\n\n\n\n\n')
 
     new_ele["name"] = customized_selection.customization.name
     new_ele["category"] = customized_selection.customization.category
@@ -106,11 +107,14 @@ def edit_customized_selection(customized_selection_id):
 
     if form.validate_on_submit():
         customized_selection = CustomizedSelection.query.get(customized_selection_id)
+        print("\n\n\n\n\nWOOOOOOOOOW",customized_selection.customization,"\n\n\n\n\n\n")
         if not customized_selection:
             return {'errors': 'Customization selection does not exist.'}, 400
         else:
             form.populate_obj(customized_selection)
             db.session.commit()
+            print("\n\n\n\n\nWOOOOOOOOOW222",customized_selection.customization,"\n\n\n\n\n\n")
+
             return {'customized_selection': augment_result(customized_selection)}
     else:
         return {'errors': form.errors}, 400

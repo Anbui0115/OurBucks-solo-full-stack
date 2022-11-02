@@ -81,7 +81,7 @@ def create_customized_item():
 @login_required
 def edit_customized_item(customized_item_id):
     """
-    Get customized item by id belong to this current user
+    Edit customized item by id belong to this current user
     """
     user_id = current_user.id
 

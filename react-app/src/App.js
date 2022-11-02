@@ -16,8 +16,7 @@ import GetCurrentOrder from "./components/GetCurrentOrder/GetCurrentOrder";
 import GetOrderItems from "./components/GetOrderItem/GetOrderItem";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Footer from "./components/Footer/Footer";
-
-
+import EditCustomizedItem from "./components/EditCustomizedItem/EditCustomizedItem";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,19 +49,23 @@ function App() {
         <Route path="/menu" exact={true}>
           <GetAllItems />
         </Route>
-        <Route path="/items/:itemId">
+        <Route path="/items/:itemId" exact={true}>
           <GetItemById />
         </Route>
-        <Route path="/order">
+        <Route path="/order" exact={true}>
           <GetCurrentOrder />
         </Route>
-        <Route path="/:orderId/order_items">
+        <Route path="/:orderId/order_items" exact={true}>
           <GetOrderItems />
         </Route>
-        <Route path="/:itemId/customize">
+
+        <Route path="/:itemId/customize" exact={true}>
           <CreateCustomizedItem />
         </Route>
-        <Route path="/my-customized-items">
+        <Route path="/:customizedItem_id/customize/edit" exact={true}>
+          <EditCustomizedItem />
+        </Route>
+        <Route path="/my-customized-items" exact={true}>
           <GetCustomizedItems />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
@@ -72,7 +75,7 @@ function App() {
           <User />
         </ProtectedRoute>
       </Switch>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }

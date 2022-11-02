@@ -69,11 +69,11 @@ export const createCustomizedItem =
   };
 
 export const editCustomizedItem =
-  (customizedItemId, editCustomizedItemData) => async (dispatch) => {
+  (customizedItemId, item_id, name) => async (dispatch) => {
     const res = await fetch(`/api/customized_items/${customizedItemId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(editCustomizedItemData),
+      body: JSON.stringify({ item_id, name }),
     });
 
     if (res.ok) {

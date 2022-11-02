@@ -21,7 +21,7 @@ const GetCustomizedSelections = ({ customized_item_id, editMode }) => {
   const customizedSelection = Object.values(customizedSelectionObj).filter(
     (el) => el.customized_item_id == customized_item_id
   );
-  console.log("customizedSelection ~~~~~~~~", customizedSelection);
+  // console.log("customizedSelection ~~~~~~~~", customizedSelection);
 
   useEffect(() => {
     dispatch(getCustomizedSelections(customized_item_id));

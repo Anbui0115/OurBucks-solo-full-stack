@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect, Link } from "react-router-dom";
 import {
   getAllCustomizedItems,
   deleteCustomizedItem,
@@ -21,7 +21,7 @@ const GetCustomizedItems = () => {
 
   const sessionUser = useSelector((state) => state.session.user);
   const customizedItems = useSelector((state) => state.customized_items);
-  console.log("CUSTOMIZED ITEMS----------------", customizedItems);
+  // console.log("CUSTOMIZED ITEMS----------------", customizedItems);
 
   useEffect(() => {
     dispatch(getAllCustomizedItems());
@@ -36,19 +36,17 @@ const GetCustomizedItems = () => {
 
     setRequestData(new Date());
   };
-  function enableEdit(e) {
-    e.preventDefault();
+  // function enableEdit(e) {
+  //   e.preventDefault();
 
+  //   setEditMode(true);
+  //   // dispatch(editOrderItem(order_item_id)).catch(async (res) => {});
+  // }
+
+  function handleEdit(e, customizedItem_id) {
+    e.preventDefault();
     setEditMode(true);
-    // dispatch(editOrderItem(order_item_id)).catch(async (res) => {});
-  }
-
-  function handleEdit(e) {
-    e.preventDefault();
-    setEditMode(false);
-    // dispatch(editOrderItem(order_item.id, order_item.itemId, quantity)).catch(
-    //   async (res) => {}
-    // );
+    history.push(`/${customizedItem_id}/customize/edit`);
   }
 
   return (
@@ -56,7 +54,6 @@ const GetCustomizedItems = () => {
       {customizedItems &&
         Object.keys(customizedItems).map((el) => (
           <div key={`el.${customizedItems[el].id}`}>
-            {console.log("TEST!!!!!!!!!!!!",[el])}
             <div>
               <img
                 src={customizedItems[el].image_url}
@@ -72,11 +69,17 @@ const GetCustomizedItems = () => {
             <button onClick={(e) => onClickDelete(e, customizedItems[el].id)}>
               Delete this drink
             </button>
-            {!editMode && <button onClick={(e) => enableEdit(e)}>Edit</button>}
-            {editMode && (
+            {/* {!editMode && <button onClick={(e) => enableEdit(e)}>Edit</button>} */}
+            {/* {editMode && (
               <button onClick={(e) => handleEdit(e)}>Confirm Edit</button>
-            )}
-            {/* <Link to={`/:itemId/customize`}>Edit this drink</Link> */}
+            )} */}
+            <div
+              // to={`/${customizedItems[el].id}/customize`}
+              onClick={(e) => handleEdit(e, customizedItems[el].id)}
+            >
+              Edit
+            </div>
+
             <AddToCart el={customizedItems[el]} />
           </div>
         ))}

@@ -81,19 +81,20 @@ export const addCustomizedSelectionToCustomizedItem =
   };
 
 export const editCustomizedSelection =
-  (customized_selection_id, customized_item_id, customization_id) =>
+  (customized_selection_id, customization_id) =>
   async (dispatch) => {
     const res = await fetch(
       `/api/customized_selections/${customized_selection_id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ customized_item_id, customization_id }),
+        body: JSON.stringify({ customization_id }),
       }
     );
 
     if (res.ok) {
       const customizedSelection = await res.json();
+      console.log("this is response inside edit customizedSelection thunk",res);
       dispatch(
         editCustomizedSelectionAction(
           customizedSelection["customized_selection"]
