@@ -25,7 +25,7 @@ export default function GetOrderItems({ currentOrder_id }) {
   }, [dispatch]);
 
   const orderItems = useSelector((state) => state.order_items);
-  console.log("ORDER ITEM INSIDE GET ORDER ITEM----------------", orderItems);
+  // console.log("ORDER ITEM INSIDE GET ORDER ITEM----------------", orderItems);
 
   if (!orderItems) return null;
   if (!sessionUser) return <Redirect to="/" />;
@@ -38,22 +38,21 @@ export default function GetOrderItems({ currentOrder_id }) {
     e.preventDefault();
     setQuantity(quantity);
     setEditMode(true);
-    // dispatch(editOrderItem(order_item_id)).catch(async (res) => {});
   }
 
   function handleEdit(e, order_item) {
     e.preventDefault();
     setEditMode(false);
-    dispatch(editOrderItem(order_item.id, order_item.itemId, quantity)).catch(
-      async (res) => {}
-    );
-  }
+    let item_id;
+    let customized_item_id;
 
-  function handleItemCount(count) {
-    if (parseInt(count) < 1 || isNaN(parseInt(count))) {
-      count = 1;
-      alert("Quantity should be greater than 0");
-    }
+    if (order_item.itemId) item_id = order_item.itemId;
+    if (order_item.customized_item_id)
+      customized_item_id = order_item.customized_item_id;
+    // order_item_id, item_id, customized_item_id, quantity;
+    dispatch(
+      editOrderItem(order_item.id, item_id, customized_item_id, quantity)
+    );
   }
 
   return (
@@ -69,7 +68,7 @@ export default function GetOrderItems({ currentOrder_id }) {
           </div>
           <div>Name: {orderItems[order_item_id].name}</div>
           <div>
-            Quantity:{" "}
+            Quantity:
             {editMode && (
               <input
                 type="number"

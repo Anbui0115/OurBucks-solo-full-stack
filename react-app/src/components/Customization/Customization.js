@@ -59,7 +59,7 @@ const Customization = ({
       (el) => el.category === customizationCategories[i]
     );
   }
-console.log('sortedCustomizations!!!!!!!',sortedCustomizations)
+// console.log('sortedCustomizations!!!!!!!',sortedCustomizations)
   // if (!sortedCustomizations) return null;
   return (
     <>

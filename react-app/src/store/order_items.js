@@ -66,17 +66,19 @@ export const addOrderItemToOrder =
   };
 
 export const editOrderItem =
-  (order_item_id, item_id, quantity) => async (dispatch) => {
+  (order_item_id, item_id,customized_item_id, quantity) => async (dispatch) => {
     const res = await fetch(`/api/order_items/${order_item_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ item_id, quantity }),
+      body: JSON.stringify({ item_id, customized_item_id, quantity }),
     });
 
     if (res.ok) {
       const orderItem = await res.json();
       dispatch(editOrderItemAction(orderItem["order_item"]));
       return orderItem;
+    } else {
+      return res.text();
     }
   };
 
@@ -111,7 +113,7 @@ export default function order_itemsReducer(state = initialState, action) {
       newState[action.order_item.id] = action.order_item;
       return newState;
     case EDIT_ORDER_ITEM:
-      console.log(action.order_item);
+      // console.log(action.order_item);
       newState[action.order_item.id] = action.order_item;
       return newState;
     case DELETE_ORDER_ITEM:

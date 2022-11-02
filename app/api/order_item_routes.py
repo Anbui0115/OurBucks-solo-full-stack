@@ -146,7 +146,7 @@ def edit_order_item(order_item_id):
                     new_ele["image_url"] = order_item.item.image_url
                     new_ele["name"] = order_item.item.name
                     new_ele["price"] = order_item.item.price
-
+                print("RETURN INSIDE EDIT ORDER ITEM BE ROUTE",new_ele)
                 return {'order_item': new_ele}
             else:
                 db.session.delete(order_item)

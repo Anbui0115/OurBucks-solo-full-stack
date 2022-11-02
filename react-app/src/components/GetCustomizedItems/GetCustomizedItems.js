@@ -79,7 +79,7 @@ const GetCustomizedItems = () => {
             >
               Edit
             </div>
-            {console.log("TESTING EL --------------", el,typeof el)}
+            {/* {console.log("TESTING EL --------------", el,typeof el)} */}
             <AddToCart el={el} />
           </div>
         ))}

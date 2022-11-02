@@ -76,8 +76,8 @@ const EditCustomizedItem = () => {
   //   reversedIndexCurrentSelections
   // );
 
-  console.log("allCustomizedItems----------", allCustomizedItems);
-  console.log("thisCustomizedItem", thisCustomizedItem);
+  // console.log("allCustomizedItems----------", allCustomizedItems);
+  // console.log("thisCustomizedItem", thisCustomizedItem);
 
   if (!sessionUser) Redirect("/");
   if (!thisCustomizedItem) return null;

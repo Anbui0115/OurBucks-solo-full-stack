@@ -76,7 +76,7 @@ export const addCustomizedSelectionToCustomizedItem =
       );
       return data;
     } else {
-      console.log(res.text());
+      // console.log(res.text());
     }
   };
 
@@ -94,7 +94,7 @@ export const editCustomizedSelection =
 
     if (res.ok) {
       const customizedSelection = await res.json();
-      console.log("this is response inside edit customizedSelection thunk",res);
+      // console.log("this is response inside edit customizedSelection thunk",res);
       dispatch(
         editCustomizedSelectionAction(
           customizedSelection["customized_selection"]
@@ -142,7 +142,7 @@ export default function customized_selectionsReducer(
       newState[action.customized_selection.id] = action.customized_selection;
       return newState;
     case EDIT_CUSTOMIZED_SELECTION:
-      console.log(action.customized_selection);
+      // console.log(action.customized_selection);
       newState[action.customized_selection.id] = action.customized_selection;
       return newState;
     case DELETE_CUSTOMIZED_SELECTION:

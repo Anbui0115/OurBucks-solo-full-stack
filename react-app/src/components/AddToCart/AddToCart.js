@@ -6,7 +6,7 @@ import { createOrder, addToOrderThunk } from "../../store/orders";
 export default function AddToOrder({ el }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log("this is el in Add to order!!!!!!!", el, typeof el);
+  // console.log("this is el in Add to order!!!!!!!", el, typeof el);
   let item_id = undefined;
   let customized_item_id = undefined;
   if (typeof el === "number") {

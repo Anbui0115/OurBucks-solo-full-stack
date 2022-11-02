@@ -115,7 +115,7 @@ export const addToOrderThunk =
     });
     if (response.ok) {
       const data = await response.json();
-      console.log("data inside add to Order Thunk'''''''''''''''", data);
+      // console.log("data inside add to Order Thunk'''''''''''''''", data);
       if (data.errors) {
         return data.errors;
       }
@@ -123,7 +123,7 @@ export const addToOrderThunk =
       onHandleAddToOrderSuccess();
       return response;
     } else {
-      console.log(response.text());
+      // console.log(response.text());
     }
   };
 

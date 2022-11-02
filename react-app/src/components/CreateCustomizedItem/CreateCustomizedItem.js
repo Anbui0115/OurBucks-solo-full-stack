@@ -35,10 +35,10 @@ const CreateCustomizedItem = () => {
   const allItems = useSelector((state) => state.items);
   const sessionUser = useSelector((state) => state.session.user);
   const { itemId } = useParams();
- console.log(
-   "customizationSelected-----------------------",
-   customizationSelected
- );
+//  console.log(
+//    "customizationSelected-----------------------",
+//    customizationSelected
+//  );
   if (!itemId) return null;
 
   const item = allItems[itemId];
@@ -66,14 +66,14 @@ const CreateCustomizedItem = () => {
     // and customization ID from customizationSelected
 
     if (data) {
-      console.log("---------------------------newly created customized item: ", data);
-      console.log(
-        "customizationSelected-----------------------",
-        customizationSelected
-      );
+      // console.log("---------------------------newly created customized item: ", data);
+      // console.log(
+      //   "customizationSelected-----------------------",
+      //   customizationSelected
+      // );
       for (let i in customizationSelected) {
         if (customizationSelected[i] != 0) {
-          console.log("=======customization_id:", customizationSelected[i]);
+          // console.log("=======customization_id:", customizationSelected[i]);
           const new_customized_selection = await dispatch(
             addCustomizedSelectionToCustomizedItem(
               customizationSelected[i],
