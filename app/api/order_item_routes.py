@@ -74,6 +74,7 @@ def add_order_item(order_id):
     user_id = current_user.id
 
     form = AddOrderItem()
+    print('FORM~~~~~~~~~~~~~~~~~~',form)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():

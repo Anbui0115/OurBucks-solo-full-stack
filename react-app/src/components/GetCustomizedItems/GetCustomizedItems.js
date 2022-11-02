@@ -79,8 +79,8 @@ const GetCustomizedItems = () => {
             >
               Edit
             </div>
-
-            <AddToCart el={customizedItems[el]} />
+            {console.log("TESTING EL --------------", el,typeof el)}
+            <AddToCart el={el} />
           </div>
         ))}
     </div>

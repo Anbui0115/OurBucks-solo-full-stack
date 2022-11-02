@@ -6,17 +6,30 @@ import { createOrder, addToOrderThunk } from "../../store/orders";
 export default function AddToOrder({ el }) {
   const dispatch = useDispatch();
   const history = useHistory();
-
+  console.log("this is el in Add to order!!!!!!!", el, typeof el);
+  let item_id = undefined;
+  let customized_item_id = undefined;
+  if (typeof el === "number") {
+    item_id = el;
+  } else {
+    customized_item_id = el;
+  }
   function onHandleAddToCartSuccess() {
     history.push("/order");
   }
   async function handleAddToOrder(e, el) {
     e.preventDefault();
-    //   orderItemId, order_id, quantity, onHandleAddToOrderSuccess;
-    // //how do we find order_id?
+    //   item_id,customized_item_id, order_id, quantity, onHandleAddToOrderSuccess;
+
     const order = await dispatch(createOrder());
     await dispatch(
-      addToOrderThunk(el, order.order.id, 1, onHandleAddToCartSuccess)
+      addToOrderThunk(
+        item_id,
+        customized_item_id,
+        order.order.id,
+        1,
+        onHandleAddToCartSuccess
+      )
     );
   }
   return (

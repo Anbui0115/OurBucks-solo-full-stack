@@ -93,10 +93,17 @@ export const clearAllOrdersThunk = () => async (dispatch) => {
 // };
 
 export const addToOrderThunk =
-  (item_id, order_id, quantity, onHandleAddToOrderSuccess) =>
+  (
+    item_id,
+    customized_item_id,
+    order_id,
+    quantity,
+    onHandleAddToOrderSuccess
+  ) =>
   async (dispatch) => {
     const body = JSON.stringify({
       item_id,
+      customized_item_id,
       quantity,
     });
     const response = await fetch(`/api/order_items/order/${order_id}`, {
@@ -108,6 +115,7 @@ export const addToOrderThunk =
     });
     if (response.ok) {
       const data = await response.json();
+      console.log("data inside add to Order Thunk'''''''''''''''", data);
       if (data.errors) {
         return data.errors;
       }
