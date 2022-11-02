@@ -40,12 +40,12 @@ function ProfileButton({ user }) {
           >
             Your Customized Drinks
           </div>
-          <div
+          {/* <div
             className="your-review"
             onClick={() => history.push("/reviews/current")}
           >
             Your Reviews
-          </div>
+          </div> */}
           <div
             className="your-review"
             onClick={() => history.push("/order")}

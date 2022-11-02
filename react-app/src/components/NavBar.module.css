@@ -1,0 +1,107 @@
+.outer_most {
+  border-bottom: 2px solid rgba(206, 199, 199, 0.5);
+  width: 100%;
+  display: flex;
+
+  box-shadow: rgba(0, 0, 0, 0) 0.87;
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+  font-weight: 400;
+  height: 100px;
+  letter-spacing: -0.16px;
+  line-height: 24px;
+  margin: 0px 187px;
+  text-size-adjust: 100%;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.outer_nav {
+  /* border: 1px solid pink; */
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  max-width: 1440px;
+  width: 92%;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  color: rgb(34, 34, 34);
+  font-size: 16px;
+  height: 100px;
+  line-height: 24px;
+  margin: auto;
+  padding-bottom: 12px;
+  /* padding-left: 36px;
+  padding-right: 36px; */
+  padding-top: 12px;
+  text-size-adjust: 100%;
+}
+
+.nav_bar {
+  border: 1px solid hotpink;
+  display: flex;
+  flex-direction: row;
+  margin: none;
+  width: 100%;
+  min-height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  color: rgb(34, 34, 34);
+  font-size: 16px;
+  height: 100px;
+  line-height: 24px;
+  text-size-adjust: 100%;
+}
+.left-nav {
+  border: 1px solid blue;
+  /* display: flex;
+  flex-direction: row;
+  margin: none;
+  min-height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  color: rgb(34, 34, 34);
+  font-size: 16px;
+  line-height: 24px;
+  text-size-adjust: 100%; */
+}
+.right-nav {
+  border: 1px solid green;
+}
+.home_logo {
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 100px;
+  line-height: 24px;
+  text-size-adjust: 100%;
+  width: 100px;
+  /* border: 2px solid black; */
+  align-self: center;
+}
+
+.profile_dropdown {
+  border-radius: 50 px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 12px 6px 12px 12px;
+}
+
+.profile_dropdown:hover {
+  border-radius: 50 px;
+  cursor: pointer;
+  padding: 12px 6px 12px 12px;
+  background-color: grey;
+}
+
+.nav_logo {
+  /* border: 1px solid rgb(91, 91, 188); */
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  display: flex;
+}

@@ -40,7 +40,7 @@ const GetItemById = (props) => {
           Description: {item.description} <br></br>
           Category: {item.drink_category} <br></br>
           <br></br>
-          <div>review shown here</div>
+          {/* <div>review shown here</div> */}
           {sessionUser && (
             <div>
               {/* <Link to={`/items/${item.id}/customize`} key={item.id} s>
