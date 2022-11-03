@@ -2,10 +2,82 @@
   border: 1px solid orange;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .create_div {
-  border: 1px solid slateblue;
-  width: 90%;
+  width: 100%;
+}
+.error_wrapper {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.error {
+  color: rgb(172, 22, 22);
+}
+.drink_name {
+  /* border: 1px solid slateblue; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+.name {
+  /* border: 1px solid slateblue; */
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  text-align: center;
+}
+.name_input {
+  border: 1px solid rgb(176, 169, 169);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 400px;
+  border-radius: 50px;
+  padding-left: 10px;
+}
+.custom {
+  /* border: 1px solid slateblue; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+.button_div {
+  border: 1ps solid red;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.addToCartButton_wrapper {
+  width: 270px;
+  font-size: 20px;
+  font-weight: 500;
+  height: 60px;
+  border-radius: 999px;
+  background-color: #1f3933;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.addToCartButton {
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  transition: 0.5s;
+  cursor: pointer;
+  background: transparent;
+  border: none;
 }

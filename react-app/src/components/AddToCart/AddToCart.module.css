@@ -12,6 +12,8 @@
 }
 
 .addToCartButton {
+  font-size: 20px;
+  font-weight: 500;
   color: white;
   transition: 0.5s;
   cursor: pointer;

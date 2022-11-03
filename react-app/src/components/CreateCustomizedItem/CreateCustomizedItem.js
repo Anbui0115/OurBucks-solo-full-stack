@@ -36,10 +36,7 @@ const CreateCustomizedItem = () => {
   const allItems = useSelector((state) => state.items);
   const sessionUser = useSelector((state) => state.session.user);
   const { itemId } = useParams();
-  //  console.log(
-  //    "customizationSelected-----------------------",
-  //    customizationSelected
-  //  );
+
   if (!itemId) return null;
 
   const item = allItems[itemId];
@@ -67,11 +64,6 @@ const CreateCustomizedItem = () => {
     // and customization ID from customizationSelected
 
     if (data) {
-      // console.log("---------------------------newly created customized item: ", data);
-      // console.log(
-      //   "customizationSelected-----------------------",
-      //   customizationSelected
-      // );
       for (let i in customizationSelected) {
         if (customizationSelected[i] != 0) {
           // console.log("=======customization_id:", customizationSelected[i]);
@@ -89,13 +81,6 @@ const CreateCustomizedItem = () => {
 
   return (
     <div className={styles.create_drink_body}>
-      {/* <img
-            src={item?.image_url}
-            width="300px"
-            height="300px"
-            alt="drink"
-          ></img> */}
-
       <div className={item_detail_styles.item_top_page}>
         <div className={item_detail_styles.item_img_container}>
           <img
@@ -117,19 +102,23 @@ const CreateCustomizedItem = () => {
       {/* ----------------------- */}
       <div className={styles.create_div}>
         <form onSubmit={(e) => onSubmit(e)}>
-          {isSubmitted && (
-            <div>
-              {errors.map((error) => (
-                <div className="each-error" key={error}>
-                  {error}
-                </div>
-              ))}
-            </div>
-          )}
-          <div>
+          <div className={styles.error_wrapper}>
+            {isSubmitted && (
+              <div className={styles.error}>
+                {errors.map((error) => (
+                  <div className="each-error" key={error}>
+                    {error}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className={styles.drink_name}>
             <label>
-              Name your drink
+              <div className={styles.name}>Name your drink</div>
               <input
+                className={styles.name_input}
                 type="text"
                 name="name"
                 value={name}
@@ -138,17 +127,24 @@ const CreateCustomizedItem = () => {
               />
             </label>
           </div>
-          <Customization
-            customizationSelected={customizationSelected}
-            setCustomizationSelected={setCustomizationSelected}
-          />
-          <button
-            className="create-item-submit-button"
-            type="submit"
-            disabled={isSubmitted && errors.length > 0}
-          >
-            Save
-          </button>
+          <div className={styles.custom}>
+            <Customization
+              customizationSelected={customizationSelected}
+              setCustomizationSelected={setCustomizationSelected}
+            />
+          </div>
+
+          <div className={styles.button_div}>
+            <div className={styles.addToCartButton_wrapper}>
+              <button
+                className={styles.addToCartButton}
+                type="submit"
+                disabled={isSubmitted && errors.length > 0}
+              >
+                Save
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </div>
