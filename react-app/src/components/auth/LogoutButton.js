@@ -4,7 +4,7 @@ import { clearAllCustomizedItemsThunk } from "../../store/customizedItem";
 import { clearAllOrdersThunk } from "../../store/orders";
 import { clearAllOrderItemsThunk } from "../../store/order_items";
 import { logout } from "../../store/session";
-
+import styles from "./LogoutButton.module.css";
 const LogoutButton = () => {
   const dispatch = useDispatch();
   const onLogout = async (e) => {
@@ -14,7 +14,7 @@ const LogoutButton = () => {
     await dispatch(clearAllOrderItemsThunk());
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button onClick={onLogout} className={styles.logout}>Logout</button>;
 };
 
 export default LogoutButton;

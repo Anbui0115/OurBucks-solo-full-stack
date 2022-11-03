@@ -1,0 +1,23 @@
+.logout{
+    border: none;
+    background-color: transparent;
+      color: black;
+
+
+        box-sizing: border-box;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.87);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  /* height: 100px; */
+  /* width: 78px; */
+  letter-spacing: 1.4px;
+  line-height: 21px;
+  /* padding-bottom: 40px;
+  padding-top: 40px; */
+  text-align: left;
+  text-decoration: none;
+  text-size-adjust: 100%;
+  text-transform: uppercase;
+}
