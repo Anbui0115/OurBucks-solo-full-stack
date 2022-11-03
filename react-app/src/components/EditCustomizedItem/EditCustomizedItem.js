@@ -13,6 +13,8 @@ import {
   editCustomizedItem,
   getAllCustomizedItems,
 } from "../../store/customizedItem";
+import styles from "../CreateCustomizedItem/CreateCustomizedItem.module.css";
+import item_detail_styles from "../GetItemById/GetItemById.module.css";
 
 const EditCustomizedItem = () => {
   const dispatch = useDispatch();
@@ -34,7 +36,7 @@ const EditCustomizedItem = () => {
   useEffect(() => {
     dispatch(getAllCustomizedItems());
     dispatch(getAllCustomizations());
-    dispatch(getCustomizedSelections(thisCustomizedItem.id));
+    dispatch(getCustomizedSelections(thisCustomizedItem?.id));
   }, [dispatch]);
 
   useEffect(() => {
@@ -59,25 +61,12 @@ const EditCustomizedItem = () => {
   const customizedSelectionForThisCustomizedItem = Object.values(
     allCustomizedSelections
   ).filter((el) => el.customized_item_id == thisCustomizedItem.id);
-  // console.log(
-  //   "customizedSelectionForThisCustomizedItem=========================",
-  //   customizedSelectionForThisCustomizedItem
-  // );
+
   const reversedIndexCurrentSelections = {};
   customizedSelectionForThisCustomizedItem.forEach((currentSelection) => {
     reversedIndexCurrentSelections[currentSelection.category] =
       currentSelection;
   });
-  // const flavor = reversedIndexCurrentSelections.flavor;
-  // const milk = reversedIndexCurrentSelections.milk;
-  // const ice = reversedIndexCurrentSelections.ice;
-  // console.log(
-  //   "current selection by category: -------",
-  //   reversedIndexCurrentSelections
-  // );
-
-  // console.log("allCustomizedItems----------", allCustomizedItems);
-  // console.log("thisCustomizedItem", thisCustomizedItem);
 
   if (!sessionUser) Redirect("/");
   if (!thisCustomizedItem) return null;
@@ -142,49 +131,76 @@ const EditCustomizedItem = () => {
   };
 
   return (
-    <div>
-      <h1>EDIT YOUR DRINK</h1>
-      <img
+    <div className={styles.create_drink_body}>
+      {/* <h1>EDIT YOUR DRINK</h1> */}
+      {/* <img
         src={thisCustomizedItem?.image_url}
         width="300px"
         height="300px"
         alt="drink"
-      ></img>
-      <form onSubmit={(e) => onEdit(e)}>
-        {isSubmitted && (
-          <div>
-            {errors.map((error) => (
-              <div className="each-error" key={error}>
-                {error}
-              </div>
-            ))}
-          </div>
-        )}
-        <div>
-          <label>
-            Name your drink
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </label>
+      ></img> */}
+
+      <div className={item_detail_styles.item_top_page}>
+        <div className={item_detail_styles.item_img_container}>
+          <img
+            src={thisCustomizedItem?.image_url}
+            className={item_detail_styles.item_img}
+            alt="drink"
+          ></img>
         </div>
-        <Customization
-          thisCustomizedItem_id={thisCustomizedItem.id || undefined}
-          customizationSelected={customizationSelected}
-          setCustomizationSelected={setCustomizationSelected}
-        />
-        <button
-          className="create-item-submit-button"
-          type="submit"
-          disabled={isSubmitted && errors.length > 0}
-        >
-          Save
-        </button>
-      </form>
+
+        <div className={item_detail_styles.item_name_calories}>
+          <div className={item_detail_styles.item_name}>
+            <div>{thisCustomizedItem?.name}</div>
+          </div>
+          <div className={item_detail_styles.item_calories}>
+            {thisCustomizedItem?.calories} calories
+          </div>
+        </div>
+      </div>
+      <div className={styles.create_div}>
+        <form onSubmit={(e) => onEdit(e)}>
+          {isSubmitted && (
+            <div className={styles.error_wrapper}>
+              {errors.map((error) => (
+                <div className={styles.error} key={error}>
+                  {error}
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className={styles.drink_name}>
+            <label>
+              <div className={styles.name}>Name your drink</div>
+              <input
+                className={styles.name_input}
+                type="text"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className={styles.custom}>
+            <Customization
+              customizationSelected={customizationSelected}
+              setCustomizationSelected={setCustomizationSelected}
+            />
+          </div>
+
+          <div className={styles.button_div}>
+            <button
+              className={styles.addToCartButton_wrapper}
+              type="submit"
+              disabled={isSubmitted && errors.length > 0}
+            >
+              <div className={styles.addToCartButton}>Save </div>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

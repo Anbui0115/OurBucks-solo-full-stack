@@ -102,17 +102,15 @@ const CreateCustomizedItem = () => {
       {/* ----------------------- */}
       <div className={styles.create_div}>
         <form onSubmit={(e) => onSubmit(e)}>
-          <div className={styles.error_wrapper}>
-            {isSubmitted && (
-              <div className={styles.error}>
-                {errors.map((error) => (
-                  <div className="each-error" key={error}>
-                    {error}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          {isSubmitted && (
+            <div className={styles.error_wrapper}>
+              {errors.map((error) => (
+                <div className={styles.error} key={error}>
+                  {error}
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className={styles.drink_name}>
             <label>
@@ -135,15 +133,13 @@ const CreateCustomizedItem = () => {
           </div>
 
           <div className={styles.button_div}>
-            <div className={styles.addToCartButton_wrapper}>
-              <button
-                className={styles.addToCartButton}
-                type="submit"
-                disabled={isSubmitted && errors.length > 0}
-              >
-                Save
-              </button>
-            </div>
+            <button
+              className={styles.addToCartButton_wrapper}
+              type="submit"
+              disabled={isSubmitted && errors.length > 0}
+            >
+              <div className={styles.addToCartButton}>Save </div>
+            </button>
           </div>
         </form>
       </div>
