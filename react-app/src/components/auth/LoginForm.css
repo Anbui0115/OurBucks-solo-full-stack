@@ -1,0 +1,195 @@
+.login-form {
+  margin-top: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 430px;
+  line-height: 19.6px;
+  max-width: 100%;
+  width: 362px;
+  cursor: default;
+  min-height: 48px;
+  /* border-radius: 24px;  HANDLED IN MODAL.CSS*/
+  background-color: transparent;
+  color: rgb(34, 34, 34);
+  z-index: 200;
+}
+
+.sign-in-and-register {
+  display: flex;
+  flex-direction: row;
+  color: #222222;
+  /* border: 1px solid black; */
+  justify-content: space-between;
+  height: 40px;
+  align-items: center;
+  align-content: center;
+}
+
+.login-text-container {
+  display: flex;
+  /* border: 1px solid salmon; */
+  /* justify-content: center; */
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  margin-left: 10px;
+  margin-right: 20px;
+  color: rgb(34, 34, 34);
+}
+
+.text-login {
+  /* border: 1px slateblue solid; */
+  margin: 10px;
+  font-size: 21px;
+  font-weight: 600;
+  align-self: center;
+}
+
+/* .register {
+  border: dashed 1px purple;
+  margin: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  align-self: center;
+  justify-content: space-evenly;
+  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
+    Arial, sans-serif;
+} */
+
+/* .register-text {
+  border: 2px black solid;
+  justify-self: flex-end;
+  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
+    Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 16px;
+  border-radius: 40px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: rgb(34, 34, 34);
+} */
+
+.login-container {
+  /* border: 1px solid black; */
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  color: rgb(34, 34, 34);
+  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
+    Arial, sans-serif;
+}
+
+.login-errors {
+  /* border: 1px red dashed; */
+  color: rgb(205, 47, 47);
+  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
+    Arial, sans-serif;
+  padding: 8px 8px;
+  cursor: auto;
+}
+
+.input-field {
+  /* border: 1px solid salmon; */
+  display: flex;
+  flex-direction: column;
+  margin: 0px 0px 16px;
+  color: rgb(34, 34, 34);
+  justify-content: center;
+  align-items: center;
+  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
+    Arial, sans-serif;
+}
+
+.input {
+  /* border: 1px solid royalblue; */
+  /* border-radius: 13px; */
+  display: flex;
+  flex-direction: column;
+  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
+    Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgb(34, 34, 34);
+  width: 100%;
+}
+
+.credential {
+  /* border: 1px solid black; */
+  display: flex;
+  width: 92%;
+  height: 30px;
+  border: 1px solid lightgrey;
+  border-radius: 7px;
+  color: rgb(34, 34, 34);
+  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
+    Arial, sans-serif;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* .text {
+  align-self: center;
+} */
+
+.login-button {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  border: none;
+  background-color: #222222;
+  color: white;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 12px 18px;
+  height: 48px;
+  font-size: 15pt;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-sizing: border-box;
+  line-height: 24px;
+  min-height: 48px;
+  min-width: 48px;
+  text-align: center;
+  width: 324px;
+  border-radius: 50px;
+}
+
+.demo-user-button {
+  margin-top: 15px;
+}
+
+@media (min-width: 744px) {
+  .login-form {
+    min-height: 64px;
+  }
+}
+
+.login-button-modal {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
+    Arial, sans-serif;
+  box-sizing: border-box;
+  color: rgb(34, 34, 34);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  height: 36px;
+  line-height: 18px;
+  width: 73px;
+}
