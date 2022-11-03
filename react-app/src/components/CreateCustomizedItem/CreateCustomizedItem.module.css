@@ -1,0 +1,11 @@
+.create_drink_body {
+  border: 1px solid orange;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.create_div {
+  border: 1px solid slateblue;
+  width: 90%;
+}

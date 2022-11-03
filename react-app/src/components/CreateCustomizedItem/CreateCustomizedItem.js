@@ -8,7 +8,8 @@ import { useHistory, useParams } from "react-router-dom";
 import { addCustomizedSelectionToCustomizedItem } from "../../store/customized_selections";
 import Customization from "../Customization/Customization";
 import { getAllItems } from "../../store/items";
-
+import styles from "./CreateCustomizedItem.module.css";
+import item_detail_styles from "../GetItemById/GetItemById.module.css";
 
 const CreateCustomizedItem = () => {
   const dispatch = useDispatch();
@@ -35,10 +36,10 @@ const CreateCustomizedItem = () => {
   const allItems = useSelector((state) => state.items);
   const sessionUser = useSelector((state) => state.session.user);
   const { itemId } = useParams();
-//  console.log(
-//    "customizationSelected-----------------------",
-//    customizationSelected
-//  );
+  //  console.log(
+  //    "customizationSelected-----------------------",
+  //    customizationSelected
+  //  );
   if (!itemId) return null;
 
   const item = allItems[itemId];
@@ -87,48 +88,69 @@ const CreateCustomizedItem = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <h1>customize your drink here</h1>
-        <img
-          src={item?.image_url}
-          width="300px"
-          height="300px"
-          alt="drink"
-        ></img>
-        {isSubmitted && (
-          <div>
-            {errors.map((error) => (
-              <div className="each-error" key={error}>
-                {error}
-              </div>
-            ))}
-          </div>
-        )}
-        <div>
-          <label>
-            Name your drink
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </label>
+    <div className={styles.create_drink_body}>
+      {/* <img
+            src={item?.image_url}
+            width="300px"
+            height="300px"
+            alt="drink"
+          ></img> */}
+
+      <div className={item_detail_styles.item_top_page}>
+        <div className={item_detail_styles.item_img_container}>
+          <img
+            src={item?.image_url}
+            className={item_detail_styles.item_img}
+          ></img>
         </div>
-        <Customization
-          customizationSelected={customizationSelected}
-          setCustomizationSelected={setCustomizationSelected}
-        />
-        <button
-          className="create-item-submit-button"
-          type="submit"
-          disabled={isSubmitted && errors.length > 0}
-        >
-          Save
-        </button>
-      </form>
+
+        <div className={item_detail_styles.item_name_calories}>
+          <div className={item_detail_styles.item_name}>
+            <div>{item?.name}</div>
+          </div>
+          <div className={item_detail_styles.item_calories}>
+            {item?.calories} calories
+          </div>
+        </div>
+      </div>
+
+      {/* ----------------------- */}
+      <div className={styles.create_div}>
+        <form onSubmit={(e) => onSubmit(e)}>
+          {isSubmitted && (
+            <div>
+              {errors.map((error) => (
+                <div className="each-error" key={error}>
+                  {error}
+                </div>
+              ))}
+            </div>
+          )}
+          <div>
+            <label>
+              Name your drink
+              <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <Customization
+            customizationSelected={customizationSelected}
+            setCustomizationSelected={setCustomizationSelected}
+          />
+          <button
+            className="create-item-submit-button"
+            type="submit"
+            disabled={isSubmitted && errors.length > 0}
+          >
+            Save
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
