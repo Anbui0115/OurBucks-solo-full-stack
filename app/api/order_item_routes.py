@@ -126,6 +126,7 @@ def edit_order_item(order_item_id):
     form = AddOrderItem()
     print('FORM INSIDE ADD ORDER ITEM-----------------------',form)
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('\n\n\n\n', form.data, '\n\n\n\n\n')
 
     if form.validate_on_submit():
         order_item = OrderItem.query.get(order_item_id)

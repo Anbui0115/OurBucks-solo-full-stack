@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 
 import { getCurrentOrders } from "../../store/orders";
 import GetOrderItems from "../GetOrderItem/GetOrderItem";
+import styles from "./GetCurrentOrder.module.css";
 
 const GetCurrentOrder = () => {
   const dispatch = useDispatch();
@@ -19,14 +20,17 @@ const GetCurrentOrder = () => {
   // console.log("CURRENT ORDER---------------", currentOrder);
   if (!currentOrder) return null;
   return (
-    <>
-      <h1>here's current Order</h1>
-      <div>currentOrder.id: {currentOrder.id}</div>
-      <div>currentOrder.status: {currentOrder.status}</div>
-      <div>currentOrder.userId: {currentOrder.user_id}</div>
-      <div>order item inside your order:</div>
-      <GetOrderItems currentOrder_id={currentOrder.id} />
-    </>
+    <div className={styles.order_container}>
+      <div className={styles.review_order_container}>
+        <div className={styles.review_order_header}>
+          <h1>Review Order</h1>
+        </div>
+
+        <div className={styles.order_item_container}>
+          <GetOrderItems currentOrder_id={currentOrder.id} />
+        </div>
+      </div>
+    </div>
   );
 };
 export default GetCurrentOrder;

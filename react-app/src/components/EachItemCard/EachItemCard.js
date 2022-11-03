@@ -22,7 +22,7 @@ const EachItemCard = ({ item }) => {
             <div className={styles.drink_name}>{item.name}</div>
             <div className={styles.drink_price_container}>
               <span className={styles.drink_price}>
-                ${dollarFormmatter.format(item.price)}
+                {dollarFormmatter.format(item.price)}
               </span>
             </div>
           </div>

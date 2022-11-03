@@ -53,13 +53,20 @@ export default function GetOrderItems({ currentOrder_id }) {
 
   return (
     <div>
-      {Object.keys(orderItems).map((order_item_id) => (
+      {Object.keys(orderItems).map((order_item_id) => 
         //
-        <EachOrderItem
-          order_item_id={order_item_id}
-          currentOrder_id={currentOrder_id}
-        />
-      ))}
+        {
+          let allOrderItems = [];
+          for (let i = 1; i <= orderItems[order_item_id].quantity; i++) {
+            
+            allOrderItems.push(<EachOrderItem
+              order_item_id={order_item_id}
+              currentOrder_id={currentOrder_id}
+            />)
+          }
+          return allOrderItems;
+        }
+      )}
     </div>
   );
 }

@@ -67,10 +67,12 @@ export const addOrderItemToOrder =
 
 export const editOrderItem =
   (order_item_id, item_id,customized_item_id, quantity) => async (dispatch) => {
+    const bodyJSON = { item_id, customized_item_id, quantity };
+    console.log(bodyJSON);
     const res = await fetch(`/api/order_items/${order_item_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ item_id, customized_item_id, quantity }),
+      body: JSON.stringify(bodyJSON),
     });
 
     if (res.ok) {
@@ -78,6 +80,7 @@ export const editOrderItem =
       dispatch(editOrderItemAction(orderItem["order_item"]));
       return orderItem;
     } else {
+      console.log(res.text())
       return res.text();
     }
   };

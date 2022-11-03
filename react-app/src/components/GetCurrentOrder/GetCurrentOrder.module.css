@@ -1,0 +1,28 @@
+.order_container {
+    /* border: 1px solid coral; */
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    background-color: #f9f9f9;
+}
+
+.order_item_container {
+    /* border: 1px solid coral; */
+    width: 100%;
+}
+
+.review_order_container {
+    /* border: 1px solid purple; */
+    width: 80%;
+}
+
+.review_order_header {
+    /* border: 1px solid brown; */
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+
+
