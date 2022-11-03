@@ -1,27 +1,18 @@
-
-.addToCartButton{
-    display: flex;
-  flex-direction: row;
-  border: none;
-  background-color: #222222;
-  color: white;
+.addToCartButton_wrapper {
+  width: 270px;
+  font-size: 20px;
+  font-weight: 500;
+  height: 60px;
+  border-radius: 999px;
+  background-color: #1f3933;
+  display: flex;
   justify-content: center;
-  margin-top: 20px;
-  
-  height: 48px;
-  font-size: 15pt;
   align-items: center;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
-    Arial, sans-serif;
+}
+
+.addToCartButton {
+  color: white;
+  transition: 0.5s;
   cursor: pointer;
-  box-sizing: border-box;
-  line-height: 24px;
-  min-height: 48px;
-  min-width: 48px;
-  text-align: center;
-  width: 324px;
-  border-radius: 50px;
 }

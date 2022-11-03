@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-// import styles from "../AddToCart/AddToCart.module.css"
+import styles from "../AddToCart/AddToCart.module.css";
 import { createOrder, addToOrderThunk } from "../../store/orders";
 
 export default function AddToOrder({ el }) {
@@ -33,13 +33,13 @@ export default function AddToOrder({ el }) {
     );
   }
   return (
-    <div>
-      <button
-        //   className={styles.addToCartButton}
+    <div className={styles.addToCartButton_wrapper}>
+      <div
+        className={styles.addToCartButton}
         onClick={(e) => handleAddToOrder(e, el)}
       >
         Add To Order
-      </button>
+      </div>
     </div>
   );
 }
