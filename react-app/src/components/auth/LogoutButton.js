@@ -14,7 +14,13 @@ const LogoutButton = () => {
     await dispatch(clearAllOrderItemsThunk());
   };
 
-  return <button onClick={onLogout} className={styles.logout}>Logout</button>;
+  return (
+    <div className={styles.logout_button}>
+      <button onClick={onLogout} className={styles.logout}>
+        Logout
+      </button>
+    </div>
+  );
 };
 
 export default LogoutButton;
