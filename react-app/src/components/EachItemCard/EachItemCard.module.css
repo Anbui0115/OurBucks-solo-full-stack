@@ -1,0 +1,75 @@
+.all_drink_display {
+  /* border: 2px solid black; */
+  width: 289px;
+  margin-bottom: 15px;
+  height: 400px;
+}
+.img_container {
+  /* background-color: #efefef; */
+  /* border: 2px solid black; */
+  border-radius: 12px;
+  height: 265px;
+}
+.drink_img {
+  width: 100%;
+  height: 265px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.info_container {
+  /* border: 1px rgb(63, 205, 181) solid; */
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  width: 100%;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+  padding: 4px 4px;
+}
+.drink_info {
+  /* border: 1px dashed firebrick; */
+  margin-right: 3px;
+  padding-top: 5px;
+  width: 390px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.drink_name {
+  /* border: 1px solid rgb(56, 34, 178); */
+  color: rgb(96, 91, 91);
+  margin: 6px 0;
+  padding-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 390px;
+  height: 15x;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+
+.drink_price_container {
+  /* border: 1px solid green; */
+  font-weight: bold;
+  padding-top: 10px;
+  /* padding-right: 3px; */
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.drink_price {
+  /* border: 1px dotted hotpink; */
+  margin-right: 5px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+
+a {
+  /* border: 3px solid red; */
+  text-decoration: none;
+  color: black;
+}

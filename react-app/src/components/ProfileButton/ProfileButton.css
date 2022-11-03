@@ -1,18 +1,14 @@
 dropdown-menu {
-  /* border: 1px solid green; */
+  border: 1px solid green;
   position: relative;
   color: black;
   cursor: pointer;
   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
     sans-serif;
   border-radius: 50px;
+  text-align: right;
 }
-#profile-avatar-dropdown {
-  /* border: 3px solid green; */
-  border-radius: 40px;
-  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
-    sans-serif;
-}
+
 .dropdown-menu:hover,
 .dropdown-menu:focus {
   box-shadow: 2px 2px 2px 0px rgba(197, 189, 189, 0.618);
@@ -25,7 +21,7 @@ dropdown-menu {
   position: absolute;
   right: 55px;
   color: black;
-  top: 5.0rem;
+  top: 5rem;
   background-color: white;
   padding: 0.6rem;
   box-shadow: 0 2px 5px 0 rgb(0, 0, 0, 0.2);
@@ -35,7 +31,7 @@ dropdown-menu {
   cursor: pointer;
   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
     sans-serif;
-    z-index: 10;
+  z-index: 10;
 }
 .your-listing,
 .your-review,

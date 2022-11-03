@@ -23,11 +23,10 @@ const NavBar = () => {
                 ></img>
               </NavLink>
             </div>
-            <div className={styles.menu_text}>
-              <NavLink to="/menu" exact={true} activeClassName="active">
-                Menu
-              </NavLink>
-            </div>
+
+            <NavLink to="/menu" exact={true} activeClassName="active">
+              <div className={styles.menu_text}>Menu</div>
+            </NavLink>
           </div>
 
           <div className={styles.right_bar}>

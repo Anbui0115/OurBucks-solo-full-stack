@@ -12,7 +12,6 @@
   height: 100px;
   letter-spacing: -0.16px;
   line-height: 24px;
-  /* margin: 0px 187px; */
   text-size-adjust: 100%;
   margin-bottom: 30px;
   align-items: center;
@@ -21,6 +20,7 @@
 
 .outer_nav {
   /* border: 1px solid blue; */
+  /* border: 1px solid rgb(70, 144, 70); */
   display: flex;
   flex-direction: row;
   position: relative;
@@ -66,18 +66,19 @@
   color: rgb(34, 34, 34);
   font-size: 16px;
   height: 100px;
-  width: 180px;
+  width: 185px;
   line-height: 24px;
   text-size-adjust: 100%;
+  margin-left: 30px;
 }
 
 .home_logo {
   box-sizing: border-box;
   cursor: pointer;
-  height: 100px;
+  height: 95px;
   line-height: 24px;
   text-size-adjust: 100%;
-  width: 100px;
+  width: 95px;
   display: inline-block;
   /* border: 2px solid black; */
 }
@@ -191,6 +192,6 @@
   /* border: 1px solid rgb(91, 91, 188); */
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 5px;
   display: flex;
 }
