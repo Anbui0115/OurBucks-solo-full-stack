@@ -8,7 +8,7 @@ import {
   editCustomizedSelection,
 } from "../../store/customized_selections";
 
-// import "./GetCustomizedItems.css";
+import styles from "./GetCustomizedSelections.module.css";
 
 const GetCustomizedSelections = ({ customized_item_id, editMode }) => {
   const dispatch = useDispatch();
@@ -21,12 +21,11 @@ const GetCustomizedSelections = ({ customized_item_id, editMode }) => {
   const customizedSelection = Object.values(customizedSelectionObj).filter(
     (el) => el.customized_item_id == customized_item_id
   );
-  // console.log("customizedSelection ~~~~~~~~", customizedSelection);
 
   useEffect(() => {
     dispatch(getCustomizedSelections(customized_item_id));
   }, [requestData, dispatch]);
-  //check for array of items || check for object of newly created item
+
   if (!customizedSelection) return null;
   if (!sessionUser) return <Redirect to="/" />;
 
@@ -36,56 +35,29 @@ const GetCustomizedSelections = ({ customized_item_id, editMode }) => {
 
     setRequestData(new Date());
   };
-  // const onClickEdit = async (
-  //   e,
-  //   customized_selection_id,
-  //   customized_item_id,
-  //   customization_id
-  // ) => {
-  //   e.preventDefault();
-  //   dispatch(
-  //     await editCustomizedSelection(
-  //       customized_selection_id,
-  //       customized_item_id,
-  //       customization_id
-  //     )
-  //   );
-  //   setRequestData(new Date());
-  // };
 
   return (
     <div>
       {customizedSelection &&
         customizedSelection.map((el) => (
           <div key={`el.${el.id}`}>
-            {/* {console.log(
-              "TEST``````````````````",
-              el.customization_id
-            )} */}
-            <div>
-              {el.category}: {el.name}
-            </div>
-            {editMode && (
+            {el.category && (
+              <div>
+                {el.category}: {el.name}
+              </div>
+            )}
+
+            {/* {editMode && (
               <div>
                 <button onClick={(e) => onClickDelete(e, el.id)}>
                   Delete customization
                 </button>
-                <button
-                // onClick={(e) =>
-                //   onClickEdit(
-                //     e,
-                //     el.id,
-                //     customized_item_id,
-                //     el.customization_id
-                //   )
-                // }
-                >
-                  Edit customization
-                </button>
+                <button>Edit customization</button>
               </div>
-            )}
+            )} */}
           </div>
         ))}
+      {customizedSelection.length < 1 && <div>No customization</div>}
     </div>
   );
 };

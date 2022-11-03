@@ -11,7 +11,8 @@ import AddToCart from "../AddToCart/AddToCart";
 import { getAllItems } from "../../store/items";
 import GetCustomizedSelections from "../GetCustomizedSelections/GetCustomizedSelections";
 
-// import "./GetCustomizedItems.css";
+import styles from "./GetCustomizedItems.module.css";
+import button_styles from "../AddToCart/AddToCart.module.css";
 
 const GetCustomizedItems = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,14 @@ const GetCustomizedItems = () => {
   //   setEditMode(true);
   //   // dispatch(editOrderItem(order_item_id)).catch(async (res) => {});
   // }
-
+  {
+    /* {!editMode && <button onClick={(e) => enableEdit(e)}>Edit</button>} */
+  }
+  {
+    /* {editMode && (
+              <button onClick={(e) => handleEdit(e)}>Confirm Edit</button>
+            )} */
+  }
   function handleEdit(e, customizedItem_id) {
     e.preventDefault();
     setEditMode(true);
@@ -50,39 +58,68 @@ const GetCustomizedItems = () => {
   }
 
   return (
-    <div>
-      {customizedItems &&
-        Object.keys(customizedItems).map((el) => (
-          <div key={`el.${customizedItems[el].id}`}>
-            <div>
-              <img
-                src={customizedItems[el].image_url}
-                width="100"
-                height="100"
-              ></img>
-            </div>
-            <div>Name: {customizedItems[el].name}</div>
-            <GetCustomizedSelections
-              customized_item_id={el}
-              editMode={editMode}
-            />
-            <button onClick={(e) => onClickDelete(e, customizedItems[el].id)}>
-              Delete this drink
-            </button>
-            {/* {!editMode && <button onClick={(e) => enableEdit(e)}>Edit</button>} */}
-            {/* {editMode && (
-              <button onClick={(e) => handleEdit(e)}>Confirm Edit</button>
-            )} */}
-            <div
-              // to={`/${customizedItems[el].id}/customize`}
-              onClick={(e) => handleEdit(e, customizedItems[el].id)}
-            >
-              Edit
-            </div>
-            {/* {console.log("TESTING EL --------------", el,typeof el)} */}
-            <AddToCart el={el} />
-          </div>
-        ))}
+    <div className={styles.cus_item_body}>
+      <div className={styles.cus_item_inner_body}>
+        <div className={styles.title}>Your Customized Items</div>
+
+        <div className={styles.items_body}>
+          {customizedItems &&
+            Object.keys(customizedItems).map((el) => (
+              <div
+                key={`el.${customizedItems[el].id}`}
+                className={styles.each_item}
+              >
+                <div className={styles.left_div}>
+                  <div className={styles.each_item_img_wrapper}>
+                    <img
+                      src={customizedItems[el].image_url}
+                      className={styles.each_item_img}
+                    ></img>
+                  </div>
+
+                  <div className={styles.each_item_details}>
+                    <div className={styles.item_name}>
+                      {customizedItems[el].name}
+                    </div>
+                    <div className={styles.item_price}>
+                      ${customizedItems[el].price}
+                    </div>
+                    <div className={styles.each_item_customization}></div>
+                    <GetCustomizedSelections
+                      customized_item_id={el}
+                      editMode={editMode}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.right_div}>
+                  <div className={styles.each_button}>
+                    <button
+                      className={button_styles.addToCartButton_wrapper}
+                      onClick={(e) => onClickDelete(e, customizedItems[el].id)}
+                    >
+                      <div className={button_styles.addToCartButton}>
+                        Delete this drink
+                      </div>
+                    </button>
+                  </div>
+                  <div className={styles.each_button}>
+                    <div className={button_styles.addToCartButton_wrapper}>
+                      <div
+                        onClick={(e) => handleEdit(e, customizedItems[el].id)}
+                        className={button_styles.addToCartButton}
+                      >
+                        Edit this drink
+                      </div>
+                    </div>
+                  </div>
+
+                  <AddToCart el={el} />
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
     </div>
   );
 };
