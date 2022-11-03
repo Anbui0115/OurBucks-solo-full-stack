@@ -59,17 +59,17 @@ const GetItemById = (props) => {
                   <div className={styles.drink_customize}>Customize your drink</div>
                   </Link>
                 </div> */}
-
-                <div className={styles.drink_customize_wrapper}>
-                  <Link to={`/${item.id}/customize`} key={item.id}>
-                    <div className={styles.drink_customize}>
-                      Customize your drink
-                    </div>
-                  </Link>
-                </div>
-
-                <div>
-                  <AddToCart el={item.id} />
+                <div className={styles.bottom_buttons}>
+                  <div className={styles.drink_customize_wrapper}>
+                    <Link to={`/${item.id}/customize`} key={item.id}>
+                      <div className={styles.drink_customize}>
+                        Customize your drink
+                      </div>
+                    </Link>
+                  </div>
+                  <div>
+                    <AddToCart el={item.id} />
+                  </div>
                 </div>
               </div>
             )}
