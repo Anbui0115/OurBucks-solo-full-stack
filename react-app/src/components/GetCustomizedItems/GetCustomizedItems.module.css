@@ -72,9 +72,14 @@
   font-weight: 400;
 }
 .item_name {
-  /* border: 1px solid black; */
+  border: 1px solid black;
   margin-top: 10px;
   margin-bottom: 10px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  width: 300px;
+  height: 25px;
 }
 .item_price {
   /* border: 1px solid black; */
