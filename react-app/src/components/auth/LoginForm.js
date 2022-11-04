@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 import "./LoginForm.css";
 
 const LoginForm = () => {
-  const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    let errors = [];
+    if (email.length < 1) errors.push("Please enter your username or email");
+    if (password.length < 1) errors.push("Please enter your password");
+
+    setErrors(errors);
+  }, [email, password]);
+
   const onLogin = async (e) => {
     e.preventDefault();
+    setSubmitted(true);
+    setErrors([]);
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
@@ -35,42 +47,6 @@ const LoginForm = () => {
   }
 
   return (
-    // <form onSubmit={onLogin}>
-    //   <div>
-    //     {errors.map((error, ind) => (
-    //       <div key={ind}>{error}</div>
-    //     ))}
-    //   </div>
-    //   <div>
-    //     <label htmlFor="email">Email</label>
-    //     <input
-    //       name="email"
-    //       type="text"
-    //       placeholder="Email"
-    //       value={email}
-    //       onChange={updateEmail}
-    //     />
-    //   </div>
-    //   <div>
-    //     <label htmlFor="password">Password</label>
-    //     <input
-    //       name="password"
-    //       type="password"
-    //       placeholder="Password"
-    //       value={password}
-    //       onChange={updatePassword}
-    //     />
-    //     <button type="submit">Login</button>
-
-    //     <button
-    //       className="demo-user-button login-button"
-    //       onClick={handleDemoUser}
-    //     >
-    //       Demo User
-    //     </button>
-    //   </div>
-    // </form>
-
     <form className="login-form" onSubmit={onLogin}>
       <div className="sign-in-and-register">
         <div className="login-text-container">
@@ -80,9 +56,8 @@ const LoginForm = () => {
 
       <div className="login-container">
         <div className="login-errors">
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+          {submitted &&
+            errors.map((error, ind) => <div key={ind}>{error}</div>)}
         </div>
 
         <div className="login-body">
@@ -124,7 +99,6 @@ const LoginForm = () => {
             className="demo-user-button login-button"
             onClick={handleDemoUser}
           >
-
             Demo User
           </button>
         </div>
