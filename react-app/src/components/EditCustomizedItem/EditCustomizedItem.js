@@ -185,6 +185,7 @@ const EditCustomizedItem = () => {
           </div>
           <div className={styles.custom}>
             <Customization
+              thisCustomizedItem_id={thisCustomizedItem?.id}
               customizationSelected={customizationSelected}
               setCustomizationSelected={setCustomizationSelected}
             />

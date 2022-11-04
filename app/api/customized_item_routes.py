@@ -10,6 +10,16 @@ from app.forms.create_customized_item import CreateCustomizedItem
 
 customized_item_routes = Blueprint('customized_items', __name__)
 
+def augment_result(customized_item):
+    augmented_customized_item = customized_item.to_dict()
+
+    augmented_customized_item["image_url"] = customized_item.item.image_url
+    augmented_customized_item["name"] = customized_item.name
+    augmented_customized_item["price"] = customized_item.item.price
+    augmented_customized_item["calories"] = customized_item.item.calories
+
+    return augmented_customized_item
+
 @customized_item_routes.route('', methods=["GET"])
 @login_required
 def get_customized_items():
@@ -19,16 +29,7 @@ def get_customized_items():
     user_id = current_user.id
     customized_items = CustomizedItem.query.filter_by(user_id=user_id).all()
 
-    result = []
-    for ele in customized_items:
-        new_ele = ele.to_dict()
-        new_ele["image_url"] = ele.item.image_url
-        new_ele["name"] = ele.name
-        new_ele["price"] = ele.item.price
-
-        result.append(new_ele)
-
-    return {'customized_items': result}
+    return {'customized_items': [augment_result(customized_item) for customized_item in customized_items]}
 
 
 @customized_item_routes.route('/<int:customized_item_id>', methods=["GET"])
@@ -43,12 +44,7 @@ def get_customized_item_by_id(customized_item_id):
         if customized_item['user_id'] != user_id:
             return {'error': 'Customized item does not belong to current user.'}, 400
 
-        new_ele = customized_item.to_dict()
-        new_ele["image_url"] = customized_item.item.image_url
-        new_ele["name"] = customized_item.name
-        new_ele["price"] = customized_item.item.price
-
-        return {'customized_item': new_ele}
+        return {'customized_item': augment_result(customized_item)}
     else:
         return {'error': 'Customized item does not exist.'}, 400
 
@@ -73,7 +69,7 @@ def create_customized_item():
         customized_item.user_id = user_id
         db.session.add(customized_item)
         db.session.commit()
-        return {'customized_item': customized_item.to_dict()}
+        return {'customized_item': augment_result(customized_item)}
     else:
         return {'errors': form.errors}, 400
 
@@ -97,7 +93,7 @@ def edit_customized_item(customized_item_id):
         if customized_item:
             form.populate_obj(customized_item)
             db.session.commit()
-            return {'customized_item': customized_item.to_dict()}
+            return {'customized_item': augment_result(customized_item)}
         else:
             return {'errors': 'Customized item does not exist.'}, 400
     else:
