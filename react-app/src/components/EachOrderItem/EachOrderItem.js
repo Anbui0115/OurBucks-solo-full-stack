@@ -13,7 +13,7 @@ const EachOrderItem = ({ order_item_id, currentOrder_id }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log("hi");
+  // console.log("hi");
 
   const sessionUser = useSelector((state) => state.session.user);
   useEffect(() => {

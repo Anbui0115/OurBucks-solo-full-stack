@@ -28,7 +28,7 @@ const GetCustomizedItems = () => {
     dispatch(getAllCustomizedItems());
   }, [requestData, dispatch]);
   //check for array of items || check for object of newly created item
-  if (!customizedItems || Object.keys(customizedItems).length < 1) return null;
+  if (!customizedItems) return null;
   if (!sessionUser) return <Redirect to="/" />;
 
   const onClickDelete = async (e, customizedItemId) => {
@@ -63,6 +63,9 @@ const GetCustomizedItems = () => {
         <div className={styles.title}>Your Customized Items</div>
 
         <div className={styles.items_body}>
+          {Object.keys(customizedItems).length < 1 && (
+            <div className={styles.no_customized_items}>You haven't created any customized items yet</div>
+          )}
           {customizedItems &&
             Object.keys(customizedItems).map((el) => (
               <div

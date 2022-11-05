@@ -103,3 +103,11 @@
   /* border: 1px solid black; */
   margin-bottom: 20px;
 }
+.no_customized_items {
+  text-align: center;
+  padding-top: 40px;
+  /* border: 1px solid orange; */
+  font-size: 22px;
+  font-weight: 400;
+
+}

@@ -12,7 +12,7 @@ class CustomizedItem(db.Model):
 
 
     #relationship
-    order_items = db.relationship("OrderItem",back_populates='customized_item')
+    order_items = db.relationship("OrderItem",back_populates='customized_item', cascade="all, delete")
     user = db.relationship('User',back_populates='customized_items')
     item = db.relationship('Item',back_populates='customized_items')
     customized_selections = db.relationship("CustomizedSelection", cascade="all, delete")
