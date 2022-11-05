@@ -1,20 +1,22 @@
-dropdown-menu {
+.dropdown-menu {
   /* border: 1px solid green; */
   position: relative;
   color: black;
   cursor: pointer;
   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
     sans-serif;
-  border-radius: 50px;
-  text-align: right;
+  border-radius: 10px;
+  /* text-align: right; */
+
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .dropdown-menu:hover,
 .dropdown-menu:focus {
-  box-shadow: 2px 2px 2px 0px rgba(197, 189, 189, 0.618);
-  box-shadow: 2px 0px 2px 0 rgb(0, 0, 0, 0.2);
-  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
-    sans-serif;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px lightgrey;
+  border-radius: 10px;
 }
 .dropdown-content {
   /* border: 1px solid salmon; */
@@ -49,14 +51,17 @@ dropdown-menu {
 .profile-log-out:focus,
 .profile-log-out:hover {
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  box-shadow: 0px 1px 1px 1px rgba(197, 189, 189, 0.618);
+  /* box-shadow: 0px 1px 1px 1px rgba(197, 189, 189, 0.618);
   box-sizing: border-box;
   color: rgba(13, 11, 11, 0.7);
-  background-color: rgba(230, 218, 218, 0.5);
+  background-color: rgba(230, 218, 218, 0.5); */
   /* border-radius: 2px; */
   /* font-weight: 500; */
   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
     sans-serif;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px lightgrey;
+  border-radius: 10px;
 }
 .dropdown-menu > img {
   /* border: 1px hotpink solid; */

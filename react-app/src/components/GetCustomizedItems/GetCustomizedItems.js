@@ -104,14 +104,16 @@ const GetCustomizedItems = () => {
                     </button>
                   </div>
                   <div className={styles.each_button}>
-                    <div className={button_styles.addToCartButton_wrapper}>
-                      <div
-                        onClick={(e) => handleEdit(e, customizedItems[el].id)}
-                        className={button_styles.addToCartButton}
-                      >
-                        Edit this drink
+                    <Link to={`/${customizedItems[el].id}/customize/edit`}>
+                      <div className={button_styles.addToCartButton_wrapper}>
+                        <div
+                          onClick={(e) => handleEdit(e, customizedItems[el].id)}
+                          className={button_styles.addToCartButton}
+                        >
+                          Edit this drink
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
 
                   <AddToCart el={el} />

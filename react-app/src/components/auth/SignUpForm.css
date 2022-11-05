@@ -123,7 +123,7 @@
 }
 
 .signup-button-modal {
-  border: 2px black solid;
+  /* border: 2px black solid; */
   justify-self: flex-end;
   font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
   font-size: 13px;

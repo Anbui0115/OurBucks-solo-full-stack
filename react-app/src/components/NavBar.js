@@ -25,28 +25,38 @@ const NavBar = () => {
             </div>
 
             <NavLink to="/menu" exact={true} activeClassName="active">
-              <div className={styles.menu_text}>Menu</div>
+              <div className={styles.menu_text_wrapper}>
+                <div className={styles.menu_text}>Menu</div>
+              </div>
             </NavLink>
           </div>
 
           <div className={styles.right_bar}>
             {!sessionUser && (
               <div className={styles.login_signup}>
-                <div className={styles.login}>
-                  <NavLink to="/login" exact={true} activeClassName="active">
-                    Login
-                  </NavLink>
+                <div className={styles.login_wrapper}>
+                  <div className={styles.login}>
+                    <NavLink to="/login" exact={true} activeClassName="active">
+                      Login
+                    </NavLink>
+                  </div>
                 </div>
-                <div className={styles.signup}>
-                  <NavLink to="/sign-up" exact={true} activeClassName="active">
-                    Sign Up
-                  </NavLink>
+                <div className={styles.signup_wrapper}>
+                  <div className={styles.signup}>
+                    <NavLink
+                      to="/sign-up"
+                      exact={true}
+                      activeClassName="active"
+                    >
+                      Sign Up
+                    </NavLink>
+                  </div>
                 </div>
               </div>
             )}
             <div className={styles.login_signup}>
               {sessionUser && (
-                <div className={styles.login}>
+                <div className={styles.logged_in}>
                   <ProfileButton />
                 </div>
               )}

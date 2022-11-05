@@ -21,7 +21,6 @@ export default function GetOrderItems({ currentOrder_id }) {
   }, [dispatch]);
 
   const orderItems = useSelector((state) => state.order_items);
-  // console.log("ORDER ITEM INSIDE GET ORDER ITEM----------------", orderItems);
 
   if (!orderItems) return null;
   if (!sessionUser) return <Redirect to="/" />;
@@ -53,19 +52,23 @@ export default function GetOrderItems({ currentOrder_id }) {
 
   return (
     <div>
-      {Object.keys(orderItems).map((order_item_id) => 
+      {Object.keys(orderItems).map((order_item_id) =>
         //
         {
           let allOrderItems = [];
           for (let i = 1; i <= orderItems[order_item_id].quantity; i++) {
-            
-            allOrderItems.push(<EachOrderItem
-              order_item_id={order_item_id}
-              currentOrder_id={currentOrder_id}
-            />)
+            allOrderItems.push(
+              <EachOrderItem
+                order_item_id={order_item_id}
+                currentOrder_id={currentOrder_id}
+              />
+            );
           }
           return allOrderItems;
         }
+      )}
+      {Object.keys(orderItems).length < 1 && (
+        <div className={styles.empty_order}> Your order is empty</div>
       )}
     </div>
   );

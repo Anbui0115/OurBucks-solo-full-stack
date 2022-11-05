@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import styles from "../AddToCart/AddToCart.module.css";
 import { createOrder, addToOrderThunk } from "../../store/orders";
 
 export default function AddToOrder({ el }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  // console.log("this is el in Add to order!!!!!!!", el, typeof el);
+
   let item_id = undefined;
   let customized_item_id = undefined;
   if (typeof el === "number") {
@@ -17,9 +17,9 @@ export default function AddToOrder({ el }) {
   function onHandleAddToCartSuccess() {
     history.push("/order");
   }
-  async function handleAddToOrder(e, el) {
+
+  async function handleAddToOrder(e) {
     e.preventDefault();
-    //   item_id,customized_item_id, order_id, quantity, onHandleAddToOrderSuccess;
 
     const order = await dispatch(createOrder());
     await dispatch(
@@ -33,13 +33,15 @@ export default function AddToOrder({ el }) {
     );
   }
   return (
-    <div className={styles.addToCartButton_wrapper}>
-      <div
-        className={styles.addToCartButton}
-        onClick={(e) => handleAddToOrder(e, el)}
-      >
-        Add To Order
+
+      <div className={styles.addToCartButton_wrapper}>
+        <div
+          className={styles.addToCartButton}
+          onClick={(e) => handleAddToOrder(e)}
+        >
+          Add To Order
+        </div>
       </div>
-    </div>
+
   );
 }
