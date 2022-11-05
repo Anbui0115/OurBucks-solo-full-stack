@@ -134,6 +134,10 @@
   width: 324px;
   border-radius: 50px;
 }
+.login-button:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px lightgrey;
+}
 
 .demo-user-button {
   margin-top: 18px;

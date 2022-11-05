@@ -122,6 +122,10 @@
   border-radius: 50px;
 }
 
+.signup-button:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px lightgrey;
+}
 .signup-button-modal {
   /* border: 2px black solid; */
   justify-self: flex-end;

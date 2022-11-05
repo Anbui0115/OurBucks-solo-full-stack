@@ -5,32 +5,32 @@ from app.models import db, Customization
 def seed_customizations():
     customizations = []
     # Milk
-    customizations.append(Customization(name ="Soy Milk", category="milk"))
-    customizations.append(Customization(name ="Almond Milk", category="milk"))
-    customizations.append(Customization(name ="Oat Milk", category="milk"))
-    customizations.append(Customization(name ="Heavy Cream", category="milk"))
-    customizations.append(Customization(name ="Vanilla Sweet Cream", category="milk"))
-    customizations.append(Customization(name ="2% Milk", category="milk"))
-    customizations.append(Customization(name ="Whole Milk", category="milk"))
-    customizations.append(Customization(name ="Half & Half", category="milk"))
-    customizations.append(Customization(name ="Coconut Milk", category="milk"))
+    customizations.append(Customization(name ="Soy Milk", category="Milk"))
+    customizations.append(Customization(name ="Almond Milk", category="Milk"))
+    customizations.append(Customization(name ="Oat Milk", category="Milk"))
+    customizations.append(Customization(name ="Heavy Cream", category="Milk"))
+    customizations.append(Customization(name ="Vanilla Sweet Cream", category="Milk"))
+    customizations.append(Customization(name ="2% Milk", category="Milk"))
+    customizations.append(Customization(name ="Whole Milk", category="Milk"))
+    customizations.append(Customization(name ="Half & Half", category="Milk"))
+    customizations.append(Customization(name ="Coconut Milk", category="Milk"))
 
     # Flavor
-    customizations.append(Customization(name ="Brown Sugar Syrup", category="flavor"))
-    customizations.append(Customization(name ="Apple Brown Sugar", category="flavor"))
-    customizations.append(Customization(name ="Caramel Syrup", category="flavor"))
-    customizations.append(Customization(name ="Cinnamon Dolce Syrup", category="flavor"))
-    customizations.append(Customization(name ="Hazelnut Syrup", category="flavor"))
-    customizations.append(Customization(name ="Peppermint Syrup", category="flavor"))
-    customizations.append(Customization(name ="Raspberry Syrup", category="flavor"))
-    customizations.append(Customization(name ="Toasted Vanilla Syrup", category="flavor"))
-    customizations.append(Customization(name ="Toffee Nut Syrup", category="flavor"))
-    customizations.append(Customization(name ="Vanilla Syrup", category="flavor"))
+    customizations.append(Customization(name ="Brown Sugar Syrup", category="Flavor"))
+    customizations.append(Customization(name ="Apple Brown Sugar", category="Flavor"))
+    customizations.append(Customization(name ="Caramel Syrup", category="Flavor"))
+    customizations.append(Customization(name ="Cinnamon Dolce Syrup", category="Flavor"))
+    customizations.append(Customization(name ="Hazelnut Syrup", category="Flavor"))
+    customizations.append(Customization(name ="Peppermint Syrup", category="Flavor"))
+    customizations.append(Customization(name ="Raspberry Syrup", category="Flavor"))
+    customizations.append(Customization(name ="Toasted Vanilla Syrup", category="Flavor"))
+    customizations.append(Customization(name ="Toffee Nut Syrup", category="Flavor"))
+    customizations.append(Customization(name ="Vanilla Syrup", category="Flavor"))
 
     # Ice
-    customizations.append(Customization(name ="No Ice", category="ice"))
-    customizations.append(Customization(name ="Light Ice", category="ice"))
-    customizations.append(Customization(name ="Extra Ice", category="ice"))
+    customizations.append(Customization(name ="No Ice", category="Ice"))
+    customizations.append(Customization(name ="Light Ice", category="Ice"))
+    customizations.append(Customization(name ="Extra Ice", category="Ice"))
 
 
     for customization in customizations:
