@@ -17,15 +17,15 @@ const Footer = () => {
           An Bui
           <div className="dev-links">
             <a className="dev-link" href="https://github.com/Anbui0115">
-              {" "}
-              GitHub{" "}
+              
+              GitHub
             </a>
             <a
               className="dev-link"
               href="https://www.linkedin.com/in/an-bui-0115/"
             >
-              {" "}
-              LinkedIn{" "}
+
+              LinkedIn
             </a>
           </div>
         </div>

@@ -49,6 +49,7 @@
 }
 
 .remove {
+  /* border: 2px solid black; */
   display: flex;
   font-size: 0.9em;
   width: 80px;

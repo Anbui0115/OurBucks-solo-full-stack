@@ -45,7 +45,7 @@
 }
 
 .order_item_name {
-    /* border: 1px solid rgb(65, 169, 65); */
+  /* border: 1px solid rgb(65, 169, 65); */
   width: 100%;
   color: rgba(0, 0, 0, 0.87);
   margin: 6px 0;
@@ -80,7 +80,6 @@
 }
 
 .order_item_edit_buttons {
-  /* border: 1px solid coral; */
   padding-left: 25%;
   align-items: center;
 }
@@ -94,4 +93,6 @@
   width: 24px;
   height: 24px;
   color: rgba(0, 0, 0, 0.58) !important;
+  /* border: 1px solid coral; */
+  cursor: pointer;
 }

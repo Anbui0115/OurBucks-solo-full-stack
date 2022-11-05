@@ -276,4 +276,5 @@
   align-items: center;
   margin-top: 5px;
   display: flex;
+  cursor: pointer;
 }

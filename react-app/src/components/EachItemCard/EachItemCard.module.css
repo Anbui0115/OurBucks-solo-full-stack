@@ -3,6 +3,7 @@
   width: 289px;
   margin-bottom: 15px;
   height: 400px;
+  cursor: pointer;
 }
 .img_container {
   /* background-color: #efefef; */
