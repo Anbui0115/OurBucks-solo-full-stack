@@ -7,6 +7,14 @@ import AddToCart from "../AddToCart/AddToCart";
 import styles from "./GetItemById.module.css";
 
 const GetItemById = (props) => {
+  const formatting_options = {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  };
+
+  const dollarFormmatter = new Intl.NumberFormat("en-US", formatting_options);
+
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   // console.log("sessionUser !!!!!!!", sessionUser);
@@ -47,7 +55,9 @@ const GetItemById = (props) => {
             <div className={styles.upper_body}>
               <div className={styles.drink_description}>{item.description}</div>
               <div className={styles.drink_category}>{item.drink_category}</div>
-              <div className={styles.drink_price}>${item.price}</div>
+              <div className={styles.drink_price}>
+                {dollarFormmatter.format(item.price)}
+              </div>
             </div>
           </div>
 

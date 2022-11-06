@@ -10,6 +10,7 @@ import {
 import EachOrderItem from "../EachOrderItem/EachOrderItem";
 
 export default function GetOrderItems({ currentOrder_id }) {
+
   const dispatch = useDispatch();
   const history = useHistory();
   const [quantity, setQuantity] = useState(1);

@@ -15,6 +15,14 @@ import styles from "./GetCustomizedItems.module.css";
 import button_styles from "../AddToCart/AddToCart.module.css";
 
 const GetCustomizedItems = () => {
+  const formatting_options = {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  };
+
+  const dollarFormmatter = new Intl.NumberFormat("en-US", formatting_options);
+
   const dispatch = useDispatch();
   const history = useHistory();
   const [requestData, setRequestData] = useState(new Date());
@@ -64,7 +72,9 @@ const GetCustomizedItems = () => {
 
         <div className={styles.items_body}>
           {Object.keys(customizedItems).length < 1 && (
-            <div className={styles.no_customized_items}>You haven't created any customized items yet</div>
+            <div className={styles.no_customized_items}>
+              You haven't created any customized items yet
+            </div>
           )}
           {customizedItems &&
             Object.keys(customizedItems).map((el) => (
@@ -88,7 +98,7 @@ const GetCustomizedItems = () => {
                       {customizedItems[el].name}
                     </div>
                     <div className={styles.item_price}>
-                      ${customizedItems[el].price}
+                      {dollarFormmatter.format(customizedItems[el].price)}
                     </div>
                     <div className={styles.each_item_customization}></div>
                     <GetCustomizedSelections

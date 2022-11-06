@@ -10,6 +10,14 @@ import {
 } from "../../store/order_items";
 
 const EachOrderItem = ({ order_item_id, currentOrder_id }) => {
+  const formatting_options = {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  };
+
+  const dollarFormmatter = new Intl.NumberFormat("en-US", formatting_options);
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -56,7 +64,7 @@ const EachOrderItem = ({ order_item_id, currentOrder_id }) => {
           {orderItems[order_item_id].name}
         </h3>
         <div className={styles.order_item_price}>
-          ${orderItems[order_item_id].price}
+          {dollarFormmatter.format(orderItems[order_item_id].price)}
         </div>
       </div>
       <div className={styles.order_item_actions_container}>
