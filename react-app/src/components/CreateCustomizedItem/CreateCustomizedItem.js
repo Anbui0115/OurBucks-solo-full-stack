@@ -4,7 +4,7 @@ import {
   getAllCustomizedItems,
 } from "../../store/customizedItem";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import { addCustomizedSelectionToCustomizedItem } from "../../store/customized_selections";
 import Customization from "../Customization/Customization";
 import { getAllItems } from "../../store/items";
@@ -27,8 +27,8 @@ const CreateCustomizedItem = () => {
 
   useEffect(() => {
     let errors = [];
-    if (name.length < 4 || name.length > 255)
-      errors.push("Name needs to be between 4 and 255 characters");
+    if (name.length < 4 || name.length > 50)
+      errors.push("Name needs to be between 4 and 50 characters");
 
     return setErrors(errors);
   }, [name]);
@@ -38,7 +38,7 @@ const CreateCustomizedItem = () => {
   const { itemId } = useParams();
 
   if (!itemId) return null;
-
+  if (!sessionUser) return <Redirect to="/" />;
   const item = allItems[itemId];
 
   const onSubmit = async (e) => {
