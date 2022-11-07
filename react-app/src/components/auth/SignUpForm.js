@@ -29,7 +29,9 @@ const SignUpForm = () => {
       validationError.push("Please provide a valid email");
     }
     if (passwordStr.length < 4) {
-      validationError.push("Password needs to have at least 4 characters,excluding any spaces ");
+      validationError.push(
+        "Password needs to have at least 4 characters, excluding leading and trailing spaces."
+      );
     }
     if (passwordStr !== repeatPasswordStr)
       validationError.push("Password must match repeat password");

@@ -19,7 +19,9 @@ const LoginForm = () => {
     let errors = [];
 
     if (emailStr.length < 1)
-      errors.push("Please enter your username or email,excluding any spaces");
+      errors.push(
+        "Please enter your username or email, excluding leading and trailing spaces."
+      );
     if (passwordStr.length < 1) errors.push("Please enter your password");
 
     setErrors(errors);
