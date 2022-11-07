@@ -16,16 +16,22 @@ const SignUpForm = () => {
 
   const validationError = [];
   useEffect(() => {
-    if (username.length < 4) {
-      validationError.push("Username needs to have at least 4 characters");
+    const usernameStr = username.toString().trim();
+    const emailStr = email.toString().trim();
+    const passwordStr = password.toString().trim();
+    const repeatPasswordStr = repeatPassword.toString().trim();
+    if (usernameStr.length < 4) {
+      validationError.push(
+        "Username needs to have at least 4 characters,excluding spaces."
+      );
     }
-    if (!validator.isEmail(email)) {
+    if (!validator.isEmail(emailStr)) {
       validationError.push("Please provide a valid email");
     }
-    if (password.length < 4) {
-      validationError.push("Password needs to have at least 4 characters");
+    if (passwordStr.length < 4) {
+      validationError.push("Password needs to have at least 4 characters,excluding any spaces ");
     }
-    if (password !== repeatPassword)
+    if (passwordStr !== repeatPasswordStr)
       validationError.push("Password must match repeat password");
 
     setErrors(validationError);

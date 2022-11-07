@@ -47,10 +47,12 @@ const EditCustomizedItem = () => {
   }, [allCustomizedItems[customizedItem_id]]);
 
   useEffect(() => {
+    const nameStr = name?.toString().trim();
     let errors = [];
-    if (name?.length < 4 || name?.length > 255)
-      errors.push("Name needs to be between 4 and 255 characters");
-
+    if (nameStr?.length < 4 || nameStr?.length > 50)
+      errors.push(
+        "Name needs to be between 4 and 50 characters, excluding leading and trailing spaces"
+      );
     return setErrors(errors);
   }, [name]);
 

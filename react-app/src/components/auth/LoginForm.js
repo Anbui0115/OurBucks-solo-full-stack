@@ -14,9 +14,13 @@ const LoginForm = () => {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
+    const emailStr = email.toString().trim();
+    const passwordStr = password.toString().trim();
     let errors = [];
-    if (email.length < 1) errors.push("Please enter your username or email");
-    if (password.length < 1) errors.push("Please enter your password");
+
+    if (emailStr.length < 1)
+      errors.push("Please enter your username or email,excluding any spaces");
+    if (passwordStr.length < 1) errors.push("Please enter your password");
 
     setErrors(errors);
   }, [email, password]);

@@ -54,12 +54,13 @@ export const getAllCustomizedItems = () => async (dispatch) => {
 };
 
 export const createCustomizedItem =
-  (customizedItemData) => async (dispatch) => {
+  (user_id, item_id, name) => async (dispatch) => {
     // if (!itemData.imageUrl) itemData.imageUrl = "https://media.istockphoto.com/photos/scattered-crumbs-of-butter-cookies-on-white-background-picture-id1222390473?k=20&m=1222390473&s=612x612&w=0&h=6UXsl_v8Kp2aG6ykg3l4lSHjoB4biCndCx2OVIiHNSQ="
+    const reqBody = { user_id, item_id, name: name.trim() };
     const res = await fetch(`/api/customized_items`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(customizedItemData),
+      body: JSON.stringify(reqBody),
     });
     if (res.ok) {
       const customizedItem = await res.json();
@@ -70,10 +71,11 @@ export const createCustomizedItem =
 
 export const editCustomizedItem =
   (customizedItemId, item_id, name) => async (dispatch) => {
+    const reqBody = { item_id, name: name.trim() };
     const res = await fetch(`/api/customized_items/${customizedItemId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ item_id, name }),
+      body: JSON.stringify(reqBody),
     });
 
     if (res.ok) {

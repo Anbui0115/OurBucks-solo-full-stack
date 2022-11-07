@@ -30,7 +30,7 @@ const GetCustomizedItems = () => {
 
   const sessionUser = useSelector((state) => state.session.user);
   const customizedItems = useSelector((state) => state.customized_items);
-  console.log("CUSTOMIZED ITEMS----------------", customizedItems);
+  // console.log("CUSTOMIZED ITEMS----------------", customizedItems);
 
   useEffect(() => {
     dispatch(getAllCustomizedItems());
@@ -64,7 +64,7 @@ const GetCustomizedItems = () => {
     setEditMode(true);
     history.push(`/${customizedItem_id}/customize/edit`);
   }
-  console.log("customizedItems=======================", customizedItems);
+  // console.log("customizedItems=======================", customizedItems);
   return (
     <div className={styles.cus_item_body}>
       <div className={styles.cus_item_inner_body}>
@@ -89,10 +89,10 @@ const GetCustomizedItems = () => {
                       className={styles.each_item_img}
                     ></img>
                   </div>
-                  {console.log(
-                    "customizedItems~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                  {/* {console.log(
+                    // "customizedItems~~~~~~~~~~~~~~~~~~~~~~~~~~",
                     Object.keys(customizedItems)
-                  )}
+                  )} */}
                   <div className={styles.each_item_details}>
                     <div className={styles.item_name}>
                       {customizedItems[el].name}

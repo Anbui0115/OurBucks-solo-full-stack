@@ -26,10 +26,12 @@ const CreateCustomizedItem = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    const nameStr = name.toString().trim();
     let errors = [];
-    if (name.length < 4 || name.length > 50)
-      errors.push("Name needs to be between 4 and 50 characters");
-
+    if (nameStr.length < 4 || nameStr.length > 50)
+      errors.push(
+        "Name needs to be between 4 and 50 characters, excluding leading and trailing spaces"
+      );
     return setErrors(errors);
   }, [name]);
 
@@ -46,19 +48,13 @@ const CreateCustomizedItem = () => {
     setIsSubmitted(true);
     if (errors.length) return;
 
-    let customizedItemData = {
-      user_id: sessionUser.id,
-      item_id: itemId,
-      name: name,
-    };
-
     setErrors([]);
-    const data = await dispatch(createCustomizedItem(customizedItemData)).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    ); // data should contain newly created customized item's ID
+    const data = await dispatch(
+      createCustomizedItem(sessionUser.id, itemId, name)
+    ).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    }); // data should contain newly created customized item's ID
 
     // create new customized selection object using customized item ID from above
     // and customization ID from customizationSelected
