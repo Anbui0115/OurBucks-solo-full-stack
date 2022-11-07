@@ -100,11 +100,12 @@ const GetCustomizedItems = () => {
                     <div className={styles.item_price}>
                       {dollarFormmatter.format(customizedItems[el].price)}
                     </div>
-                    <div className={styles.each_item_customization}></div>
-                    <GetCustomizedSelections
-                      customized_item_id={el}
-                      editMode={editMode}
-                    />
+                    <div className={styles.each_item_customization}>
+                      <GetCustomizedSelections
+                        customized_item_id={el}
+                        editMode={editMode}
+                      />
+                    </div>
                   </div>
                 </div>
 
