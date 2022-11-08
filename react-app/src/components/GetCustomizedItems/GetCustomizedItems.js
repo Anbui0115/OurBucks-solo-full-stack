@@ -89,11 +89,9 @@ const GetCustomizedItems = () => {
                       className={styles.each_item_img}
                     ></img>
                   </div>
-                  {/* {console.log(
-                    // "customizedItems~~~~~~~~~~~~~~~~~~~~~~~~~~",
-                    Object.keys(customizedItems)
-                  )} */}
-                  <div className={styles.each_item_details}>
+
+                </div>
+                <div className={styles.each_item_details}>
                     <div className={styles.item_name}>
                       {customizedItems[el].name}
                     </div>
@@ -107,8 +105,6 @@ const GetCustomizedItems = () => {
                       />
                     </div>
                   </div>
-                </div>
-
                 <div className={styles.right_div}>
                   <div className={styles.each_button}>
                     <button
@@ -135,7 +131,9 @@ const GetCustomizedItems = () => {
 
                   <AddToCart el={el} />
                 </div>
+                
               </div>
+              
             ))}
         </div>
       </div>

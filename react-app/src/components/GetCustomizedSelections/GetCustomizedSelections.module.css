@@ -3,3 +3,11 @@
   padding-top: 5px;
   padding-bottom: 5px;
 }
+.customized_selection_text {
+    font-style:italic;
+    font-size: 0.8em!important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-bottom: 5px;
+}

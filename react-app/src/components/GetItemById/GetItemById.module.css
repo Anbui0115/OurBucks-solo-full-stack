@@ -3,6 +3,28 @@
   width: 100%;
   padding-bottom: 100px;
 }
+.item_category_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -54%;
+}
+.drink_category {
+  /* border: 1px solid orange; */
+  display: flex;
+  width: 25%;
+  height: 50px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  line-height: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  font-size: 1.6rem!important;
+  font-weight: 400;
+  font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
 .item_top_page {
   /* border: 1px rgb(90, 217, 90) solid; */
   width: 100%;
@@ -97,24 +119,19 @@
   font-size: 20px;
   font-weight: 400;
 }
-.drink_category {
-  /* border: 1px solid orange; */
-  display: flex;
-  width: 85%;
-  height: 100px;
-  align-items: center;
-  line-height: 20px;
-  font-size: 18px;
-  font-weight: 400;
-}
 .drink_price {
   display: flex;
   width: 85%;
   height: 100px;
+  justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 0 auto;
   line-height: 20px;
   font-size: 18px;
   font-weight: 400;
+  font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
+  margin-top: 20px;
 }
 .bottom_buttons {
   /* border: 2px solid forestgreen; */
@@ -156,6 +173,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 210px;
 }
 
 .drink_customize {

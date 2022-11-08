@@ -7,6 +7,7 @@ import ordersReducer from "./orders";
 import order_itemsReducer from "./order_items";
 import customizationsReducer from "./customization";
 import customized_selectionsReducer from "./customized_selections";
+import reviewReducer from "./reviews";
 
 const rootReducer = combineReducers({
   session,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   order_items: order_itemsReducer,
   customizations: customizationsReducer,
   customized_selections: customized_selectionsReducer,
+  reviews: reviewReducer
 });
 
 let enhancer;

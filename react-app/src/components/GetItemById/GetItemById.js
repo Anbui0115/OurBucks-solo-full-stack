@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AddToCart from "../AddToCart/AddToCart";
+import GetReviews from "../GetReviews/GetReviews";
 import styles from "./GetItemById.module.css";
 
 const GetItemById = (props) => {
@@ -34,9 +35,22 @@ const GetItemById = (props) => {
   if (!allItems) return null;
   if (!item) return null;
 
+  const capitalizedCategory = (category) => {
+    const words = category.split(" ");
+
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+
+    return words.join(" ");
+  }
+
   return (
     <>
       <div className={styles.item_container}>
+        <div className={styles.item_category_container}>
+          <div className={styles.drink_category}>{capitalizedCategory(item.drink_category)}</div>
+        </div>
         <div className={styles.item_top_page}>
           <div className={styles.item_img_container}>
             <img src={item.image_url} className={styles.item_img}></img>
@@ -54,7 +68,6 @@ const GetItemById = (props) => {
           <div className={styles.item_inner_boy}>
             <div className={styles.upper_body}>
               <div className={styles.drink_description}>{item.description}</div>
-              <div className={styles.drink_category}>{item.drink_category}</div>
               <div className={styles.drink_price}>
                 {dollarFormmatter.format(item.price)}
               </div>
@@ -73,7 +86,7 @@ const GetItemById = (props) => {
                   <Link to={`/${item.id}/customize`} key={item.id}>
                     <div className={styles.drink_customize_wrapper}>
                       <div className={styles.drink_customize}>
-                        Customize your drink
+                        Customize Drink
                       </div>
                     </div>
                   </Link>
@@ -84,6 +97,9 @@ const GetItemById = (props) => {
                 </div>
               </div>
             )}
+          </div>
+          <div className={styles.reviews_wrapper}>
+            <GetReviews item_id={item.id}/>
           </div>
         </div>
       </div>

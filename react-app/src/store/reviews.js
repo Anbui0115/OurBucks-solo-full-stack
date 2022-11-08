@@ -29,14 +29,14 @@ const editReviewAction = (review) => {
     }
 }
 
-export const deleteReviewAction = (reviewId) => {
+const deleteReviewAction = (reviewId) => {
     return {
         type: DELETE_REVIEW,
         reviewId
     }
 }
 
-export const clearReviewAction = () => {
+const clearReviewAction = () => {
     return {
         type: CLEAR_REVIEWS
     }
@@ -44,51 +44,66 @@ export const clearReviewAction = () => {
 
 
 // Thunks
-export const getAllReviews = () => async dispatch => {
-    const res = await fetch('/api/reviews');
+export const getReviews = (item_id) => async dispatch => {
+    const res = await fetch(`/api/reviews/item/${item_id}`);
 
     if (res.ok) {
         const reviews = await res.json();
-        dispatch(getReviewsAction(reviews.reviews));
+        const data = await dispatch(getReviewsAction(reviews.reviews));
+        console.log("data",data);
+        return reviews;
+    }
+    else {
+        console.log(res.text());
     }
 };
 
-export const createReview = (reviewData) => async dispatch => {
-    const res = await fetch(`/api/reviews`, {
+export const createReview = (item_id, star_rating, review_details) => async dispatch => {
+    const res = await fetch(`/api/reviews/item/${item_id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(reviewData)
+        body: JSON.stringify({star_rating, review_details})
     });
 
     if (res.ok) {
         const review = await res.json();
-        dispatch(getPurchasesAction(reviewData.user_id));
+        dispatch(createReviewAction(review.review));
         return review;
+    }
+    else {
+        console.log(res.text());
     }
 };
 
-export const editReview = (reviewId, editReviewData, uid) => async dispatch => {
-    const res = await fetch(`/api/reviews/${reviewId}`, {
+export const editReview = (review_id, star_rating, review_details) => async dispatch => {
+    const res = await fetch(`/api/reviews/${review_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(editReviewData)
+        body: JSON.stringify({star_rating, review_details})
     });
 
     if (res.ok) {
         const review = await res.json();
-        dispatch(getPurchasesAction(uid));
+        dispatch(editReviewAction(review.review));
         return review;
+    }
+    else {
+        console.log(res.text());
     }
 };
 
-export const deleteReview = (reviewId, uid) => async dispatch => {
+export const deleteReview = (reviewId) => async dispatch => {
+    console.log('reviewID', reviewId);
     const res = await fetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     });
 
     if (res.ok) {
-        dispatch(getPurchasesAction(uid));
+        dispatch(deleteReviewAction(reviewId));
+    }
+    else {
+        console.log(res.text());
     }
 }
 
@@ -99,6 +114,7 @@ export default function reviewsReducer(state = initialState, action) {
     const newState = { ...state }
     switch (action.type) {
         case GET_REVIEWS:
+            console.log("action.reviews",action.reviews);
             action.reviews.forEach(review => newState[review.id] = review)
             return newState;
         case CREATE_REVIEW:

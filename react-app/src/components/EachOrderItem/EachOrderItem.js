@@ -17,7 +17,7 @@ const EachOrderItem = ({ order_item_id, currentOrder_id }) => {
   };
 
   const dollarFormmatter = new Intl.NumberFormat("en-US", formatting_options);
-
+  
   const dispatch = useDispatch();
   const history = useHistory();
 

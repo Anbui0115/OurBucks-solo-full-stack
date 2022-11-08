@@ -42,8 +42,8 @@ const GetCustomizedSelections = ({ customized_item_id, editMode }) => {
         customizedSelection.map((el) => (
           <div key={`el.${el.id}`}>
             {el.category && (
-              <div className={styles.each_custom}>
-                {el.category}: {el.name}
+              <div className={styles.customized_selection_text}>
+                {el.category.charAt(0).toUpperCase() + el.category.slice(1)}: {el.name}
               </div>
             )}
 
