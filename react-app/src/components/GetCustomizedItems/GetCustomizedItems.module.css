@@ -37,7 +37,8 @@
   height: 36rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  justify-content: center;
   align-items: center;
   width: 100%;
 }
@@ -49,7 +50,8 @@
   align-items: center;
   /* border: 1px solid green; */
   /* width: 40%; */
-  height: 500px;
+  height: 400px;
+  padding-right: 2rem!important;
 }
 
 .each_item_img_wrapper {
@@ -67,34 +69,47 @@
 .each_item_details {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
-  width: 100%;
+  /* border: 1px solid black;  */
+  width: 40%;
+  min-width: 300px;
   font-size: 20px;
   font-weight: 400;
   height: 450px;
 }
 .item_name {
   /* border: 1px solid black; */
+  font-size: 1.4rem!important;
+  font-weight: 400;
+  font-family: SoDoSans,Helvetica Neue,Helvetica,Arial,sans-serif;
   margin-top: 10px;
   margin-bottom: 10px;
-  overflow-x: hidden;
-  overflow-y: hidden;
   text-overflow: ellipsis;
-  width: 300px;
-  height: 25px;
-  font-size: 20px;
-  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: bold;
+  width: 100%;
+  height: 40px;
 }
 .item_price {
   /* border: 1px solid black; */
+  font-weight: bold;
+  padding-top: 10px;
+  /* padding-right: 3px; */
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .each_item_customization {
   /* border: 1px solid black; */
+  padding-top: 10px;
+  /* padding-right: 3px; */
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
   margin-top: 10px;
   margin-bottom: 10px;
   color: rgb(92, 89, 89);
+  width: 100%;
 }
 .right_div {
   /* border: 1px solid black; */
@@ -102,7 +117,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 400px;
+  padding-left: 2rem!important;
 }
 .each_button {
   /* border: 1px solid black; */

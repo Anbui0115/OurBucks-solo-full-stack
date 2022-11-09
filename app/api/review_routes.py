@@ -100,10 +100,11 @@ def delete_review(review_id):
     user_id = current_user.id
     review = Review.query.get(review_id)
     if review:
+        print('\n\n\n\n', user_id, '\n\n', review.user_id, '\n\n\n\n\n')
         if review.user_id != user_id:
             return {'errors': 'Review does not belong to current user.'}, 400
         db.session.delete(review)
         db.session.commit()
         return {'review': review.to_dict()}, 201
     else:
-        return {'errors': form.errors}, 400
+        return {'errors': 'Review does not exist.'}, 400
