@@ -6,7 +6,7 @@ import {
   getReviews,
   deleteReview,
   editReview,
-  createReview
+  createReview,
 } from "../../store/reviews";
 
 export default function GetReviews({ item_id }) {
@@ -17,7 +17,7 @@ export default function GetReviews({ item_id }) {
   const [reviews, setReviews] = useState([]);
   const [editReviewID, setEditReviewID] = useState(0);
   const [starRating, setStarRating] = useState(5);
-  const [errors, setErrors] = useState([]); 
+  const [errors, setErrors] = useState([]);
 
   const reviewsObj = useSelector((state) => state.reviews);
   const sessionUser = useSelector((state) => state.session.user);
@@ -30,18 +30,19 @@ export default function GetReviews({ item_id }) {
     let errors = [];
     if (starRating > 5) {
       setStarRating(5);
-      errors.push('Star ratings need to be less than 5.');
+      errors.push("Star ratings need to be less than 5.");
       setErrors(errors);
-    }
-    else if (starRating < 1) {
+    } else if (starRating < 1) {
       setStarRating(1);
-      errors.push('Star ratings need to be more than 1.');
+      errors.push("Star ratings need to be more than 1.");
       setErrors(errors);
     }
   }, [starRating]);
 
   useEffect(() => {
-    const filteredReviews = Object.values(reviewsObj).filter((review) => review.item_id == item_id);
+    const filteredReviews = Object.values(reviewsObj).filter(
+      (review) => review.item_id == item_id
+    );
     setReviews(filteredReviews);
   }, [reviewsObj]);
 
@@ -49,7 +50,7 @@ export default function GetReviews({ item_id }) {
 
   function handleRemove(e, review_id) {
     e.preventDefault();
-    console.log('review_id',review_id);
+    console.log("review_id", review_id);
     dispatch(deleteReview(review_id)).catch(async (res) => {});
   }
 
@@ -63,20 +64,16 @@ export default function GetReviews({ item_id }) {
 
   function addComment(e, review_details) {
     e.preventDefault();
-    
-    dispatch(
-      createReview(item_id, '5', review_details)
-    );
-    setComment('');
+
+    dispatch(createReview(item_id, "5", review_details));
+    setComment("");
   }
 
   function editComment(e, review_details) {
     e.preventDefault();
-    
-    dispatch(
-      editReview(editReviewID, starRating, review_details)
-    );
-    setComment('');
+
+    dispatch(editReview(editReviewID, starRating, review_details));
+    setComment("");
     setEditReviewID(0);
     setStarRating(5);
   }
@@ -85,30 +82,69 @@ export default function GetReviews({ item_id }) {
     <div>
       {reviews.map((review) => (
         <div>
-            <div>{review.star_rating}
-            </div>
-            <div>{review.review_details}
-            </div>
+          <div>{review.star_rating}</div>
+          <div>{review.review_details}</div>
+          {sessionUser && (
             <div>
-                <button onClick={(e) => enableEdit(e, review.id, review.star_rating, review.review_details)} disabled={review.user_id != sessionUser.id || editReviewID == review.id} hidden={review.user_id != sessionUser.id}>Edit</button>
-                <button onClick={(e) => handleRemove(e, review.id)} disabled={review.user_id != sessionUser.id || editReviewID == review.id} hidden={review.user_id != sessionUser.id}>Delete</button>
+              <button
+                onClick={(e) =>
+                  enableEdit(
+                    e,
+                    review.id,
+                    review.star_rating,
+                    review.review_details
+                  )
+                }
+                disabled={
+                  review.user_id != sessionUser.id || editReviewID == review.id
+                }
+                hidden={review.user_id != sessionUser.id}
+              >
+                Edit
+              </button>
+              <button
+                onClick={(e) => handleRemove(e, review.id)}
+                disabled={
+                  review.user_id != sessionUser.id || editReviewID == review.id
+                }
+                hidden={review.user_id != sessionUser.id}
+              >
+                Delete
+              </button>
             </div>
+          )}
         </div>
-        ))}
-        <div>
-        {editReviewID!=0 && 
-          (<form onSubmit={(e) => editComment(e, comment)}>
-            <input type="number" value={starRating} onChange={(e) => setStarRating(e.target.value)}></input>
-            <textarea value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
+      ))}
+      <div>
+        {editReviewID != 0 && sessionUser && (
+          <form onSubmit={(e) => editComment(e, comment)}>
+            <input
+              type="number"
+              value={starRating}
+              onChange={(e) => setStarRating(e.target.value)}
+            ></input>
+            <textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            ></textarea>
             <button type="submit">Edit Review</button>
-          </form>)}
-          {editReviewID==0 && 
-          (<form onSubmit={(e) => addComment(e, comment)}>
-            <input type="number" value={starRating} onChange={(e) => setStarRating(e.target.value)}></input>
-            <textarea value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
+          </form>
+        )}
+        {editReviewID == 0 && sessionUser && (
+          <form onSubmit={(e) => addComment(e, comment)}>
+            <input
+              type="number"
+              value={starRating}
+              onChange={(e) => setStarRating(e.target.value)}
+            ></input>
+            <textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            ></textarea>
             <button type="submit">Add Review</button>
-          </form>)}
-        </div>
+          </form>
+        )}
+      </div>
     </div>
   );
 }
