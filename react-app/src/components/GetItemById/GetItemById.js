@@ -65,7 +65,7 @@ const GetItemById = (props) => {
         </div>
 
         <div className={styles.item_page_body}>
-          <div className={styles.item_inner_boy}>
+          <div className={styles.item_inner_body}>
             <div className={styles.upper_body}>
               <div className={styles.drink_description}>{item.description}</div>
               <div className={styles.drink_price}>
@@ -99,7 +99,7 @@ const GetItemById = (props) => {
             )}
           </div>
           <div className={styles.reviews_wrapper}>
-            <GetReviews item_id={item.id}/>
+            {/* <GetReviews item_id={item.id}/> */}
           </div>
         </div>
       </div>

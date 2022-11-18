@@ -1,0 +1,25 @@
+textarea {
+  resize: none;
+}
+.review_outer_container {
+  width: 94%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.review_container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.each_review {
+  border: 1px solid blue;
+  width: 49.8%;
+  min-height: 100px;
+}
+.rating {
+  /* border: 1px solid green; */
+}
+.review_details {
+  /* border: 1px solid black; */
+}

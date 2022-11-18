@@ -79,72 +79,82 @@ export default function GetReviews({ item_id }) {
   }
 
   return (
-    <div>
-      {reviews.map((review) => (
-        <div>
-          <div>{review.star_rating}</div>
-          <div>{review.review_details}</div>
-          {sessionUser && (
-            <div>
-              <button
-                onClick={(e) =>
-                  enableEdit(
-                    e,
-                    review.id,
-                    review.star_rating,
-                    review.review_details
-                  )
-                }
-                disabled={
-                  review.user_id != sessionUser.id || editReviewID == review.id
-                }
-                hidden={review.user_id != sessionUser.id}
-              >
-                Edit
-              </button>
-              <button
-                onClick={(e) => handleRemove(e, review.id)}
-                disabled={
-                  review.user_id != sessionUser.id || editReviewID == review.id
-                }
-                hidden={review.user_id != sessionUser.id}
-              >
-                Delete
-              </button>
+    <>
+      <div className={styles.review_outer_container}>
+        <div className={styles.review_container}>
+          <div>
+
+          </div>
+          {reviews.map((review) => (
+            <div className={styles.each_review}>
+              <div className={styles.rating}>&#9733; {review.star_rating}</div>
+              <div className={styles.review_details}>{review.review_details}</div>
+
+              {sessionUser && (
+                <div>
+                  <button
+                    onClick={(e) =>
+                      enableEdit(
+                        e,
+                        review.id,
+                        review.star_rating,
+                        review.review_details
+                      )
+                    }
+                    disabled={
+                      review.user_id != sessionUser.id ||
+                      editReviewID == review.id
+                    }
+                    hidden={review.user_id != sessionUser.id}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={(e) => handleRemove(e, review.id)}
+                    disabled={
+                      review.user_id != sessionUser.id ||
+                      editReviewID == review.id
+                    }
+                    hidden={review.user_id != sessionUser.id}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
             </div>
-          )}
+          ))}
+          <div>
+            {editReviewID != 0 && sessionUser && (
+              <form onSubmit={(e) => editComment(e, comment)}>
+                <input
+                  type="number"
+                  value={starRating}
+                  onChange={(e) => setStarRating(e.target.value)}
+                ></input>
+                <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                ></textarea>
+                <button type="submit">Edit Review</button>
+              </form>
+            )}
+            {editReviewID == 0 && sessionUser && (
+              <form onSubmit={(e) => addComment(e, comment)}>
+                <input
+                  type="number"
+                  value={starRating}
+                  onChange={(e) => setStarRating(e.target.value)}
+                ></input>
+                <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                ></textarea>
+                <button type="submit">Add Review</button>
+              </form>
+            )}
+          </div>
         </div>
-      ))}
-      <div>
-        {editReviewID != 0 && sessionUser && (
-          <form onSubmit={(e) => editComment(e, comment)}>
-            <input
-              type="number"
-              value={starRating}
-              onChange={(e) => setStarRating(e.target.value)}
-            ></input>
-            <textarea
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            ></textarea>
-            <button type="submit">Edit Review</button>
-          </form>
-        )}
-        {editReviewID == 0 && sessionUser && (
-          <form onSubmit={(e) => addComment(e, comment)}>
-            <input
-              type="number"
-              value={starRating}
-              onChange={(e) => setStarRating(e.target.value)}
-            ></input>
-            <textarea
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            ></textarea>
-            <button type="submit">Add Review</button>
-          </form>
-        )}
       </div>
-    </div>
+    </>
   );
 }
