@@ -8,6 +8,7 @@ import {
   editReview,
   createReview,
 } from "../../store/reviews";
+import ReactStars from "react-rating-stars-component";
 
 export default function GetReviews({ item_id }) {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default function GetReviews({ item_id }) {
   const [comment, setComment] = useState("");
   const [reviews, setReviews] = useState([]);
   const [editReviewID, setEditReviewID] = useState(0);
-  const [starRating, setStarRating] = useState(5);
+  const [starRating, setStarRating] = useState(0);
   const [errors, setErrors] = useState([]);
 
   const reviewsObj = useSelector((state) => state.reviews);
@@ -65,7 +66,7 @@ export default function GetReviews({ item_id }) {
   function addComment(e, review_details) {
     e.preventDefault();
 
-    dispatch(createReview(item_id, "5", review_details));
+    dispatch(createReview(item_id, starRating, review_details));
     setComment("");
   }
 
@@ -77,18 +78,33 @@ export default function GetReviews({ item_id }) {
     setEditReviewID(0);
     setStarRating(5);
   }
-
+  const ratingChanged = (newRating) => {
+    setStarRating(newRating);
+  };
   return (
     <>
       <div className={styles.review_outer_container}>
         <div className={styles.review_container}>
-          <div>
-
-          </div>
           {reviews.map((review) => (
             <div className={styles.each_review}>
               <div className={styles.rating}>&#9733; {review.star_rating}</div>
-              <div className={styles.review_details}>{review.review_details}</div>
+              <div>
+                <ReactStars
+                  count={5}
+                  // onChange={ratingChanged}
+                  value={review.star_rating}
+                  edit={false}
+                  size={24}
+                  isHalf={true}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  halfIcon={<i className="fa fa-star-half-alt"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  activeColor="#ffd700"
+                />
+              </div>
+              <div className={styles.review_details}>
+                {review.review_details}
+              </div>
 
               {sessionUser && (
                 <div>
@@ -145,6 +161,18 @@ export default function GetReviews({ item_id }) {
                   value={starRating}
                   onChange={(e) => setStarRating(e.target.value)}
                 ></input>
+                {/* <div>
+                  <ReactStars
+                    count={5}
+                    onChange={ratingChanged}
+                    size={24}
+                    isHalf={true}
+                    emptyIcon={<i className="far fa-star"></i>}
+                    halfIcon={<i className="fa fa-star-half-alt"></i>}
+                    fullIcon={<i className="fa fa-star"></i>}
+                    activeColor="#ffd700"
+                  />
+                </div> */}
                 <textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}

@@ -99,7 +99,7 @@ const GetItemById = (props) => {
             )}
           </div>
           <div className={styles.reviews_wrapper}>
-            {/* <GetReviews item_id={item.id}/> */}
+            <GetReviews item_id={item.id}/>
           </div>
         </div>
       </div>
