@@ -2,24 +2,104 @@ textarea {
   resize: none;
 }
 .review_outer_container {
+  /* border: 1px solid green; */
   width: 94%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .review_container {
+  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
+.each_review_container {
+  /* border: 1px solid blue; */
+  width: 49.99%;
+  /* min-height: 120px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  /* margin-left: 5px; */
+  box-sizing: border-box;
+}
 .each_review {
-  border: 1px solid blue;
-  width: 49.8%;
-  min-height: 100px;
+  /* border: 1px solid black; */
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 10px;
+  width: 90%;
+  box-shadow: 3px 3px 10px rgb(128, 128, 128, 0.2);
+  border-radius: 20px;
+  min-height: 120px;
+}
+.edit_delete {
+  /* border: 1px solid red; */
+  width: 97%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 .rating {
   /* border: 1px solid green; */
+  margin: 5px 5px;
 }
 .review_details {
+  /* border: 1px solid green; */
+  width: 97%;
+  /* min-height: 70px; */
+  height: 80px;
+  /* inline-size: 385px; */
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.add_review_container {
+  margin-top: 50px;
   /* border: 1px solid black; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add_review {
+  /* border: 1px solid blue; */
+  width: 36%;
+}
+.review_and_button {
+  /* border: 1px solid blue; */
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.comment {
+  /* border: 1px solid orange; */
+  width: 96%;
+  min-height: 100px;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+.add_review_button {
+  border: none;
+  text-align: center;
+  width: 270px;
+  font-size: 20px;
+  font-weight: 500;
+  height: 60px;
+  border-radius: 999px;
+  background-color: #1f3933;
+  color: white;
 }

@@ -86,98 +86,133 @@ export default function GetReviews({ item_id }) {
       <div className={styles.review_outer_container}>
         <div className={styles.review_container}>
           {reviews.map((review) => (
-            <div className={styles.each_review}>
-              <div className={styles.rating}>&#9733; {review.star_rating}</div>
-              <div>
-                <ReactStars
-                  count={5}
-                  // onChange={ratingChanged}
-                  value={review.star_rating}
-                  edit={false}
-                  size={24}
-                  isHalf={true}
-                  emptyIcon={<i className="far fa-star"></i>}
-                  halfIcon={<i className="fa fa-star-half-alt"></i>}
-                  fullIcon={<i className="fa fa-star"></i>}
-                  activeColor="#ffd700"
-                />
-              </div>
-              <div className={styles.review_details}>
-                {review.review_details}
-              </div>
-
-              {sessionUser && (
-                <div>
-                  <button
-                    onClick={(e) =>
-                      enableEdit(
-                        e,
-                        review.id,
-                        review.star_rating,
-                        review.review_details
-                      )
-                    }
-                    disabled={
-                      review.user_id != sessionUser.id ||
-                      editReviewID == review.id
-                    }
-                    hidden={review.user_id != sessionUser.id}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={(e) => handleRemove(e, review.id)}
-                    disabled={
-                      review.user_id != sessionUser.id ||
-                      editReviewID == review.id
-                    }
-                    hidden={review.user_id != sessionUser.id}
-                  >
-                    Delete
-                  </button>
+            <div className={styles.each_review_container}>
+              <div className={styles.each_review}>
+                <div className={styles.rating}>
+                  &#9733; {review.star_rating}
                 </div>
-              )}
+                <div className={styles.rating}>
+                  <ReactStars
+                    count={5}
+                    // onChange={ratingChanged}
+                    value={review.star_rating}
+                    edit={false}
+                    size={24}
+                    // isHalf={true}
+                    emptyIcon={<i className="far fa-star"></i>}
+                    // halfIcon={<i className="fa fa-star-half-alt"></i>}
+                    fullIcon={<i className="fa fa-star"></i>}
+                    activeColor="#ffd700"
+                  />
+                </div>
+                <div className={styles.review_details}>
+                  {review.review_details}
+                </div>
+                {sessionUser && (
+                  <div className={styles.edit_delete}>
+                    <button
+                      className={styles.add_review_button}
+                      onClick={(e) =>
+                        enableEdit(
+                          e,
+                          review.id,
+                          review.star_rating,
+                          review.review_details
+                        )
+                      }
+                      disabled={
+                        review.user_id != sessionUser.id ||
+                        editReviewID == review.id
+                      }
+                      hidden={review.user_id != sessionUser.id}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className={styles.add_review_button}
+                      onClick={(e) => handleRemove(e, review.id)}
+                      disabled={
+                        review.user_id != sessionUser.id ||
+                        editReviewID == review.id
+                      }
+                      hidden={review.user_id != sessionUser.id}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}{" "}
+              </div>
             </div>
           ))}
-          <div>
-            {editReviewID != 0 && sessionUser && (
-              <form onSubmit={(e) => editComment(e, comment)}>
-                <input
+          <div className={styles.add_review_container}>
+            <div className={styles.add_review}>
+              {editReviewID != 0 && sessionUser && (
+                <form onSubmit={(e) => editComment(e, comment)}>
+                  {/* <input
                   type="number"
                   value={starRating}
                   onChange={(e) => setStarRating(e.target.value)}
-                ></input>
-                <textarea
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                ></textarea>
-                <button type="submit">Edit Review</button>
-              </form>
-            )}
+                ></input> */}
+                  <div>
+                    <ReactStars
+                      count={5}
+                      value={starRating}
+                      onChange={ratingChanged}
+                      size={24}
+                      // isHalf={true}
+                      emptyIcon={<i className="far fa-star"></i>}
+                      // halfIcon={<i className="fa fa-star-half-alt"></i>}
+                      fullIcon={<i className="fa fa-star"></i>}
+                      activeColor="#ffd700"
+                    />
+                  </div>
+
+                  <div className={styles.review_and_button}>
+                    <textarea
+                      className={styles.comment}
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                    ></textarea>
+                    <button className={styles.add_review_button} type="submit">
+                      Edit Review
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className={styles.add_review_container}>
+          <div className={styles.add_review}>
             {editReviewID == 0 && sessionUser && (
               <form onSubmit={(e) => addComment(e, comment)}>
-                <input
+                {/* <input
                   type="number"
                   value={starRating}
                   onChange={(e) => setStarRating(e.target.value)}
-                ></input>
-                {/* <div>
+                ></input> */}
+                <div>
                   <ReactStars
                     count={5}
                     onChange={ratingChanged}
                     size={24}
-                    isHalf={true}
+                    // isHalf={true}
                     emptyIcon={<i className="far fa-star"></i>}
-                    halfIcon={<i className="fa fa-star-half-alt"></i>}
+                    // halfIcon={<i className="fa fa-star-half-alt"></i>}
                     fullIcon={<i className="fa fa-star"></i>}
                     activeColor="#ffd700"
                   />
-                </div> */}
-                <textarea
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                ></textarea>
-                <button type="submit">Add Review</button>
+                </div>
+                <div className={styles.review_and_button}>
+                  <textarea
+                    className={styles.comment}
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                  ></textarea>
+                  <button className={styles.add_review_button} type="submit">
+                    Add Review
+                  </button>
+                </div>
               </form>
             )}
           </div>

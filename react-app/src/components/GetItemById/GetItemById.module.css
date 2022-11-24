@@ -5,10 +5,11 @@
 }
 .item_category_container {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  margin-left: -54%;
-
+  margin-left: 1%;
+  /* margin-left: -54%; */
+ /* border: 1px salmon dashed; */
 }
 .drink_category {
 
