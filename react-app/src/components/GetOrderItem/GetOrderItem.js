@@ -71,7 +71,7 @@ export default function GetOrderItems({ currentOrder_id }) {
       {Object.keys(orderItems).length < 1 && (
         <div className={styles.empty_order}> Your order is empty</div>
       )}
-      <div className={styles.blank}>
+      <div className={styles.cart_summary}>
         {Object.keys(orderItems).length !== 0 && (
           <CartSummary shoppingCart={Object.values(orderItems)} />
         )}

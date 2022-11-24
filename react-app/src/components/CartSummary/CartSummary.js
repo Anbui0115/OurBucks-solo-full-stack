@@ -20,30 +20,34 @@ export default function CartSummary({ shoppingCart }) {
     // });
   }
   return (
-    <div className={styles}>
+    <div className={styles.cart}>
       <div className={styles}>
         <div>
           <div>
-            <div>
-              Subtotal:{" "}
+            <div className={styles.subtotal}>
+              Subtotal
+              <span className={styles.price}>
+                {dollarFormmatter.format(
+                  Object.values(shoppingCart).reduce(
+                    (accum, el) => el.quantity * el.price + accum,
+                    0
+                  )
+                )}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className={styles.total}>
+            Total
+            <span>
               {dollarFormmatter.format(
                 Object.values(shoppingCart).reduce(
                   (accum, el) => el.quantity * el.price + accum,
                   0
                 )
               )}
-            </div>
-          </div>
-        </div>
-        <div>
-          <div>
-            Total:{" "}
-            {dollarFormmatter.format(
-              Object.values(shoppingCart).reduce(
-                (accum, el) => el.quantity * el.price + accum,
-                0
-              )
-            )}
+            </span>
           </div>
         </div>
         <div>

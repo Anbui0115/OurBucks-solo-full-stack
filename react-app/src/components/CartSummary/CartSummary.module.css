@@ -1,46 +1,23 @@
-.rightCard{
-    /* display: flex; */
-    box-shadow: 0 4px 20px rgb(34 34 34 / 15%);
-    border-radius: 18px !important;
-    overflow: hidden !important;
-    display: block;
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.4;
-    width: 100%;
-    /* justify-content: center; */
-
+.cart {
+  /* border: 1px solid blue; */
+  width: 100%;
+  font-size: 20px;
 }
-
-.table{
-    display: flex;
-    flex-direction: column;
-    padding: 18px;
-    width: 100%;
-
-}
-
-.row{
-    display: flex;
-    justify-content: space-between
-}
-
-.proceedButton{
+.subtotal {
+  /* border: 1px solid pink; */
   display: flex;
-  flex-direction: row;
-  border: none;
-  background-color: #222222;
-  color: white;
-  justify-content: center;
-  margin-top: 20px;
-  align-items: center;
-  cursor: pointer;
-  font-size: 1.1em;
+  justify-content: space-between;
+  color: rgb(128, 128, 128);
+  padding: 5px 20px;
+}
+.price {
+  /* border: 1px solid black; */
+  display: inline-flex;
+}
+.total {
+  display: flex;
+  justify-content: space-between;
   font-weight: 600;
-  box-sizing: border-box;
-  width: 80%;
-  aspect-ratio: 6/1;
-  text-align: center;
-  border-radius: 50px;
-  /* border: 1px solid green; */
+  font-size: 24px;
+  padding: 5px 20px;
 }

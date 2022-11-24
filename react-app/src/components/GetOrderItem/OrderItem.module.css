@@ -1,44 +1,44 @@
-.itemCard {
-  /* border: 1px solid red; */
+/* .itemCard {
+  border: 1px solid red;
   display: flex;
   flex-direction: row;
   padding-top: 2%;
   width: 100%;
   margin: auto;
   justify-content: center;
-}
+} */
 
-.shoppingImageContainer {
-  /* border: 1px solid pink; */
+/* .shoppingImageContainer {
+  border: 1px solid pink;
   width: 34%;
-}
+} */
 
-.descDiv {
+/* .descDiv {
   display: flex;
   flex-direction: column;
   width: 26%;
   padding: 0px 0px 6px;
-  /* border: 1px solid blue; */
-}
+  border: 1px solid blue;
+} */
 
-.itemCard > form {
-  /* border: 1px solid green; */
+/* .itemCard > form {
+  border: 1px solid green;
   width: 13%;
-}
+} */
 
-.price {
+/* .price {
   padding: 0% 2% 2% 2%;
   width: 26%;
-  /* border: 1px solid black; */
-}
+  border: 1px solid black;
+} */
 
-.price > div {
-  /* border: 1px solid black; */
+/* .price > div {
+  border: 1px solid black;
   word-wrap: break-word;
   font-size: 0.9em;
-}
+} */
 
-.descText {
+/* .descText {
   display: flex;
   font-size: 1em;
   font-weight: 400px;
@@ -46,33 +46,33 @@
   padding-right: 1%;
   padding-top: 2%;
   cursor: pointer;
-}
+} */
 
-.remove {
-  /* border: 2px solid black; */
+/* .remove {
+  border: 2px solid black;
   display: flex;
   font-size: 0.9em;
   width: 80px;
   height: 36px;
   margin-top: 5%;
   padding: 0% 0% 0% 3%;
-}
-
+} */
+/*
 .remove:hover {
   display: flex;
   cursor: pointer;
-}
+} */
 
-.image {
-  /* border:1px dashed hotpink; */
+/* .image {
+  border:1px dashed hotpink;
   border-radius: 6px;
   cursor: pointer;
   width: 100%;
   aspect-ratio: 2/1.5;
   object-fit: cover;
-}
+} */
 
-.itemCount {
+/* .itemCount {
   font-size: 16px;
   color: #222222;
   width: 74%;
@@ -90,11 +90,24 @@
   padding-right: 5%;
   margin: auto;
   overflow: visible !important;
-}
+} */
 .empty_order {
   text-align: center;
   padding: 50px 50px;
   font-size: 25px;
-color: gray;
+  color: gray;
   font-weight: 400;
+}
+.cart_summary {
+  width: 100%;
+  height: 100px;
+  max-width: 700px;
+  margin: 8px auto;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 0 0.5px 0 rgb(0 0 0 / 14%), 0 1px 1px 0 rgb(0 0 0 / 24%);
+  border-radius: 12px;
+  margin-bottom: 1.6rem !important;
+  display: flex;
+  align-items: center;
 }
