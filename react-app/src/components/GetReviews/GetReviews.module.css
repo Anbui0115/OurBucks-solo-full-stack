@@ -14,17 +14,19 @@ textarea {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .each_review_container {
   /* border: 1px solid blue; */
   width: 49.99%;
-  /* min-height: 120px; */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
   /* margin-left: 5px; */
   box-sizing: border-box;
+  max-width: 1000px;
 }
 .each_review {
   /* border: 1px solid black; */
@@ -32,10 +34,11 @@ textarea {
   padding-top: 20px;
   padding-bottom: 20px;
   margin: 10px;
-  width: 90%;
+  width: 100%;
   box-shadow: 3px 3px 10px rgb(128, 128, 128, 0.2);
   border-radius: 20px;
   min-height: 120px;
+    min-height: 236px;
 }
 .edit_delete {
   /* border: 1px solid red; */

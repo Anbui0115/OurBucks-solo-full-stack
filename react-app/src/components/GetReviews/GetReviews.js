@@ -25,7 +25,7 @@ export default function GetReviews({ item_id }) {
 
   useEffect(() => {
     dispatch(getReviews(item_id));
-  }, [dispatch]);
+  }, [dispatch, starRating]);
 
   useEffect(() => {
     let errors = [];
@@ -74,6 +74,7 @@ export default function GetReviews({ item_id }) {
     e.preventDefault();
 
     dispatch(editReview(editReviewID, starRating, review_details));
+
     setComment("");
     setEditReviewID(0);
     setStarRating(5);
@@ -91,11 +92,12 @@ export default function GetReviews({ item_id }) {
                 <div className={styles.rating}>
                   &#9733; {review.star_rating}
                 </div>
-                <div className={styles.rating}>
+                <div className={styles.rating} id="rating">
                   <ReactStars
                     count={5}
-                    // onChange={ratingChanged}
+                    onChange={ratingChanged}
                     value={review.star_rating}
+                    userInputValue={(e) => e.target.value}
                     edit={false}
                     size={24}
                     // isHalf={true}
@@ -104,6 +106,7 @@ export default function GetReviews({ item_id }) {
                     fullIcon={<i className="fa fa-star"></i>}
                     activeColor="#ffd700"
                   />
+                
                 </div>
                 <div className={styles.review_details}>
                   {review.review_details}
