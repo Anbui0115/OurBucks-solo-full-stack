@@ -11,10 +11,10 @@ textarea {
 }
 .review_container {
   /* border: 1px solid black; */
-  width: 100%;
+  width: 74%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 .each_review_container {

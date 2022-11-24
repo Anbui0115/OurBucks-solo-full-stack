@@ -8,7 +8,7 @@ import {
   editOrderItem,
 } from "../../store/order_items";
 import EachOrderItem from "../EachOrderItem/EachOrderItem";
-
+import CartSummary from '../CartSummary/CartSummary'
 export default function GetOrderItems({ currentOrder_id }) {
 
   const dispatch = useDispatch();
@@ -71,6 +71,11 @@ export default function GetOrderItems({ currentOrder_id }) {
       {Object.keys(orderItems).length < 1 && (
         <div className={styles.empty_order}> Your order is empty</div>
       )}
+      <div className={styles.blank}>
+        {Object.keys(orderItems).length !== 0 && (
+          <CartSummary shoppingCart={Object.values(orderItems)} />
+        )}
+      </div>
     </div>
   );
 }
