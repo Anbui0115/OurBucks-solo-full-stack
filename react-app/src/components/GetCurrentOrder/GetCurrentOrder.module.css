@@ -23,9 +23,8 @@
   justify-content: center;
   margin: 0 auto;
 }
-.checkout {
+/* .checkout {
   margin-top: 50px;
-  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -41,4 +40,4 @@
   border-radius: 999px;
   background-color: #1f3933;
   color: white;
-}
+} */

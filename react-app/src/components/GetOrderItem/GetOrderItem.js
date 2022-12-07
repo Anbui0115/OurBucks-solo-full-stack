@@ -8,9 +8,10 @@ import {
   editOrderItem,
 } from "../../store/order_items";
 import EachOrderItem from "../EachOrderItem/EachOrderItem";
-import CartSummary from '../CartSummary/CartSummary'
-export default function GetOrderItems({ currentOrder_id }) {
+import CartSummary from "../CartSummary/CartSummary";
+import { submitOrderThunk } from "../../store/orders";
 
+export default function GetOrderItems({ currentOrder_id }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [quantity, setQuantity] = useState(1);
@@ -50,7 +51,13 @@ export default function GetOrderItems({ currentOrder_id }) {
       editOrderItem(order_item.id, item_id, customized_item_id, quantity)
     );
   }
-
+  function handleSubmitOrder(e,orderId) {
+    e.preventDefault();
+    console.log("orderId", orderId);
+    dispatch(submitOrderThunk(orderId));
+    history.push("/");
+  }
+  console.log("currentOrder_id", currentOrder_id);
   return (
     <div>
       {Object.keys(orderItems).map((order_item_id) =>
@@ -71,11 +78,21 @@ export default function GetOrderItems({ currentOrder_id }) {
       {Object.keys(orderItems).length < 1 && (
         <div className={styles.empty_order}> Your order is empty</div>
       )}
-      <div className={styles.cart_summary}>
-        {Object.keys(orderItems).length !== 0 && (
-          <CartSummary shoppingCart={Object.values(orderItems)} />
-        )}
-      </div>
+      {Object.keys(orderItems).length !== 0 && currentOrder_id && (
+        <>
+          <div className={styles.cart_summary}>
+            <CartSummary shoppingCart={Object.values(orderItems)} />
+          </div>
+          <div className={styles.checkout}>
+            <button
+              className={styles.checkout_button}
+              onClick={(e) => handleSubmitOrder(e, currentOrder_id)}
+            >
+              Check Out
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

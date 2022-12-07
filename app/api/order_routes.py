@@ -45,13 +45,14 @@ def submit_order(order_id):
     """
     user_id = current_user.id
     order = Order.query.get(order_id)
-
+    print("\n\n\n\n\n\n\n",order,"\n\n\n\n\n\n\n")
     if not order or order.user_id != user_id:
         return {'error': 'Cannot submit order.'}, 400
     elif order.status != 'not placed':
         return {'error': 'Order has already been submitted.'}, 400
     else:
         order.status = 'placed'
+        print("\n\n\n\n\n\n\n",order,order.status,"\n\n\n\n\n\n\n")
         db.session.commit()
         return {'order': order.to_dict()}
 

@@ -111,3 +111,21 @@
   display: flex;
   align-items: center;
 }
+.checkout {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkout_button {
+  border: none;
+  text-align: center;
+  width: 270px;
+  font-size: 20px;
+  font-weight: 500;
+  height: 60px;
+  border-radius: 999px;
+  background-color: #1f3933;
+  color: white;
+}

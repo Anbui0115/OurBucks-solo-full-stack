@@ -46,7 +46,7 @@ export const getOrderItems = (orderId) => async (dispatch) => {
   if (res.ok) {
     const orderItems = await res.json();
     const data = await dispatch(getOrderItemAction(orderItems.order_items));
-    console.log("DATA INSIDE GET ORDER ITEM THUNK------------", orderItems);
+    // console.log("DATA INSIDE GET ORDER ITEM THUNK------------", orderItems);
     return data;
   }
 };
@@ -69,7 +69,7 @@ export const editOrderItem =
   (order_item_id, item_id, customized_item_id, quantity) =>
   async (dispatch) => {
     const bodyJSON = { item_id, customized_item_id, quantity };
-    console.log(bodyJSON);
+    // console.log("bodyJSON inside edit order item store", bodyJSON);
     const res = await fetch(`/api/order_items/${order_item_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

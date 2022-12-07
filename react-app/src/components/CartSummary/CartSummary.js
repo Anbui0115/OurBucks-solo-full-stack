@@ -6,7 +6,7 @@ import styles from "../CartSummary/CartSummary.module.css";
 export default function CartSummary({ shoppingCart }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  console.log("shoppingCart", shoppingCart);
+  // console.log("shoppingCart", shoppingCart);
   const formatting_options = {
     style: "currency",
     currency: "USD",

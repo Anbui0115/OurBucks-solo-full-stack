@@ -4,7 +4,7 @@ const GET_CURRENT_ORDERS = "orders/GET_ITEMS";
 const CREATE_ORDER = "orders/CREATE_ITEM";
 const CLEAR_ALL_ORDERS = "orders/CLEAR_ALL";
 // const EDIT_ORDER = "orders/EDIT_ITEM";
-// const SUBMIT_ORDER = "orders/SUBMIT_ORDER";
+const SUBMIT_ORDER = "order/SUBMIT_ORDER";
 
 // Action Creators
 const getCurrentOrderAction = (order) => {
@@ -33,12 +33,12 @@ const clearAllOrdersAction = () => {
 //   };
 // };
 
-// export const submitOrderAction = (orderId) => {
-//   return {
-//     type: SUBMIT_ORDER,
-//     orderId,
-//   };
-// };
+export const submitOrderAction = (orderId) => {
+  return {
+    type: SUBMIT_ORDER,
+    orderId,
+  };
+};
 
 // Thunks
 export const getCurrentOrders = () => async (dispatch) => {
@@ -81,16 +81,26 @@ export const clearAllOrdersThunk = () => async (dispatch) => {
 //   }
 // };
 
-// export const submitOrder = (orderId) => async (dispatch) => {
-//   const res = await fetch(`/api/orders/${orderId}`, {
-//     method: "DELETE",
-//   });
+export const submitOrderThunk = (orderId) => async (dispatch) => {
+  console.log("inside submitorderThunk!~~~~~~~~~~~~~~~~~~~~~~~", orderId);
 
-//   if (res.ok) {
-//     const order = `${orderId}`;
-//     await dispatch(deleteOrderAction(order));
-//   }
-// };
+  // const body = JSON.stringify({ orderId });
+
+  const res = await fetch(`/api/orders/${orderId}`, {
+    // method: "DELETE",
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    // body: body,
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    if (data.errors) return data.errors;
+    // const orderId = `${orderId}`;
+    await dispatch(submitOrderAction(`${orderId}`));
+    return data;
+  }
+};
 
 export const addToOrderThunk =
   (
@@ -147,9 +157,12 @@ export default function ordersReducer(state = initialState, action) {
     // case EDIT_ITEM:
     //   newState[action.item.id] = action.item;
     //   return newState;
-    // case SUBMIT_ORDER:
-    //   delete newState[action.orderId];
-    //   return newState;
+    case SUBMIT_ORDER:
+      // delete newState[action.orderId];
+      // return newState;
+      console.log("TEST action in store ~~~~~~~~~~", action);
+    // newState[action.order.order.id] = action.order.orderId;
+    // return newState;
     default:
       return state;
   }

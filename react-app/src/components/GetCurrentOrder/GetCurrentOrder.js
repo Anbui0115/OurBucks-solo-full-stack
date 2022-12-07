@@ -29,10 +29,10 @@ const GetCurrentOrder = () => {
         <div className={styles.order_item_container}>
           <GetOrderItems currentOrder_id={currentOrder.id} />
         </div>
-  
-        <div className={styles.checkout}>
+
+        {/* <div className={styles.checkout}>
           <button className={styles.checkout_button}>Checkout</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
