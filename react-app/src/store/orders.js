@@ -161,8 +161,8 @@ export default function ordersReducer(state = initialState, action) {
       // delete newState[action.orderId];
       // return newState;
       console.log("TEST action in store ~~~~~~~~~~", action);
-    // newState[action.order.order.id] = action.order.orderId;
-    // return newState;
+    newState[action.orderId].status = "placed";
+    return newState;
     default:
       return state;
   }
