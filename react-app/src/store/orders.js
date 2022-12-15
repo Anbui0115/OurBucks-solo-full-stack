@@ -82,7 +82,7 @@ export const clearAllOrdersThunk = () => async (dispatch) => {
 // };
 
 export const submitOrderThunk = (orderId) => async (dispatch) => {
-  console.log("inside submitorderThunk!~~~~~~~~~~~~~~~~~~~~~~~", orderId);
+  // console.log("inside submitorderThunk!~~~~~~~~~~~~~~~~~~~~~~~", orderId);
 
   // const body = JSON.stringify({ orderId });
 
@@ -160,7 +160,7 @@ export default function ordersReducer(state = initialState, action) {
     case SUBMIT_ORDER:
       // delete newState[action.orderId];
       // return newState;
-      console.log("TEST action in store ~~~~~~~~~~", action);
+      // console.log("TEST action in store ~~~~~~~~~~", action);
     newState[action.orderId].status = "placed";
     return newState;
     default:

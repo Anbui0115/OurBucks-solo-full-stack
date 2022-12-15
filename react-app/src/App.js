@@ -17,6 +17,7 @@ import GetOrderItems from "./components/GetOrderItem/GetOrderItem";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Footer from "./components/Footer/Footer";
 import EditCustomizedItem from "./components/EditCustomizedItem/EditCustomizedItem";
+import ThankYou from "./components/ThankYou/ThankYou";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -67,6 +68,9 @@ function App() {
         </Route>
         <Route path="/my-customized-items" exact={true}>
           <GetCustomizedItems />
+        </Route>
+        <Route path="/thank-you" exact={true}>
+          <ThankYou />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />

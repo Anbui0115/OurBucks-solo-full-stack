@@ -53,11 +53,11 @@ export default function GetOrderItems({ currentOrder_id }) {
   }
   function handleSubmitOrder(e,orderId) {
     e.preventDefault();
-    console.log("orderId", orderId);
+    // console.log("orderId", orderId);
     dispatch(submitOrderThunk(orderId));
-    history.push("/");
+    history.push("/thank-you");
   }
-  console.log("currentOrder_id", currentOrder_id);
+  // console.log("currentOrder_id", currentOrder_id);
   return (
     <div>
       {Object.keys(orderItems).map((order_item_id) =>

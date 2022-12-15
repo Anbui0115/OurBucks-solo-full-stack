@@ -46,12 +46,10 @@ function ProfileButton({ user }) {
           >
             Your Reviews
           </div> */}
-          <div
-            className="your-review"
-            onClick={() => history.push("/order")}
-          >
+          <div className="your-review" onClick={() => history.push("/order")}>
             Your current order
           </div>
+          {/* <div className="your-listing">Your order history</div> */}
           <div>
             <LogoutButton />
           </div>
